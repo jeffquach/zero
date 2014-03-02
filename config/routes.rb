@@ -1,7 +1,11 @@
 Mindmeetup::Application.routes.draw do
   root 'users#index'
 
-  resources :users
+  resources :users do
+    member do
+      get :activate
+    end
+  end
 
   match "logout", to: "sessions#destroy", via: "get"
   match "signup", to: "users#new", via: "get"
