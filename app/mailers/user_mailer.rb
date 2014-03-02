@@ -10,7 +10,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     @url  = "http://0.0.0.0:3000/users/#{user.activation_token}/activate"
     mail(:to => user.email,
-         :subject => "Welcome to My Awesome Site")
+         :subject => "Welcome to MindMeetup")
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -36,6 +36,6 @@ class UserMailer < ActionMailer::Base
     @user = user
     @url  = edit_password_reset_url(@user.reset_password_token)
     mail(:to => user.email,
-         :subject => "Your password has been reset")
+         :subject => "Password reset instructions")
   end
 end
