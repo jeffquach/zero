@@ -12,22 +12,60 @@
   </head>
 
   <body>
-      <div id="container">
-        <% if current_user %>
-          Logged in as <%= current_user.email %>.
-          <%= link_to "Log out", logout_path %>
-        <% else %>
-          <%= link_to "Sign up", signup_path %> or
-          <%= link_to "Log in", login_path %>.
-        <% end %>
-            
-      </div>
 
-  <div>
-    <% flash.each do |name,msg| %>
-      <%= content_tag :div, msg, id: "flash_#{name}" %>
-    <% end %>
-  </div>
+  <!-- Navigation -->
+ 
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <!-- Title Area -->
+      <li class="name">
+        <h1>
+          <%= link_to "MindMeetup", "#" %>
+        </h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+    </ul>
+ 
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+
+        <% if current_user %>
+          <li id="logged-in">Logged in as <%= current_user.email %></li>
+          <li class="divider"></li>
+          <li><%= link_to "Log out", logout_path %></li>
+          <li class="divider"></li>
+          <li class="has-dropdown">
+            <%= link_to "Account", "#" %>
+            <ul class="dropdown">
+              <li><a href="#">Dropdown Option</a></li>
+              <li><a href="#">Dropdown Option</a></li>
+              <li><a href="#">Dropdown Option</a></li>
+              <li class="divider"></li>
+              <li><a href="#">See all &rarr;</a></li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "Sign up", signup_path %></li>
+          <li class="divider"></li>
+          <li><%= link_to "Log in", login_path %></li>
+          <li class="divider"></li>
+        <% end %>
+      </ul>
+    </section>
+  </nav>
+ 
+  <!-- End Top Bar -->
+
+  <div class="row">
+      <div class="small-12 columns">
+        <% flash.each do |key,value| %>
+          <div data-alert class="alert-box <%= key %> radius">
+            <%= value %>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
     <%= yield %>
     <%= javascript_include_tag "application" %>
