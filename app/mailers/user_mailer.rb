@@ -25,4 +25,8 @@ class UserMailer < ActionMailer::Base
     mail(:to => user.email,
          :subject => "Your account is now activated")
   end
+
+  def reset_password_email(user)
+    
+  end
 end
