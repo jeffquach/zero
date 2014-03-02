@@ -1,4 +1,13 @@
 Mindmeetup::Application.routes.draw do
+  root 'users#index'
+
+  resources :users
+
+  match "logout", to: "sessions#destroy", via: "get"
+  match "signup", to: "users#new", via: "get"
+  match "login", to: "sessions#new", via: "get"
+
+  resources :sessions
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
