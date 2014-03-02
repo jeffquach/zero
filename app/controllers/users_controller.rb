@@ -8,8 +8,7 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
   	if @user.save
-  		auto_login @user
-  		flash[:success] = "Thank you for signing up!"
+  		flash[:success] = "Thank you for signing up! A confirmation email has been sent to your inbox"
   		redirect_to users_path
   	else
   		render :new
