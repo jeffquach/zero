@@ -10,6 +10,8 @@ Mindmeetup::Application.routes.draw do
     end
   end
 
+  resources :password_resets
+
   match "logout", to: "sessions#destroy", via: "get"
   match "signup", to: "users#new", via: "get"
   match "login", to: "sessions#new", via: "get"
