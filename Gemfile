@@ -8,6 +8,7 @@ gem 'pg'
 gem 'foundation-rails'
 gem 'sorcery'
 gem 'faker'
+gem 'geocoder'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
