@@ -19,10 +19,15 @@ class UsersController < ApplicationController
   end
 
   def index
-  	@users = User.all
+    @users = if params[:search]
+      User.near(params[:search],100)
+    else
+      User.all
+    end
   end
 
   def show
+    @nearbys = @user.nearbys(10, units: :km)
   end
 
   def edit

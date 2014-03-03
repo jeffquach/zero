@@ -248,6 +248,15 @@
   </script>
 <!-- End Footer -->
 
+<%= form_tag users_path, method: :get do %>
+
+	<p>
+		<%= text_field_tag :search, params[:search] %>
+		<%= submit_tag "Search users",name: nil %>
+	</p>
+
+<% end %>
+
 <ul class="users">
 
 	<% @users.each do |user| %>

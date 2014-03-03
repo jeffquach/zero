@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303205607) do
+ActiveRecord::Schema.define(version: 20140303233016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "invitees", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "meetup_id"
+    t.boolean  "response"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "meetups", force: true do |t|
+    t.string   "studying"
+    t.text     "description"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "number_of_people"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email"
@@ -39,6 +57,13 @@ ActiveRecord::Schema.define(version: 20140303205607) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "country"
+    t.string   "learning"
+    t.string   "preferred_gender"
+    t.string   "smoking_allowed"
+    t.string   "has_pets"
+    t.string   "can_host_pets"
+    t.string   "can_host_children"
+    t.string   "description"
   end
 
   add_index "users", ["activation_token"], name: "index_users_on_activation_token", using: :btree
