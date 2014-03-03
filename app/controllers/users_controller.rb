@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def index
     @users = if params[:search]
-      User.near(params[:search],50)
+      User.near(params[:search],100)
     else
       User.all
     end
