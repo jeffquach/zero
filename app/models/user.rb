@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
 	after_validation :geocode, if: :country_changed?
 	after_validation :geocode, if: :state_province_changed?
 
+	has_many :invitees
+	has_many :meetups, through: :invitees, dependent: :destroy
+
 	def parsed_address
 		"#{self.address}, #{self.city}, #{self.state_province}, #{self.country}"
 	end
