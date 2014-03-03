@@ -1,10 +1,10 @@
 module ApplicationHelper
 def full_title(pt)
-    base = "Base"
+    mind = "MindMeetup"
     if pt.empty?
-      base
+      mind
     else
-      "#{base} | #{pt}"
+      "#{mind} | #{pt}"
     end
   end
 end

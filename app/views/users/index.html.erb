@@ -13,9 +13,9 @@
 
 			<%= link_to user.first_name, user %>
 
-			<% if current_user.admin? %>
+			<% if user.admin? %>
 
-			| <%= link_to "Delete", user, data: {confirm: "Are you sure?"}, method: :delete %>
+			| <%= link_to "Delete", user, confirm: "Are you sure?", method: :delete %>
 
 			
 			<% end %>
