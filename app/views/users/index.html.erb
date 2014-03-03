@@ -13,7 +13,7 @@
 
 			<%= link_to user.first_name, user %>
 
-			<% if user.admin? %>
+			<% if user.admin? && !current_user%>
 
 			| <%= link_to "Delete", user, confirm: "Are you sure?", method: :delete %>
 

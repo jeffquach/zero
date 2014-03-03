@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
 
   private
   def not_authenticated
-  	redirect_to signin_url, alert: "Please login to access this page"
+  	redirect_to login_url, alert: "Please login to access this page"
   end
 end

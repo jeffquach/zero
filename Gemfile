@@ -7,6 +7,7 @@ gem 'rails', '4.0.3'
 gem 'pg'
 gem 'foundation-rails'
 gem 'sorcery'
+gem 'faker'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
