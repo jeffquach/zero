@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303205037) do
+ActiveRecord::Schema.define(version: 20140303205607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20140303205037) do
     t.string   "state_province"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "country"
   end
 
   add_index "users", ["activation_token"], name: "index_users_on_activation_token", using: :btree
