@@ -3,6 +3,15 @@
 <div class="small-12 large-6 large-centered columns">
 <div class="text-center"><h1>All users</h1></div>
 
+<%= form_tag users_path, method: :get do %>
+
+	<p>
+		<%= text_field_tag :search, params[:search] %>
+		<%= submit_tag "Search users",name: nil %>
+	</p>
+
+<% end %>
+
 <ul class="users">
 
 	<% @users.each do |user| %>
