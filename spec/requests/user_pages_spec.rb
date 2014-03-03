@@ -21,8 +21,6 @@ describe "UserPages" do
 		before{delete user_path(other_user)}
 		specify{expect(response).to redirect_to(login_path)}
 	end
-
-
 end
 
 
