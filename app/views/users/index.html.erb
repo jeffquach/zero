@@ -20,22 +20,23 @@
 <ul class="users">
 
 
-    <% @users.each do |user| %>
+  <% @users.each do |user| %>
 
-      <li>
-          <%= gravatar_for user %>
+    <li>
 
-          <%= link_to user.first_name, user %>
 
-          <% if user.admin? && !current_user %>
+        <%= gravatar_for user %>
 
-            | <%= link_to "Delete", user, confirm: "Are you sure?", method: :delete %>
+        <%= link_to user.first_name, user %>
 
-        
-          <% end %>
-      </li>
-    <% end %>
+        <% if user.admin? && !current_user %>
 
+          | <%= link_to "Delete", user, confirm: "Are you sure?", method: :delete %>
+
+      
+        <% end %>
+    </li>
+  <% end %>
 
 
 </ul>
