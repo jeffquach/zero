@@ -4,14 +4,18 @@ class MeetupsController < ApplicationController
 
 	def new
 		@meetup = current_user.meetups.build
+		@second_user_id = params[:second_user_id]
+		Rails.logger.info "The second users id is: #{@second_user_id}"
 	end
 
 	def create
 		@meetup = current_user.meetups.build(meetup_params)
+
 		@meetup.user = current_user
 		if @meetup.save
 			flash[:success] = "You successfully created an event!"
 			@meetup.invitees.create(user_id: current_user.id,response: "yes")
+			@meetup.invitees.create(user_id: params[:second_user_id], response: "no_reply")
 			redirect_to @meetup
 		else
 			render :new
@@ -19,7 +23,7 @@ class MeetupsController < ApplicationController
 	end
 
 	def index
-		@meetup = Meetup.all
+		@meetups = Meetup.all
 	end
 
 	def edit
@@ -33,6 +37,7 @@ class MeetupsController < ApplicationController
 			render :edit
 		end
 	end
+
 
 	def show
 	end

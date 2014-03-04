@@ -30,8 +30,10 @@
       <!-- Right Nav Section -->
       <ul class="right">
 
-        <% if current_user %>
+        <% if current_user && logged_in? %>
           <li id="logged-in">Logged in as <%= current_user.email %></li>
+          <li class="divider"></li>
+          <li><%= link_to "Meetups", meetups_path %></li>
           <li class="divider"></li>
           <li><%= link_to "Log out", logout_path %></li>
           <li class="divider"></li>

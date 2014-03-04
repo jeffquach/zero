@@ -20,6 +20,8 @@
 		<%= f.label :number_of_people %>
 		<%= f.number_field :number_of_people %>
 
+		<%= hidden_field_tag "second_user_id", @second_user_id %>
+
 		<div class="text-center"><%= f.submit "Create meetup", class: "button radius" %></div>
 
 	<% end %>
