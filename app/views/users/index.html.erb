@@ -3,13 +3,14 @@
 
 
 <div class="small-12 large-6 large-centered columns">
-<div class="text-center"><h1>Find a study partner</h1></div>
+<div class="text-center"><h1>Find a study partner. </h1></div>
+<div class="text-center"><h4>Learn with STEM and MOOC students nearby</h4></div>
 
 <%= form_for :search, url: users_path, method: :get do |f| %>
   <p>
 
     <%= f.text_field :city_search %>
-    <%= f.select :learning_search, options_for_select([ "Biology & Life Sciences", "Business & Management", "Chemistry", "Communication", "Computer Science", "Economics & Finance", "Electronics","Energy & Earth Sciences", "Engineering","Environmental Sciences","Food & Nutrition","Food & Nutrition","Health & Safety", "History","Humanities","Law","Literature","Math","Medicine","Music","Philanthropy","Philosophy & Ethics","Physics","Social Sciences","Statistics & Data Analysis"]) %> 
+    <%= f.select :learning_search, options_for_select([ "Javascript", "Ruby on Rails", "Python", "jQuery", "C++", "HTML & CSS", "PHP", "Biology", "Calculus", "Linear Algebra", "Differential Equations", "Physics", "Chemistry", "Medicine", "Statistics", "Electronics", "Android Development", "iOS Development", "Google Glass Development", "Tesla Development", "SmartThings Development", "Occulus Rift Development", "Emotiv Development", "Meta Developers", "Raspberry Pi Development" ]) %> 
     <%= f.submit "Search users" %>
   </p>
 
