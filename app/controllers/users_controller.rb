@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    if params[:search][:city_search] && params[:search][:learning_search]
+    if params[:search] && params[:search][:city_search] && params[:search][:learning_search]
       @users = User.near(params[:search][:city_search],100).where("learning ILIKE ?",params[:search][:learning_search])
     else
       @users = User.all
