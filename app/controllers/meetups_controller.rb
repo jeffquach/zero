@@ -11,6 +11,7 @@ class MeetupsController < ApplicationController
 		@meetup.user = current_user
 		if @meetup.save
 			flash[:success] = "You successfully created an event!"
+			@meetup.invitees.create(user_id: current_user.id,response: "yes")
 			redirect_to @meetup
 		else
 			render :new

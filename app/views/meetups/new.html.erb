@@ -1,0 +1,28 @@
+<% provide(:title, "New meetup") %>
+
+<div class="small-12 large-6 large-centered columns">
+<div class="text-center"><h1>New meetup</h1></div>
+
+	<%= form_for @meetup do |f| %>
+
+		<%= f.label :studying %>
+		<%= f.select :studying, options_for_select([ "Biology & Life Sciences", "Business & Management", "Chemistry", "Communication", "Computer Science", "Economics & Finance", "Electronics","Energy & Earth Sciences", "Engineering","Environmental Sciences","Food & Nutrition","Food & Nutrition","Health & Safety", "History","Humanities","Law","Literature","Math","Medicine","Music","Philanthropy","Philosophy & Ethics","Physics","Social Sciences","Statistics & Data Analysis"]) %>
+
+		<%= f.label :description %>
+		<%= f.text_area :description, style: "height=13em" %>
+
+		<%= f.label :start_time %>
+		<%= f.date_select :start_time, start_year: Time.now.year %>
+
+		<%= f.label :end_time %>
+		<%= f.date_select :end_time, start_year: Time.now.year %>
+
+		<%= f.label :number_of_people %>
+		<%= f.number_field :number_of_people %>
+
+		<div class="text-center"><%= f.submit "Create meetup", class: "button radius" %></div>
+
+	<% end %>
+
+
+</div>

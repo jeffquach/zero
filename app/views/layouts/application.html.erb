@@ -69,7 +69,7 @@
 
     <%= yield %>
     <%= javascript_include_tag "application" %>
-
+  
     <footer id="debugger"><%= debug(params) if Rails.env.development? %></footer>
     <%= params %>
   </body>
