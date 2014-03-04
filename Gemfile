@@ -14,6 +14,7 @@ gem 'mini_magick'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
+  gem 'quiet_assets'
 end
 
 group :test do

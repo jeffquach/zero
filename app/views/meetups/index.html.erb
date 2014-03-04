@@ -1,0 +1,21 @@
+<% provide(:title, "Meetups") %>
+
+<div class="small-12 large-6 large-centered columns">
+<div class="text-center"><h1>My meetups</h1></div>
+
+	<% @meetups.each do |m| %>
+
+		<div class="meetup">
+			
+			<h3><%= link_to "Meetup", meetup_path(m) %></h3>
+
+			<p>Attendees: <%= m.user %>, <%= m.people_attending_meetup %> </p>
+
+			<p>Start time: <%= m.start_time %></p>
+
+		</div>
+
+	<% end %>
+
+</div>
+

@@ -1,0 +1,17 @@
+<%= provide(:title, "Meetup") %>
+
+<div class="small-12 large-6 large-centered columns">
+<div class="text-center"><h1>Meetup</h1></div>
+
+	<h2>Meetup with <%= @meetup.people_attending_meetup %></h2>
+
+	<p>Studying: <%= @meetup.studying %></p>
+
+	<p>Description: <%= @meetup.description %></p>
+
+	<p>Start time: <%= @meetup.start_time %></p>
+
+	<p>End time: <%= @meetup.end_time %></p>
+
+	<p>Number of people: <%= @meetup.number_of_people %></p>
+</div>
