@@ -26,16 +26,12 @@
       <% @users.each do |user| %>
 
     <li>
-
-
-        <%= gravatar_for user %>
-
         <%= link_to user.first_name, user %>
+        <p class="center"><%= image_tag(user.image_url(:thumb)) %></p>
 
         <% if user.admin? && !current_user %>
 
           | <%= link_to "Delete", user, confirm: "Are you sure?", method: :delete %>
-
   
         <% end %>
 
