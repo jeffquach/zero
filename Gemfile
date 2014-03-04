@@ -9,6 +9,8 @@ gem 'foundation-rails'
 gem 'sorcery'
 gem 'faker'
 gem 'geocoder'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

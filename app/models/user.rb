@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+mount_uploader :image, ImageUploader
+
 	authenticates_with_sorcery!
 	before_save {email.downcase!}
 	validates_confirmation_of :password

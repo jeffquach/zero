@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303233016) do
+ActiveRecord::Schema.define(version: 20140304215002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20140303233016) do
     t.string   "can_host_pets"
     t.string   "can_host_children"
     t.string   "description"
+    t.string   "image"
   end
 
   add_index "users", ["activation_token"], name: "index_users_on_activation_token", using: :btree
