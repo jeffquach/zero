@@ -1,283 +1,46 @@
 <% provide(:title, "All users") %>
 
+
+
 <div class="small-12 large-6 large-centered columns">
 <div class="text-center"><h1>Find a study partner</h1></div>
 
- <!-- Navigation -->
- 
-  <nav class="top-bar" data-topbar>
-    <ul class="title-area">
-      <!-- Title Area -->
-      <li class="name">
-        <h1>
-          <a href="#">
-            Learn with people nearby
-          </a>
-        </h1>
-      </li>
-      <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
-    </ul>
- 
-    <section class="top-bar-section">
-      <!-- Right Nav Section -->
-      <ul class="right">
-        <li class="divider"></li>
-        <li class="has-dropdown">
-          <a href="#">Online Courses</a>
-          <ul class="dropdown">
-            <li><label>Section Name</label></li>
-            <li class="has-dropdown">
-              <a href="#" class="">Has Dropdown, Level 1</a>
-              <ul class="dropdown">
-                <li><a href="#">Dropdown Options</a></li>
-                <li><a href="#">Dropdown Options</a></li>
-                <li><a href="#">Level 2</a></li>
-                <li><a href="#">Subdropdown Option</a></li>
-                <li><a href="#">Subdropdown Option</a></li>
-                <li><a href="#">Subdropdown Option</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li class="divider"></li>
-            <li><label>Section Name</label></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li class="divider"></li>
-            <li><a href="#">See all →</a></li>
-          </ul>
-        </li>
-        <li class="divider"></li>
-        <li><a href="#">University Courses</a></li>
-        <li class="divider"></li>
-        <li class="has-dropdown">
-          <a href="#">Students</a>
-          <ul class="dropdown">
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li class="divider"></li>
-            <li><a href="#">See all →</a></li>
-          </ul>
-        </li>
-      </ul>
-    </section>
-  </nav>
- 
-  <!-- End Top Bar -->
- 
-  <div class="row">
-    <div class="large-12 columns">
- 
-    <!-- Content Slider -->
- 
-      <div class="row">
-        <div class="large-12 hide-for-small">
- 
-          <div id="featured" data-orbit>
-              <img src="http://studyinuk.universiablogs.net/files/studying2.jpg" alt="slide image">
-              <img src="http://www.palomar.edu/counseling/images/studentresources/students_studying_for_test.jpg" alt="slide image">
-              <img src="http://iwillgraduate.com/wp-content/uploads/2010/03/students_studying.jpg" alt="slide image">
-            </div>
- 
-      </div>
-    </div>
- 
-    <!-- End Content Slider -->
- 
-    <!-- Mobile Header -->
- 
-      <div class="row">
-        <div class="large-12 columns show-for-small">
- 
-          <img src="http://placehold.it/1200x700&text=Mobile Header">
- 
-        </div>
-      </div><br>
- 
-    <!-- End Mobile Header -->
- 
- 
-      <div class="row">
-        <div class="large-12 columns">
-          <div class="row">
-            <!-- Shows -->
-            <div class="large-4 small-6 columns">
- 
-              <h4>Popular Cities</h4><hr>
- 
-              <div class="row">
-                <div class="large-1 column">
-                  <img src="http://placehold.it/50x50&text=[img]">
-                </div>
- 
-                <div class="large-9 columns">
-                  <h5><a href="#">New York</a></h5>
-                  <h6 class="subheader show-for-small">Doors at 00:00pm</h6>
-                </div>
-              </div><hr>
- 
-              <div class="hide-for-small">
-                <div class="row">
-                  <div class="large-1 column">
-                    <img src="http://placehold.it/50x50&text=[img]">
-                  </div>
- 
-                  <div class="large-9 columns">
-                    <h5 class="subheader"><a href="#">Hong Kong</a></h5>
-                  </div>
-                </div><hr>
- 
-                <div class="row">
-                  <div class="large-1 column">
-                    <img src="http://placehold.it/50x50&text=[img]">
-                  </div>
- 
-                  <div class="large-9 columns">
-                    <h5 class="subheader"><a href="#">London</a></h5>
-                  </div>
-                </div><hr>
+<%= form_for :search, url: users_path, method: :get do |f| %>
+  <p>
 
-                 <div class="row">
-                  <div class="large-1 column">
-                    <img src="http://placehold.it/50x50&text=[img]">
-                  </div>
- 
-                  <div class="large-9 columns">
-                    <h5 class="subheader"><a href="#">Toronto</a></h5>
-                  </div>
-                </div><hr>
- 
-                <div class="row">
-                  <div class="large-1 column">
-                    <img src="http://placehold.it/50x50&text=[img]">
-                  </div>
- 
-                  <div class="large-9 columns">
-                    <h5 class="subheader"><a href="#">Paris</a></h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End Shows -->
- 
- 
-            <!-- Image -->
- 
-            <div class="large-4 small-6 columns">
-              <img src="http://static5.businessinsider.com/image/52b8589d6da811633d759579/elon-musk-was-bullied-and-lonely-as-a-kid--then-he-found-computers-and-business.jpg">
-            </div>
- 
-            <!-- End Image -->
- 
- 
-            <!-- Feed -->
- 
-            <div class="large-4 small-12 columns">
- 
-              <h4>Online Learning</h4><hr>
-              <div class="panel">
-                <h5><a href="#">Udacity</a></h5>
- 
-                <h6 class="subheader">
-                  Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Suspendisse ultrices ornare tempor...
-                </h6>
- 
-                <h6><a href="#">Read More »</a></h6>
-              </div>
- 
-              <div class="panel hide-for-small">
-                <h5><a href="#">Coursera »</a></h5>
-              </div>
- 
-              <div class="panel hide-for-small">
-                <h5><a href="#">Edx »</a></h5>
-              </div>
- 
-              <a href="#" class="right">Start »</a>
- 
-            </div>
- 
-            <!-- End Feed -->
- 
-          </div>
-        </div>
-      </div>
- 
-    <!-- End Content -->
- 
- 
-    <!-- Footer -->
- 
-      <footer class="row">
-        <div class="large-12 columns"><hr>
-            <div class="row">
- 
-              <div class="large-6 columns">
-                  <p>© Copyright Mindmeetup</p>
-              </div>
- 
-              <div class="large-6 small-12 columns">
-                  <ul class="inline-list right">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Help</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Terms of Use</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                  </ul>
-              </div>
- 
-            </div>
-        </div>
-      </footer>
- 
-    <!-- End Footer -->
- 
-    </div>
-  </div>
- 
-  <script>
-  document.write('<script src=js/vendor/' +
-  ('__proto__' in {} ? 'zepto' : 'jquery') +
-  '.js><\/script>')
-  </script>
-  <script src="js/foundation.min.js"></script>
-  <script>
-    $(document).foundation();
-  </script>
-<!-- End Footer -->
-
-<%= form_tag users_path, method: :get do %>
-
-	<p>
-		<%= text_field_tag :search, params[:search] %>
-		<%= submit_tag "Search users",name: nil %>
-	</p>
+    <%= f.text_field :city_search %>
+    <%= f.select :learning_search, options_for_select([ "Biology & Life Sciences", "Business & Management", "Chemistry", "Communication", "Computer Science", "Economics & Finance", "Electronics","Energy & Earth Sciences", "Engineering","Environmental Sciences","Food & Nutrition","Food & Nutrition","Health & Safety", "History","Humanities","Law","Literature","Math","Medicine","Music","Philanthropy","Philosophy & Ethics","Physics","Social Sciences","Statistics & Data Analysis"]) %> 
+    <%= f.submit "Search users" %>
+  </p>
 
 <% end %>
 
+
+
 <ul class="users">
 
-	<% @users.each do |user| %>
 
-		<li>
+    <% @users.each do |user| %>
 
-			<%= gravatar_for user %>
+      <li>
+          <%= gravatar_for user %>
 
-			<%= link_to user.first_name, user %>
+          <%= link_to user.first_name, user %>
 
-			<% if user.admin? && !current_user%>
+          <% if user.admin? && !current_user %>
 
-			| <%= link_to "Delete", user, confirm: "Are you sure?", method: :delete %>
+            | <%= link_to "Delete", user, confirm: "Are you sure?", method: :delete %>
 
-			
-			<% end %>
-		</li>
-	<% end %>
+        
+          <% end %>
+      </li>
+    <% end %>
+
 
 
 </ul>
 
 </div>
 
+ 
+ 

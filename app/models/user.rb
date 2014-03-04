@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 	validates :city, presence: true
 	validates :state_province, presence: true
 	validates :country, presence: true
+	validates :learning, presence: true
 	geocoded_by :parsed_address
 	after_validation :geocode, if: :address_changed?
 	after_validation :geocode, if: :city_changed?

@@ -8,6 +8,7 @@ Mindmeetup::Application.routes.draw do
     member do
       get :activate
     end
+    resources :meetups
   end
 
   resources :password_resets
