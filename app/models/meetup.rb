@@ -11,6 +11,10 @@ class Meetup < ActiveRecord::Base
 	def people_attending_meetup
 		invitees.map{|person| person.user.first_name}.join(",")
 	end
+
+	def find_name_of_attendee
+		users.where("user_id = ?", current_user.id).map{|user| user.first_name}
+	end
 end
 
 
