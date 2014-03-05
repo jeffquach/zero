@@ -23,7 +23,7 @@ class MeetupsController < ApplicationController
 	end
 
 	def index
-		@meetups = Meetup.all
+		@meetups = Meetup.includes(:invitees).where("invitees.user_id = ?", current_user.id).references(:invitees)
 	end
 
 	def edit
