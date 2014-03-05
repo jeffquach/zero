@@ -17,37 +17,25 @@
 <% end %>
 
 
-
+<h2>Students nearby<h2>
 <ul class="users">
 
 
   <% if params[:search] && params[:search][:city_search] && params[:search][:learning_search] %>
-
       <% @users.each do |user| %>
-
     <li>
-
-
-        <%= gravatar_for user %>
-
         <%= link_to user.first_name, user %>
-
+        <p class="center"><%= image_tag(user.image_url(:thumb)) %></p>
+        <%= "#{user.first_name} is #{user.distance.round(2)} miles away." %>
         <% if user.admin? && !current_user %>
-
+            <%= location.distance.round(2) %> miles
           | <%= link_to "Delete", user, confirm: "Are you sure?", method: :delete %>
-
   
-        <% end %>
-
-
-      
+        <% end %>  
       <% end %>
     </li>
   <% end %>
-
-
 </ul>
-
 </div>
 
  
