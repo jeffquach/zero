@@ -35,3 +35,33 @@ footer{
     border-bottom: 1px solid #DDE7ED;
   }
 }
+
+.meetup-attend {
+  border: 3px solid green;
+  border-radius: 5px;
+  background-color: green;
+  font-size: 2em;
+  padding: 5px;
+}
+
+.meetup-decline {
+  border: 3px solid red;
+  border-radius: 5px;
+  background-color: red;
+  font-size: 2em;
+  padding: 5px;
+}
+
+.meetup-maybe {
+  border: 3px solid yellow;
+  border-radius: 5px;
+  background-color: yellow;
+  font-size: 2em;
+  padding: 5px;
+}
+
+
+
+
+
+

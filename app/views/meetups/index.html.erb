@@ -3,15 +3,32 @@
 <div class="small-12 large-6 large-centered columns">
 <div class="text-center"><h1>My meetups</h1></div>
 
-	<% @meetups.each do |m| %>
+	<% @meetups.each do |meetup| %>
 
 		<div class="meetup">
 			
-			<h3><%= link_to "Meetup", meetup_path(m) %></h3>
+			<h3><%= link_to "Meetup", meetup_path(meetup) %></h3>
 
-			<p>Attendees: <%= m.user %>, <%= m.people_attending_meetup %> </p>
+			<p>Attendees: <%= meetup.people_attending_meetup %> </p>
 
-			<p>Start time: <%= m.start_time %></p>
+			<p>Start time: <%= meetup.start_time %></p>
+
+			<div>
+				<%= form_for meetup.invitees.find_by(user_id: current_user.id) do |f| %>
+
+					<%= f.submit "Attend", class: "button radius" %>
+					<%= f.submit "Maybe", class: "button radius" %>
+					<%= f.submit "Decline", class: "button radius" %>
+					<div><span class="meetup-label"><%= render partial: "response_form", locals: {response: meetup.invitees.find_by(user_id: current_user.id).response} %></span></div>
+
+				<% end %>
+			</div><br/>
+
+			<% if current_user && logged_in? %>
+
+				<%= link_to "Delete", meetup, confirm: "Are you sure?", method: :delete %>
+
+			<% end %>
 
 		</div>
 
