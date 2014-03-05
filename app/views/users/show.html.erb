@@ -14,7 +14,10 @@
     <section>
 
     	<h3>Nearby users</h3>
-    	<ul>
+       <section id="users">
+       </section>
+    	
+      <ul>
 	    	<% @nearbys.each do |user| %>
 
 	    		<li><%= link_to user.first_name, user %> (<%= user.distance.round(2) %> km)</li>

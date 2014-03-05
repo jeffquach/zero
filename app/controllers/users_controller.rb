@@ -23,12 +23,13 @@ class UsersController < ApplicationController
       @users = User.near(params[:search][:city_search],100).where("learning ILIKE ?",params[:search][:learning_search])
     else
       @users = User.all
-      
     end
   end
 
   def show
     @nearbys = @user.nearbys(10, units: :km)
+    params[:longitude] && params[:latitude]
+    @users = User.near(params[:latitude], params[:longitude], 20, units: :km)
   end
 
   def edit
