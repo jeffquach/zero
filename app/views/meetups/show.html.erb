@@ -13,5 +13,32 @@
 
 	<p>End time: <%= @meetup.end_time %></p>
 
+	<p>
+
+		<%= form_for @meetup.invitees.find_by(user_id: current_user.id), remote: true do |f| %>
+			<div>
+							<strong><%= @meetup.user.first_name %></strong>
+			<%= f.submit "Attend", class: "button tiny radius" %>
+			<%= f.submit "Maybe", class: "button tiny radius" %>
+			<%= f.submit "Decline", class: "button tiny radius" %><br/>
+			<span class="meetup-label"><%= render partial: "response_form", locals: {response: @meetup.invitees.find_by(user_id: current_user.id).response} %></span>
+			</div>
+
+
+		<% end %>
+	</p>
+
+	<p>
+		<% @meetup.invitees.each do |i| %>
+
+			<% unless current_user?(i.user) %>
+				<p>			<%= i.user.first_name %>
+			<%= render partial: "response_form", locals: {response: i.response} %>
+</p>
+			<% end %>
+			
+		<% end %>
+	</p>
+
 	<p>Number of people: <%= @meetup.number_of_people %></p>
 </div>
