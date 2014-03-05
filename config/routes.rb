@@ -12,6 +12,8 @@ Mindmeetup::Application.routes.draw do
 
   resources :meetups
 
+  resources :invitees
+
   resources :password_resets
 
   match "logout", to: "sessions#destroy", via: "get"

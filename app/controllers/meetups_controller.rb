@@ -45,7 +45,7 @@ class MeetupsController < ApplicationController
 	def destroy
 		if @meetup.destroy
 			flash[:alert] = "You deleted your meetup!"
-			redirect_to root_url
+			redirect_to meetups_path
 		end
 	end
 
