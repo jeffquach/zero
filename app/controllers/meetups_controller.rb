@@ -1,6 +1,6 @@
 class MeetupsController < ApplicationController
 	before_filter :require_login
-	before_action :find_meetup, only: [:edit,:show,:update,:destroy]
+	before_action :find_meetup, only: [:edit,:update,:destroy]
 
 	def new
 		@meetup = current_user.meetups.build
@@ -40,6 +40,7 @@ class MeetupsController < ApplicationController
 
 
 	def show
+		@meetup = Meetup.find(params[:id])
 	end
 
 	def destroy

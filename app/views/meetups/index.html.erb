@@ -20,7 +20,7 @@
 					<%= f.submit "Attend", class: "button tiny radius" %>
 					<%= f.submit "Maybe", class: "button tiny radius" %>
 					<%= f.submit "Decline", class: "button tiny radius" %>
-					<span class="meetup-label"><%= render partial: "response_form", locals: {response: meetup.invitees.find_by(user_id: current_user.id).response} %></span>
+					<span id="meetup-label-<%= meetup.id %>"><%= render partial: "response_form", locals: {response: meetup.invitees.find_by(user_id: current_user.id).response} %></span>
 					</div>
 
 				<% end %>
