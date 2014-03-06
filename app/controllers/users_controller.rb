@@ -28,8 +28,6 @@ class UsersController < ApplicationController
 
   def show
     @nearbys = @user.nearbys(10, units: :km)
-    params[:longitude] && params[:latitude]
-    @users = User.near(params[:latitude], params[:longitude], 20, units: :km)
   end
 
   def edit
