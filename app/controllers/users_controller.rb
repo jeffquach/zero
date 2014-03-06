@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @nearbys = @user.nearbys(10, units: :km)
+    @nearbys = @user.nearbys(10, units: :km).where("learning ILIKE ?", current_user.learning)
   end
 
   def edit
