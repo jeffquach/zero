@@ -6,8 +6,9 @@ class InviteesController < ApplicationController
 	end
 
 	def update
-		if @invitee.update_attribute("response", status)
+		if @invitee.update_attribute("response", status())
 			respond_to do |format|
+				format.html { redirect_to @invitee.meetup }
 				format.js 
 			end
 		else

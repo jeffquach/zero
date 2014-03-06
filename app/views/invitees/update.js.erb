@@ -1,3 +1,3 @@
-$('.meetup-label').html("<%= escape_javascript(render partial: 'meetups/response_form', locals: {response:@invitee.response}) %>")
+$('.meetup-label-<%= @invitee.meetup_id %>').html("<%= escape_javascript(render partial: 'meetups/response_form', locals: {response:@invitee.response}) %>")
 
 
