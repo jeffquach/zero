@@ -19,7 +19,24 @@ function initialize(){
 	} 
 }
 
-if ($('#map_canvas').length > 0) initialize();
+function addMarkers(coords){
+	var image = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
+	console.log(coords);
+	coords.forEach(function(coord){
+		var marker = new google.maps.Marker({
+			position: new google.maps.LatLng(coord.latitude,coord.longitude),  
+			map: map,
+			icon: image
+		});
+	});
+}
 
-
+$(document).ready(function(){
+	if ($('#map_canvas').length > 0){
+		initialize();
+		if(coords.length > 0) addMarkers(coords);
+	}else{
+		$('#map_canvas').remove();
+	}
+});
 

@@ -27,6 +27,7 @@
   </div>	
 </div> 
 
+
 <div class="large-6 columns">
   <div id="map_canvas"></div>
 </div>
@@ -36,5 +37,7 @@
   window.latitude = <%= @user.latitude %>;
   window.longitude = <%= @user.longitude %>;
   window.showMarker = true;
-  
+
+  window.coords = <%= raw @nearbys.map{|user| {latitude: user.latitude, longitude: user.longitude}}.to_json %>;
+
 <% end %>

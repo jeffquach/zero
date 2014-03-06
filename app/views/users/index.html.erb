@@ -50,5 +50,14 @@
 
 </div>
 
+<%= javascript_tag do %>
+
+  window.latitude = <%= @users.last.latitude %>;
+  window.longitude = <%= @users.last.longitude %>;
+  window.showMarker = false;
+  window.coords = <%= raw @users.map{|user| {latitude: user.latitude, longitude: user.longitude}}.to_json %>;
+
+<% end %>
+
  
  
