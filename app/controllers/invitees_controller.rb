@@ -7,8 +7,9 @@ class InviteesController < ApplicationController
 
 	def update
 		if @invitee.update_attribute("response", status)
-			flash[:success] = "You updated your meetup status!"
-			redirect_to meetups_path
+			respond_to do |format|
+				format.js 
+			end
 		else
 			render :edit
 		end

@@ -36,30 +36,51 @@ footer{
   }
 }
 
+.meetup-label{
+  
+}
+
 .meetup-attend {
   border: 3px solid green;
   border-radius: 5px;
   background-color: green;
-  font-size: 2em;
-  padding: 5px;
+  font-size: 1em;
+  padding: 4px;
+
 }
 
 .meetup-decline {
   border: 3px solid red;
   border-radius: 5px;
   background-color: red;
-  font-size: 2em;
-  padding: 5px;
+  font-size: 1em;
+  padding: 3px;
 }
 
 .meetup-maybe {
   border: 3px solid yellow;
   border-radius: 5px;
   background-color: yellow;
-  font-size: 2em;
-  padding: 5px;
+  font-size: 1em;
+  padding: 3px;
 }
 
+.meetup-waiting {
+  border: 3px solid orange;
+  border-radius: 5px;
+  background-color: orange;
+  font-size: 1em;
+  padding: 3px;
+}
+
+.no-button {
+  background-color: transparent;
+  border: none;
+  color: #0088cc;
+  cursor: pointer;
+  padding: 0px;
+  margin-bottom: 0px;
+}
 
 
 

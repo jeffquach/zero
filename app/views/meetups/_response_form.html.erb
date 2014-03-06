@@ -1,17 +1,17 @@
 <% if response == "yes" %>
 
-	<span class="meetup-label meetup-attend">Attending</span>
+	<span class="meetup-attend">Attending</span>
 
 <% elsif response == "no" %>
 	
-	<span class="meetup-label meetup-decline">Declined</span>
+	<span class="meetup-decline">Declined</span>
 
 <% elsif response == "maybe" %>
 
-	<span class="meetup-label meetup-maybe">Maybe</span>
+	<span class="meetup-maybe">Maybe</span>
 
 <% else %>
 	
-	<span class="meetup-label meetup-status">Awaiting reply</span>
+	<span class="meetup-waiting">Awaiting reply</span>
 
 <% end %>

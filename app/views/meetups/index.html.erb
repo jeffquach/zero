@@ -14,12 +14,14 @@
 			<p>Start time: <%= meetup.start_time %></p>
 
 			<div>
-				<%= form_for meetup.invitees.find_by(user_id: current_user.id) do |f| %>
+				<%= form_for meetup.invitees.find_by(user_id: current_user.id), remote: true do |f| %>
 
-					<%= f.submit "Attend", class: "button radius" %>
-					<%= f.submit "Maybe", class: "button radius" %>
-					<%= f.submit "Decline", class: "button radius" %>
-					<div><span class="meetup-label"><%= render partial: "response_form", locals: {response: meetup.invitees.find_by(user_id: current_user.id).response} %></span></div>
+					<div>
+					<%= f.submit "Attend", class: "button tiny radius" %>
+					<%= f.submit "Maybe", class: "button tiny radius" %>
+					<%= f.submit "Decline", class: "button tiny radius" %>
+					<span class="meetup-label"><%= render partial: "response_form", locals: {response: meetup.invitees.find_by(user_id: current_user.id).response} %></span>
+					</div>
 
 				<% end %>
 			</div><br/>
