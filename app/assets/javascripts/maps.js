@@ -8,7 +8,7 @@ function initializeShow(){
 		zoom: 13,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
-	map = new google.maps.Map($('#map_canvas')[0],mapOptions);
+	map = new google.maps.Map($('#map-canvas')[0],mapOptions);
 
 	if (addMarker) {
 		var marker = new google.maps.Marker({
@@ -41,7 +41,7 @@ function addMarkers(coords){
 
 
 $(document).ready(function(){
-	if ($('#map_canvas').length > 0){
+	if ($('#map-canvas').length > 0){
 		initializeShow();
 		if(coords.length > 0) addMarkers(coords);
 	}

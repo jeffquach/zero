@@ -1,9 +1,9 @@
-<div id="home-map" style="height:100%;width:60%"></div>
+<div id="map-canvas" style="height:100%;width:60%"></div>
 
-<div class="users-map">
-  <ul>
+<div>
+  <ul id="users-map">
 
-<div class="large-6 push-6 columns">
+
     <% if params[:search] && params[:search][:city_search] && params[:search][:learning_search] %>
 
       <% @users.each do |user| %>
@@ -26,7 +26,6 @@
     </li>
 
   <% end %>
-</div>
 
 
 </ul>
@@ -37,52 +36,6 @@
   window.longitude = <%= @users.first.longitude %>;
   window.showMarker = true;
 
-  window.coords = <%= raw @users.map{|user| {latitude: user.latitude, longitude: user.longitude}}.to_json %>;
-
-  function initialize() {
-      var map;
-      var bounds = new google.maps.LatLngBounds();
-      var mapOptions = {
-          mapTypeId: 'roadmap'
-      };
-                      
-      // Display a map on the page
-      map = new google.maps.Map(document.getElementById("home-map"), mapOptions);
-      map.setTilt(45);
-          
-      
-      // Loop through our array of markers & place each one on the map  
-      for( i = 0; i < coords.length; i++ ) {
-          var position = new google.maps.LatLng(coords[i].latitude, coords[i].longitude);
-          bounds.extend(position);
-          coord = new google.maps.Marker({
-              position: position,
-              map: map,
-              title: "Study with me boy!"
-          });
-
-          // Automatically center the map fitting all markers on the screen
-          map.fitBounds(bounds);
-      }
-
-      // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
-      var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-          this.setZoom(14);
-          google.maps.event.removeListener(boundsListener);
-      });
-    
-    }
-
-    function loadScript() {
-      var script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' +
-          'callback=initialize';
-      document.body.appendChild(script);
-    }
-
-    window.onload = loadScript;
-
-  
+  window.coords = <%= raw @users.map{|user| {latitude: user.latitude, longitude: user.longitude}}.to_json %>;  
 <% end %>
 
