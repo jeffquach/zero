@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.new
+    @user = User.find(params[:id])
   end
 
   def update
