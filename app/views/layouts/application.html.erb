@@ -7,7 +7,7 @@
     <title><%= full_title(yield(:title)) %></title>
 
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyAkco_zzAjqdw4pK1o8Rmzf75URCWX2EfI&sensor=false" %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Figaro.env.google_maps_api}&sensor=false" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
@@ -21,7 +21,7 @@
       <!-- Title Area -->
       <li class="name">
         <h1>
-          <%= link_to "MindMeetup", "#" %>
+          <%= link_to "MindMeetup", root_url %>
         </h1>
       </li>
       <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
@@ -72,8 +72,6 @@
 
     <%= yield %>
     <%= javascript_include_tag "application" %>
-  
-    <footer id="debugger"><%= debug(params) if Rails.env.development? %></footer>
     <%= params %>
   </body>
 </html>

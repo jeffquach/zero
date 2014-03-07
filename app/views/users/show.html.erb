@@ -28,62 +28,18 @@
     <p><%= link_to "Create a meetup", new_meetup_path(second_user_id: @user.id) %></p>
   </div>	
 </div> 
-<%= image_tag @user.image %> 
-
-<div class="user_info">
-<table class="table table-bordered table-striped" id="description_details" itemprop="breadcrumb">
-            <tbody><tr>
-              <td>Location</td>
-              <td class="value">Toronto</td>
-            </tr>
-              <tr>
-              <td>Available to study</td>
-              <td class="value">Yes</td>
-            </tr>
-            <tr>
-              <td>Mindmeetup request replied to:</td>
-              <td class="value">100%</td>
-            </tr>
-            <tr>
-              <td>Gender</td>
-              <td class="value">Male</td>
-            </tr>
-            <tr>
-              <td>Languages</td>
-              <td class="value">English, Chinese</td>
-            </tr>
-            <tr>
-              <td>Preferred Gender</td>
-              <td class="value">Female</td>
-            </tr>
-            <tr>
-              <td>Smoking Allowed</td>
-              <td class="value">No</td>
-            </tr>
-            <tr>
-              <td>Can Host children</td>
-              <td class="value">No<span id=""></span></td>
-            </tr>
-            <tr>
-              <td>Study Location Available</td>
-              <td class="value">Yes</td>
-            </tr>
-            <tr>
-              <td>Education</td>
-              <td class="value"><span id="">B.S. Civil Engineering</span></td>
-            </tr>
-            <tr>
-              <td>Current online learning</td>
-              <td class="value"><span id="">Edx</span></td>
-            </tr>
-            <tr>
-              <td>Skills</td>
-               <td class="value"><span id="">Ruby, Javascript</span></td>
-            </tr>
-
-        (Back to search results / Show nearby Minds)
 
 
+<div class="large-6 columns">
+  <div id="map_canvas"></div>
+</div>
 
+<%= javascript_tag do %>
 
+  window.latitude = <%= @user.latitude %>;
+  window.longitude = <%= @user.longitude %>;
+  window.showMarker = true;
 
+  window.coords = <%= raw @nearbys.map{|user| {latitude: user.latitude, longitude: user.longitude}}.to_json %>;
+
+<% end %>

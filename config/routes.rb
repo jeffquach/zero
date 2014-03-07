@@ -2,7 +2,7 @@ Mindmeetup::Application.routes.draw do
   get "password_resets/create"
   get "password_resets/edit"
   get "password_resets/update"
-  root 'users#index'
+  root 'users#home'
 
   resources :users do
     member do
@@ -16,6 +16,7 @@ Mindmeetup::Application.routes.draw do
 
   resources :password_resets
 
+  match "home", to: "users#home", via: 'get'
   match "logout", to: "sessions#destroy", via: "get"
   match "signup", to: "users#new", via: "get"
   match "login", to: "sessions#new", via: "get"

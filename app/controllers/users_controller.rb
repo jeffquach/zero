@@ -22,12 +22,18 @@ class UsersController < ApplicationController
     if params[:search] && params[:search][:city_search] && params[:search][:learning_search]
       @users = User.near(params[:search][:city_search],100).where("learning ILIKE ?",params[:search][:learning_search])
     else
-      @users = User.all
+     respond_to do |format|
+       format.js
+     end
     end
   end
 
+  def home
+    
+  end
+
   def show
-    @nearbys = @user.nearbys(10, units: :km)
+    @nearbys = @user.nearbys(10, units: :km).where("learning ILIKE ?", @user.learning)
   end
 
   def edit

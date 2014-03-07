@@ -1,27 +1,11 @@
-<% provide(:title, "All users") %>
+<div id="home-map" style="height:100%"></div>
 
+<div class="users">
+  <ul>
 
+<div class="large-6 push-6 columns">
+    <% if params[:search] && params[:search][:city_search] && params[:search][:learning_search] %>
 
-<div class="small-12 large-6 large-centered columns">
-<div class="text-center"><h1>Find a study partner. </h1></div>
-<div class="text-center"><h4>Learn with STEM and MOOC students nearby</h4></div>
-
-<%= form_for :search, url: users_path, method: :get do |f| %>
-  <p>
-
-    <%= f.text_field :city_search %>
-    <%= f.select :learning_search, options_for_select([ "Javascript", "Ruby on Rails", "Python", "jQuery", "C++", "HTML & CSS", "PHP", "Biology", "Calculus", "Linear Algebra", "Differential Equations", "Physics", "Chemistry", "Medicine", "Statistics", "Electronics", "Android Development", "iOS Development", "Google Glass Development", "Tesla Development", "SmartThings Development", "Occulus Rift Development", "Emotiv Development", "Meta Developers", "Raspberry Pi Development" ]) %> 
-    <%= f.submit "Search users" %>
-  </p>
-
-<% end %>
-
-
-<h2>Students nearby<h2>
-<ul class="users">
-
-
-  <% if params[:search] && params[:search][:city_search] && params[:search][:learning_search] %>
       <% @users.each do |user| %>
     <li>
         <%= link_to user.first_name, user %>
@@ -30,13 +14,35 @@
         <% if user.admin? && !current_user %>
             <%= location.distance.round(2) %> miles
           | <%= link_to "Delete", user, confirm: "Are you sure?", method: :delete %>
-  
-        <% end %>  
+
+        <% end %>
       <% end %>
     </li>
-  <% end %>
+
+    <% end %>
+
+</div>
+
 </ul>
 </div>
 
- 
- 
+<%= javascript_tag do %>
+  window.latitude = <%= @users.first.latitude %>;
+  window.longitude = <%= @users.first.longitude %>;
+  window.showMarker = true;
+
+  window.coords = <%= raw @users.map{|user| {latitude: user.latitude, longitude: user.longitude}}.to_json %>;
+
+  var map;
+
+  function initialize() {
+        var location = new google.maps.LatLng(latitude, longitude);
+        var mapOptions = {
+          center: location,
+          zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById("home-map"),
+            mapOptions);
+      }
+  google.maps.event.addDomListener(window, 'load', initialize);
+<% end %>
