@@ -1,6 +1,6 @@
 var map;
 
-function initialize(){
+function initializeShow(){
 	var location = new google.maps.LatLng(latitude,longitude);
 	var addMarker = true && showMarker;
 	var mapOptions = {
@@ -31,12 +31,13 @@ function addMarkers(coords){
 	});
 }
 
+
+
 $(document).ready(function(){
 	if ($('#map_canvas').length > 0){
-		initialize();
+		initializeShow();
 		if(coords.length > 0) addMarkers(coords);
-	}else{
-		$('#map_canvas').remove();
 	}
+
 });
 
