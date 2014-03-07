@@ -22,13 +22,20 @@ function initializeShow(){
 function addMarkers(coords){
 	var image = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
 	console.log(coords);
-	coords.forEach(function(coord){
-		var marker = new google.maps.Marker({
-			position: new google.maps.LatLng(coord.latitude,coord.longitude),  
+	for(var i = 0; i < coords.length; i++){
+			var marker = new google.maps.Marker({
+			position: new google.maps.LatLng(coords[i].latitude,coords[i].longitude),  
 			map: map,
 			icon: image
-		});
-	});
+		});	
+	}
+	// coords.forEach(function(coord){
+	// 	var marker = new google.maps.Marker({
+	// 		position: new google.maps.LatLng(coord.latitude,coord.longitude),  
+	// 		map: map,
+	// 		icon: image
+	// 	});
+	// });
 }
 
 

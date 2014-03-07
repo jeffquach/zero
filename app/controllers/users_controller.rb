@@ -19,11 +19,12 @@ class UsersController < ApplicationController
   end
 
   def index
-    if params[:search] && params[:search][:city_search] && params[:search][:learning_search]
+    if params[:search] && params[:search][:city_search] && params[:search][:learning_search] == params[:latitude]
       @users = User.near(params[:search][:city_search],100).where("learning ILIKE ?",params[:search][:learning_search])
     else
        respond_to do |format|
-         format.js
+        format.html {redirect_to root_url, alert: 'No users were found!'}
+        format.js
        end
     end
   end
