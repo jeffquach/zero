@@ -1,4 +1,3 @@
-
 <% provide(:title, @user.first_name) %>
 
 <div class="row">
@@ -14,13 +13,16 @@
     <section>
 
     	<h3>Nearby users</h3>
-    	<ul>
-	    	<% @nearbys.each do |user| %>
 
-	    		<li><%= link_to user.first_name, user %> (<%= user.distance.round(2) %> km)</li>
+        <div>
+          <ul>
+            <% @nearbys.each do |user| %>
 
-	    	<% end %>
-    	</ul>
+              <li><%= link_to user.first_name, user %> (<%= user.distance.round(2) %> km)</li>
+
+            <% end %>
+          </ul>
+        </div>
 
     </section>
     <p><%= link_to "Create a meetup", new_meetup_path(second_user_id: @user.id) %></p>

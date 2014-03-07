@@ -1,6 +1,6 @@
-<div id="map-canvas" style="height:100%;width:60%"></div>
+<div id="map-canvas" style="height:100%;width:56%;position:relative"></div>
 
-<div>
+<div id="users-div">
   <ul id="users-map">
 
 
@@ -8,7 +8,7 @@
 
       <% @users.each do |user| %>
 
-    <li>
+    <li style="width:900px">
 
 
         <%= gravatar_for user %>
@@ -36,6 +36,6 @@
   window.longitude = <%= @users.first.longitude %>;
   window.showMarker = true;
 
-  window.coords = <%= raw @users.map{|user| {latitude: user.latitude, longitude: user.longitude}}.to_json %>;  
+  window.coords = <%= raw @users.map{|user| {latitude: user.latitude, longitude: user.longitude, id: user.id}}.to_json %>;  
 <% end %>
 
