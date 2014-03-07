@@ -6,7 +6,7 @@ Mindmeetup::Application.routes.draw do
 
   resources :users do
     member do
-      get :activate
+      get :activate, :edit
     end
   end
 
