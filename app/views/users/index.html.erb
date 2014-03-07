@@ -34,7 +34,6 @@
 <%= javascript_tag do %>
   window.latitude = <%= @users.first.latitude %>;
   window.longitude = <%= @users.first.longitude %>;
-  window.showMarker = true;
 
   window.coords = <%= raw @users.map{|user| {latitude: user.latitude, longitude: user.longitude, id: user.id}}.to_json %>;  
 <% end %>

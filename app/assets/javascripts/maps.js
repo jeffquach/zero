@@ -2,64 +2,46 @@ var map;
 
 function initialize(){
 	var location = new google.maps.LatLng(latitude,longitude);
-	var addMarker = true && showMarker;
 	var mapOptions = {
 		center: location,
 		zoom: 13,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	map = new google.maps.Map($('#map-canvas')[0],mapOptions);
-
-	if (addMarker) {
-		var marker = new google.maps.Marker({
-		position: location,
-		title: "Sup haters!",
-		map: map
-	});
-	} 
 }
 
 function addMarkers(coords){
 	var image = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
 
-	var infowindow = new google.maps.InfoWindow({maxWidth:500});
-
-	var marker,i;
+	var i;
 
 	for(i = 0; i < coords.length; i++){
-		marker = new google.maps.Marker({
+		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(coords[i].latitude,coords[i].longitude),  
 			map: map,
 			icon: image
 		});	
-
-		console.log(marker);
-
-		console.log(coords[i].id);
-		var urlForMarker = "/users/" + coords[i].id + "/infowindow";
-		
-	    google.maps.event.addListener(marker, 'click', (function() {
-		      $.ajax({
-		        url: urlForMarker,
-		        method: 'GET',
-		        dataType: 'html'
-		      }).done(function(data){
-		      	infowindow.close(map,marker);
-		      	infowindow.setOptions({maxWidth:400});
-		        infowindow.setContent(data);
-		        infowindow.open(map,marker);
-		      });       
-	    }));
+		var urlForMarker = coords[i].id;
+		addEventToMarker(marker, urlForMarker);
 	}
-	// coords.forEach(function(coord){
-	// 	var marker = new google.maps.Marker({
-	// 		position: new google.maps.LatLng(coord.latitude,coord.longitude),  
-	// 		map: map,
-	// 		icon: image
-	// 	});
-	// });
 }
 
+function addEventToMarker(marker, user_id) {
+    google.maps.event.addListener(marker, 'click', function(e) {
+    	var _this = this;
+		var infowindow = new google.maps.InfoWindow();
+
+	      $.ajax({
+	        url: '/users/' + user_id + '/infowindow',
+	        method: 'GET',
+	        dataType: 'html'
+	      })
+	      .done(function(data){
+	        infowindow.setContent(data);
+	        infowindow.open(map, _this);
+	      });       
+    });
+}
 
 
 $(document).ready(function(){

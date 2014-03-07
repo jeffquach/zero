@@ -4,6 +4,7 @@
   <div class="small-12 large-4 columns">
     <div class="users">
     <h1>
+      <%= gravatar_for @user %>
       <%= @user.first_name %>
       <%= image_tag @user.image_url(:thumb) %></h1>
     <div>
@@ -38,7 +39,6 @@
 
   window.latitude = <%= @user.latitude %>;
   window.longitude = <%= @user.longitude %>;
-  window.showMarker = true;
 
   window.coords = <%= raw @nearbys.map{|user| {latitude: user.latitude, longitude: user.longitude}}.to_json %>;
 

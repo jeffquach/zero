@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     if params[:search] && params[:search][:city_search] && params[:search][:learning_search]
       @users = User.near(params[:search][:city_search],100).where("learning ILIKE ?",params[:search][:learning_search])
     else
-      redirect_to root_url, alert: 'No users were found!'
+      redirect_to root_url
     end
   end
 
