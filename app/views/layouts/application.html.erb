@@ -34,15 +34,15 @@
         <% if current_user && logged_in? %>
           <li id="logged-in">Logged in as <%= current_user.first_name %></li>
           <li class="divider"></li>
-          <li><%= link_to "Meetups", meetups_path %></li>
-          <li class="divider"></li>
           <li><%= link_to "Log out", logout_path %></li>
+          <li class="divider"></li>
+          <li><%= link_to "Meetups", meetups_path %></li>
           <li class="divider"></li>
           <li class="has-dropdown">
             <%= link_to "Account", "#" %>
             <ul class="dropdown">
               <li><%= link_to "All users", users_path %></li>
-              <li><a href="#">Dropdown Option</a></li>
+              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
               <li><a href="#">Dropdown Option</a></li>
               <li class="divider"></li>
               <li><a href="#">See all &rarr;</a></li>
