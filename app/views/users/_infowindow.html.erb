@@ -1,0 +1,16 @@
+<li id="infoview" style="width:150px">
+
+
+    <%= gravatar_for user %>
+
+    <span id="infoface"><%= link_to user.first_name, user %></span>
+
+    <% if user.admin? && !current_user %>
+
+      | <%= link_to "Delete", user, confirm: "Are you sure?", method: :delete %>
+
+
+    <% end %>
+  
+  
+</li>

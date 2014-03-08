@@ -7,6 +7,8 @@ Mindmeetup::Application.routes.draw do
   resources :users do
     member do
       get :activate
+      get :home
+      get :infowindow
     end
   end
 
@@ -16,7 +18,6 @@ Mindmeetup::Application.routes.draw do
 
   resources :password_resets
 
-  match "home", to: "users#home", via: 'get'
   match "logout", to: "sessions#destroy", via: "get"
   match "signup", to: "users#new", via: "get"
   match "login", to: "sessions#new", via: "get"

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index,:new,:create,:activate]
   before_filter :require_login, only: [:edit,:update,:destroy]
-  before_action :find_user, only: [:show,:edit,:update,:destroy]
+  before_action :find_user, only: [:show,:edit,:update,:destroy,:infowindow]
   before_filter :admin_user, only: :destroy
 
   def new
@@ -22,9 +22,7 @@ class UsersController < ApplicationController
     if params[:search] && params[:search][:city_search] && params[:search][:learning_search]
       @users = User.near(params[:search][:city_search],100).where("learning ILIKE ?",params[:search][:learning_search])
     else
-     respond_to do |format|
-       format.js
-     end
+      redirect_to root_url
     end
   end
 
@@ -60,6 +58,12 @@ class UsersController < ApplicationController
       redirect_to(login_path, :notice => 'User was successfully activated.')
     else
       not_authenticated
+    end
+  end
+
+  def infowindow
+    respond_to do |format|
+      format.html {render partial: "infowindow", locals: {user: @user}}
     end
   end
 

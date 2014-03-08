@@ -4,6 +4,7 @@
   <div class="small-12 large-4 columns">
     <div class="users">
     <h1>
+      <%= gravatar_for @user %>
       <%= @user.first_name %>
       <%= image_tag @user.image_url(:thumb) %></h1>
     <div>
@@ -13,16 +14,15 @@
     <section>
 
     	<h3>Nearby users</h3>
-       <section id="users">
-       </section>
-    	
-      <ul>
-	    	<% @nearbys.each do |user| %>
+        <div>
+          <ul>
+            <% @nearbys.each do |user| %>
 
-	    		<li><%= link_to user.first_name, user %> (<%= user.distance.round(2) %> km)</li>
+              <li><%= link_to user.first_name, user %> (<%= user.distance.round(2) %> km)</li>
 
-	    	<% end %>
-    	</ul>
+            <% end %>
+          </ul>
+        </div>
 
     </section>
     <p><%= link_to "Create a meetup", new_meetup_path(second_user_id: @user.id) %></p>
@@ -31,7 +31,7 @@
 
 
 <div class="large-6 columns">
-  <div id="map_canvas"></div>
+  <div id="map-canvas" style="height:600px;width:600px;margin-top:30px"></div>
 </div>
 
 <%= javascript_tag do %>

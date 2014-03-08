@@ -26,7 +26,7 @@ footer{
     color: red;
 }
 
-.meetup, .users{
+.meetup, .users, #users-map{
   list-style: none;
   margin: 0;
   li {
@@ -89,18 +89,33 @@ html, body{
   padding: 0px
 }
 
-#map_canvas{
-  height: 600px;
-  width: 600px;
-  margin-top: 30px;
+img {
+  max-width: none
 }
 
-#map-home{
-  height:100%;
-  width:100%;
-  margin:0px;
-  padding:0px;
+#users-map{
+  position: absolute;
+  float: left;
+  top: 45px; 
+  left: 950px; 
+  z-index: 99;
+  list-style-type: none;
+  margin: auto;
+  padding: auto;
+  background-color: #d3d3d3;
+  width: 45%;
+  height: 100%;
 }
+
+#infoview{
+  list-style-type: none;
+}
+
+#infoface{
+  margin: 15px;
+}
+
+
 
 
 
