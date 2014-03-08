@@ -1,6 +1,6 @@
 <div id="map-canvas" style="height:100%;width:56%;position:relative"></div>
 
-<div id="users-div">
+<div id="users-div" style="width:44%">
   <ul id="users-map">
 
 
@@ -8,7 +8,7 @@
 
       <% @users.each do |user| %>
 
-    <li style="width:900px">
+    <li>
 
 
         <%= gravatar_for user %>
@@ -22,8 +22,10 @@
   
         <% end %>
       
-      <% end %>
+      
     </li>
+
+    <% end %>
 
   <% end %>
 
