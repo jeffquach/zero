@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def show
     @nearbys = @user.nearbys(10, units: :km).where("learning ILIKE ?", @user.learning)
-      @user = User.find(params[:id])
+      @friends = @user.friends
   end
 
   def edit

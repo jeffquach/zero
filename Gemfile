@@ -12,6 +12,7 @@ gem 'geocoder'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'figaro'
+gem 'protected_attributes'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

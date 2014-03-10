@@ -2,6 +2,7 @@ Mindmeetup::Application.routes.draw do
   get "password_resets/create"
   get "password_resets/edit"
   get "password_resets/update"
+  get "users/show"
   root 'users#home'
 
   resources :users do
@@ -9,10 +10,11 @@ Mindmeetup::Application.routes.draw do
       get :activate
       get :home
       get :infowindow
+      get '/:id', to: 'users#show', as: 'profile' #may not be positioned properly
     end
   end
 
-  resources :user_friendships
+  resources :user_friendships         
 
   resources :meetups
 

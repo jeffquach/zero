@@ -21,8 +21,8 @@ mount_uploader :image, ImageUploader
 	after_validation :geocode, if: :state_province_changed?
 
 	has_many :invitees
-	has_many :user_friendships
-	has_many :friends, through: :user_friendships
+	has_many :user_friendships						
+	has_many :friends, through: :user_friendships		
 	has_many :meetups, through: :invitees, dependent: :destroy
 
 	def parsed_address
