@@ -6,6 +6,7 @@
     <h1>
       <%= gravatar_for @user %>
       <%= @user.first_name %>
+      <%= link_to "Add Friend", new_user_friendship_path(friend_id: @user), class: "button radius" %>
       <%= image_tag @user.image_url(:thumb) %></h1>
     <div>
     
