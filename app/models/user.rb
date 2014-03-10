@@ -22,7 +22,7 @@ mount_uploader :image, ImageUploader
 
 	has_many :invitees
 	has_many :user_friendships
-	has_many :friends, through :user_friendships
+	has_many :friends, through: :user_friendships
 	has_many :meetups, through: :invitees, dependent: :destroy
 
 	def parsed_address
