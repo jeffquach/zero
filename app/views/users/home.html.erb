@@ -7,7 +7,7 @@
 <%= form_for :search, url: users_path, method: :get do |f| %>
   <p>
 
-    <%= f.text_field :city_search %>
+    <%= f.text_field :city_search, placeholder: "Type in a location" %>
     <%= f.select :learning_search, options_for_select([ "Javascript", "Ruby on Rails", "Python", "jQuery", "C++", "HTML & CSS", "PHP", "Biology", "Calculus", "Linear Algebra", "Differential Equations", "Physics", "Chemistry", "Medicine", "Statistics", "Electronics", "Android Development", "iOS Development", "Google Glass Development", "Tesla Development", "SmartThings Development", "Occulus Rift Development", "Emotiv Development", "Meta Developers", "Raspberry Pi Development" ]) %> 
     <%= f.submit "Search users" %>
   </p>
@@ -15,7 +15,3 @@
 <% end %>
 
 </div>
-
-
- 
- 
