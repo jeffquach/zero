@@ -11,31 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20140310233525) do
-
+ActiveRecord::Schema.define(version: 20140310023444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "comments", force: true do |t|
-    t.text     "content"
-    t.integer  "user_id"
-    t.integer  "meetup_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "friendships", force: true do |t|
-    t.integer  "chosen_study_partner_id"
-    t.integer  "accepted_study_partner_id"
-    t.string   "status",                    default: "pending"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "friendships", ["accepted_study_partner_id"], name: "index_friendships_on_accepted_study_partner_id", using: :btree
-  add_index "friendships", ["chosen_study_partner_id"], name: "index_friendships_on_chosen_study_partner_id", using: :btree
 
   create_table "invitees", force: true do |t|
     t.integer  "user_id"
@@ -54,15 +33,6 @@ ActiveRecord::Schema.define(version: 20140310233525) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "title"
-  end
-
-  create_table "reviews", force: true do |t|
-    t.string   "content"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "review_writer_id"
   end
 
   create_table "user_friendships", force: true do |t|
