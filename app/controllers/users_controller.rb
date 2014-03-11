@@ -21,6 +21,10 @@ class UsersController < ApplicationController
   def index
     if params[:search] && params[:search][:city_search] && params[:search][:learning_search]
       @users = User.near(params[:search][:city_search],100).where("learning ILIKE ?",params[:search][:learning_search])
+      if @users.empty?
+        flash[:alert] = "No users found"
+        redirect_to root_url and return
+      end
     else
       redirect_to root_url
     end
@@ -32,11 +36,10 @@ class UsersController < ApplicationController
 
   def show
     @nearbys = @user.nearbys(10, units: :km).where("learning ILIKE ?", @user.learning)
-      @user = User.find(params[:id])
+    @review = @user.reviews.build
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update

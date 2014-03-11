@@ -13,7 +13,7 @@
     <p><%= @user.email %></p>
     <section>
 
-    	<h3>Nearby users</h3>
+      <h3>Nearby users</h3>
         <div>
           <ul>
             <% @nearbys.each do |user| %>
@@ -26,82 +26,57 @@
 
     </section>
     <p><%= link_to "Create a meetup", new_meetup_path(second_user_id: @user.id) %></p>
-  </div>	
+  </div>  
 </div> 
 
 
 <div class="large-6 columns">
   <div id="map-canvas" style="height:600px;width:600px;margin-top:30px"></div>
+
+
+  <h2>Reviews</h2>
+  <div id="reviews">
+    <% if @user.reviews.empty? %>
+
+      <h3>No one has given you a review!</h3>
+
+    <% else %>
+      <%= render "reviews" %>
+    <% end %>
+  </div>
+
+
+
+  <h3>Write a review</h3>
+
+    <% if current_user %>
+
+      <%= form_for([@user,@user.reviews.build], remote: true) do |f| %>
+
+        <div id="review-errors"><%= render "review_errors" %></div>
+
+        <%= f.label :content %>
+        <%= f.text_area :content %>
+
+        <%= f.submit class: "button radius" %>
+
+      <% end %>
+
+    <% else %>
+      <h4>Please <%= link_to "log in", login_path %> or <%= link_to "sign up", signup_path %> to write a user review</h4>
+    <% end %>
+</div>
+
+<div class="large-6 columns">
+
 </div>
 
 <%= javascript_tag do %>
 
-  window.latitude = <%= @user.latitude %>;
-  window.longitude = <%= @user.longitude %>;
-  window.showMarker = true;
+  var latitude = <%= @user.latitude %>;
+  var longitude = <%= @user.longitude %>;
+  var showMarker = true;
 
-  window.coords = <%= raw @nearbys.map{|user| {latitude: user.latitude, longitude: user.longitude}}.to_json %>;
+  var coords = <%= raw @nearbys.map{|user| {latitude: user.latitude, longitude: user.longitude, id: user.id}}.to_json %>;
 
 <% end %>
-
-<div class="user_info"><h1>Profile<h1></div>
-<table class="table table-bordered table-striped" id="description_details" itemprop="breadcrumb">
-            <tbody><tr>
-            </tr>
-            <tr>
-              <td>Name</td>
-              <td class="value"><%= @user.first_name %></td>
-            </tr>
-            <tr>
-              <td>City</td>
-              <td class="value"><%= @user.city %></td>
-            </tr>
-              <tr>
-              <td>Available to study</td>
-              <td class="value"><%= @user.currently_available %></td>
-            </tr>
-            <tr>
-              <td>Study Location Available </td>
-              <td class="value"><%= @user.study_location_available %></td>
-            </tr>
-            <tr>
-              <td>Preferred Gender</td>
-              <td class="value"><%= @user.preferred_gender %></td>
-            </tr>
-            <tr>
-              <td>Languages</td>
-              <td class="value"><%= @user.languages %></td>
-            </tr>
-            <tr>
-              <td>Smoking Allowed</td>
-              <td class="value"><%= @user.smoking_allowed %></td>
-            </tr>
-            <tr>
-              <td>Can Host Children</td>
-              <td class="value"><%= @user.can_host_children %></td>
-            </tr>
-            <tr>
-              <td>Can Host Pets</td>
-              <td class="value"><%= @user.can_host_pets %></td>
-            </tr>
-            <tr>
-              <td>Has Pets</td>
-              <td class="value"><%= @user.has_pets %></td>
-            </tr>
-            <tr>
-              <td>Current Online Learning</td>
-              <td class="value"><%= @user.current_online_learning %></td>
-            </tr>
-            <tr>
-              <td>Education</td>
-              <td class="value"><%= @user.education %></td>
-            </tr>
-            <tr>
-              <td>Skills</td>
-              <td class="value"><%= @user.skills %></td>
-            </tr>
-            <tr>
-              <td>Description of Goals</td>
-              <td class="value"><%= @user.description %></td>
-            </tr>
-          </div>

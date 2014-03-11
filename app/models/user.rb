@@ -25,6 +25,8 @@ mount_uploader :image, ImageUploader
 
 	has_many :comments, dependent: :destroy
 
+	has_many :reviews, dependent: :destroy
+
 	def parsed_address
 		"#{self.address}, #{self.city}, #{self.state_province}, #{self.country}"
 	end
