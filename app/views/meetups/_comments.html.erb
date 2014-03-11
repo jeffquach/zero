@@ -1,0 +1,14 @@
+<% @meetup.comments.each do |c| %>
+
+	<p>Comment: <%= c.content %></p>
+	<p>Written by: <%= c.user.first_name %></p>
+
+	<% if c.user_id == current_user.id %>
+
+		<%= link_to "Edit", edit_meetup_comment_path(@meetup, c) %> | 
+		<%= link_to "Delete", meetup_comment_path(@meetup,c), data: {confirm: "Are you sure?"}, method: :delete, remote: true %>
+
+	<% end %>
+
+<% end %>
+

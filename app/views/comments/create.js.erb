@@ -1,0 +1,7 @@
+<% if @comment.errors.present? %>
+	$("#comment-errors").html("<%= escape_javascript(render "meetups/comment_errors") %>");
+<% else %>
+	$("#comment-errors").html("");
+	$(".comments").html("<%= escape_javascript(render "meetups/comments") %>");
+	$("#new_comment")[0].reset();
+<% end %>

@@ -5,6 +5,7 @@ Mindmeetup::Application.routes.draw do
   root 'users#home'
 
   resources :users do
+    resources :reviews
     member do
       get :activate
       get :home
@@ -12,7 +13,9 @@ Mindmeetup::Application.routes.draw do
     end
   end
 
-  resources :meetups
+  resources :meetups do
+    resources :comments, except: [:index,:show]
+  end
 
   resources :invitees
 
