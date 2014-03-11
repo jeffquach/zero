@@ -1,11 +1,11 @@
 #logged-in{
-	color: #fff;
-	padding: 10px;
-	font-size: 15px;
+  color: #fff;
+  padding: 10px;
+  font-size: 15px;
 }
 
 .alert-box{
-	margin-top: 20px;
+  margin-top: 20px;
 }
 
 footer{
@@ -31,13 +31,8 @@ footer{
   margin: 0;
   li {
     overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid #DDE7ED;
+    padding: 10px 0 0 20px;
   }
-}
-
-.meetup-label{
-  
 }
 
 .meetup-attend {
@@ -90,21 +85,34 @@ html, body{
 }
 
 img {
-  max-width: none
+  max-width: none;
+}
+
+#user-div{
+  color: green;
+}
+
+#map-canvas{
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 60%;
+  height: 100%;
 }
 
 #users-map{
-  position: absolute;
-  float: left;
-  top: 45px; 
-  left: 950px; 
-  z-index: 99;
-  list-style-type: none;
-  margin: auto;
-  padding: auto;
-  background-color: #d3d3d3;
-  width: 45%;
-  height: 100%;
+  position: fixed;
+  top: 45px;
+  right: 0;
+  bottom: 0;
+  width: 40%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  background: #F8F8F9;
+}
+
+.user-title{
+  text-align: center;
 }
 
 #infoview{
@@ -113,6 +121,11 @@ img {
 
 #infoface{
   margin: 15px;
+}
+
+hr{
+  width: 90%;
+  margin-left: 20px;
 }
 
 

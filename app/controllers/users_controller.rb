@@ -21,6 +21,10 @@ class UsersController < ApplicationController
   def index
     if params[:search] && params[:search][:city_search] && params[:search][:learning_search]
       @users = User.near(params[:search][:city_search],100).where("learning ILIKE ?",params[:search][:learning_search])
+      if @users.empty?
+        flash[:alert] = "No users found"
+        redirect_to root_url and return
+      end
     else
       redirect_to root_url
     end
@@ -32,11 +36,14 @@ class UsersController < ApplicationController
 
   def show
     @nearbys = @user.nearbys(10, units: :km).where("learning ILIKE ?", @user.learning)
-      @friends = @user.friends
+
+    @friends = @user.friends
+
+    @review = @user.reviews.build
+
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
@@ -71,7 +78,12 @@ class UsersController < ApplicationController
 
   private
   def user_params
+<<<<<<< HEAD
   	 params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :address, :city, :state_province, :image, :country, :currently_available, :study_location_available, :current_online_learning, :education, :languages, :skills, :learning, :preferred_gender, :smoking_allowed, :can_host_children, :can_host_pets, :has_pets, :description)
+=======
+  	params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :address, :city, :state_province, :learning,:image, :country, :currently_available, :smoking_allowed,
+     :study_location_available, :current_online_learning, :education, :languages, :skills, :has_pets, :can_host_children, :can_host_pets, :preferred_gender, :description, admin: false,)
+>>>>>>> cf23daa34e606559310492e368c3d5c46bfd5e2e
   end
 
   def find_user

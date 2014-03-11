@@ -1,0 +1,8 @@
+<% if @review.errors.any? %>
+	$("#review-errors").html("<%= escape_javascript(render "users/review_errors") %>");
+<% else %>
+	$("#review-errors").html("");
+	$("#reviews").html("<%= escape_javascript(render "users/reviews") %>");
+	$("#new_review")[0].reset();
+<% end %>
+

@@ -1,34 +1,39 @@
-<div id="map-canvas" style="height:100%;width:56%;position:relative"></div>
-<div id="users-div" style="width:44%">
+<div id="map-canvas"></div>
+
+<div id="users-div">
   <ul id="users-map">
 
-  <% if params[:search] && params[:search][:city_search] && params[:search][:learning_search] %>
-    <% @users.each do |user| %>
 
+  <% if params[:search] && params[:search][:city_search] && params[:search][:learning_search] %>
+    <h2 class="user-title">Found users</h2>
+    <% @users.each do |user| %>
     <li>
         <%= gravatar_for user %>
         <%= link_to user.first_name, user %>
-        <p class="center"><%= image_tag(user.image_url(:thumb)) %></p>
-        <%= "#{user.first_name} is #{user.distance.round(2)} miles away." %>
-            <% if user.admin? && !current_user %>
-                <%= location.distance.round(2) %> miles
-              | <%= link_to "Delete", user, confirm: "Are you sure?", method: :delete %>
-            <% end %>
+        <%= "is #{user.distance.round(2)} miles away." %>
+        <% if user.admin? && !current_user %>
+          | <%= link_to "Delete", user, confirm: "Are you sure?", method: :delete %>
+
+        <% end %>
       
     </li>
 
-    <% end %>
+    <hr>
+
     <% end %>
 
+  <% end %>
+
 </div>
+
 </ul>
 </div>
 
+
 <%= javascript_tag do %>
-  window.latitude = <%= @users.first.latitude %>;
-  window.longitude = <%= @users.first.longitude %>;
-  window.showMarker = true;
+  var latitude = <%= @users.first.latitude %>;
+  var longitude = <%= @users.first.longitude %>;
+  var showMarker = false;
 
-  window.coords = <%= raw @users.map{|user| {latitude: user.latitude, longitude: user.longitude, id: user.id}}.to_json %>;  
+  var coords = <%= raw @users.map{|user| {latitude: user.latitude, longitude: user.longitude, id: user.id}}.to_json %>;  
 <% end %>
-

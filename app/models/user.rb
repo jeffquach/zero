@@ -25,6 +25,10 @@ mount_uploader :image, ImageUploader
 	has_many :friends, through: :user_friendships		
 	has_many :meetups, through: :invitees, dependent: :destroy
 
+	has_many :comments, dependent: :destroy
+
+	has_many :reviews, dependent: :destroy
+
 	def parsed_address
 		"#{self.address}, #{self.city}, #{self.state_province}, #{self.country}"
 	end
