@@ -1,9 +1,10 @@
-<li id="infoview" style="width:150px">
+<li id="infoview" style="width:180px">
 
 
     <%= gravatar_for user %>
 
     <span id="infoface"><%= link_to user.first_name, user %></span>
+    <p><%= user.description %></p>
 
     <% if user.admin? && !current_user %>
 
