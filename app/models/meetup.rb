@@ -11,7 +11,7 @@ class Meetup < ActiveRecord::Base
 	has_many :comments
 
 	def people_attending_meetup
-		invitees.map{|person| person.user.first_name}.join(",")
+		invitees.map{|person| person.user.first_name}.join(", ")
 	end
 end
 
