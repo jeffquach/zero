@@ -5,11 +5,14 @@
 
 	<%= form_for @meetup do |f| %>
 
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+
 		<%= f.label :studying %>
 		<%= f.select :studying, options_for_select([ "Biology & Life Sciences", "Business & Management", "Chemistry", "Communication", "Computer Science", "Economics & Finance", "Electronics","Energy & Earth Sciences", "Engineering","Environmental Sciences","Food & Nutrition","Food & Nutrition","Health & Safety", "History","Humanities","Law","Literature","Math","Medicine","Music","Philanthropy","Philosophy & Ethics","Physics","Social Sciences","Statistics & Data Analysis"]) %>
 
 		<%= f.label :description %>
-		<%= f.text_area :description, style: "height=13em" %>
+		<%= f.text_area :description, style: "height:13em" %>
 
 		<%= f.label :start_time %>
 		<%= f.date_select :start_time, start_year: Time.now.year %>

@@ -1,6 +1,7 @@
 class MeetupsController < ApplicationController
 	before_filter :require_login
 	before_action :find_meetup, only: [:edit,:update,:destroy]
+	respond_to :html, :js
 
 	def new
 		@meetup = current_user.meetups.build
@@ -41,6 +42,9 @@ class MeetupsController < ApplicationController
 
 	def show
 		@meetup = Meetup.find(params[:id])
+		@comments = @meetup.comments
+		@comment = Comment.new
+		respond_with @comment
 	end
 
 	def destroy
@@ -52,7 +56,7 @@ class MeetupsController < ApplicationController
 
 	private
 	def meetup_params
-		params.require(:meetup).permit(:studying,:description,:start_time,:end_time,:number_of_people)
+		params.require(:meetup).permit(:title,:studying,:description,:start_time,:end_time,:number_of_people)
 	end
 
 	def find_meetup
