@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140304215002) do
+ActiveRecord::Schema.define(version: 20140309125646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,12 @@ ActiveRecord::Schema.define(version: 20140304215002) do
     t.string   "can_host_children"
     t.string   "description"
     t.string   "image"
+    t.string   "currently_available"
+    t.boolean  "study_location_available"
+    t.string   "current_online_learning"
+    t.text     "education"
+    t.text     "languages"
+    t.text     "skills"
   end
 
   add_index "users", ["activation_token"], name: "index_users_on_activation_token", using: :btree

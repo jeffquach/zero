@@ -36,4 +36,44 @@
 
  <div class="text-center"><%= f.submit class: "button radius" %></div>
 
+<h1>Meeting Information</h1>
+
+ <%= f.label :currently_available %>  
+  <%= f.select :currently_available, options_for_select([ "Yes", "No", "Maybe"]) %>
+
+ <%= f.label :preferred_gender_of_study_partner %>     
+<%= f.select :preferred_gender, options_for_select([ "Male", "Female", "Any"]) %>
+
+ <%= f.label :study_location_available %> 
+ <%= f.select :study_location_available, options_for_select([ "Yes", "No"]) %>
+
+ <%= f.label :smoking_allowed %>      
+<%= f.select :smoking_allowed, options_for_select([ "Yes", "No"]) %>
+
+ <%= f.label :can_host_children %>    
+<%= f.select :can_host_children, options_for_select([ "Yes", "No"]) %>
+
+ <%= f.label :can_host_pets %>      
+<%= f.select :can_host_pets, options_for_select([ "Yes", "No"]) %>
+
+ <%= f.label :has_pets %>         
+<%= f.select :has_pets, options_for_select([ "Yes", "No"]) %>
+
+ <%= f.label :current_online_learning %>    
+ <%= f.select :current_online_learning, options_for_select([ "Edx", "Udacity", "Treehouse", "Coursera", "Khan Academy", "Lynda", "Standford Online", "MIT Free Coureware"]) %>
+
+  <%= f.label :education %>         
+  <%= f.text_field :education %>
+
+  <%= f.label :languages %>     
+  <%= f.text_field :languages %>
+            
+  <%= f.label :skills %>            
+  <%= f.text_field :skills %>      
+
+  <%= f.label :description %>       
+  <%= f.text_field :description %>      
+  
+<div class="text-center"><%= f.submit class: "button radius" %></div>
+
 <% end %>
