@@ -29,7 +29,7 @@ mount_uploader :image, ImageUploader
 	has_many :reviews, dependent: :destroy
 
 	authenticates_with_sorcery! do |config|
-	config.authentications_class = Authentication
+		config.authentications_class = Authentication
 	end
 
 	has_many :authentications, :dependent => :destroy
