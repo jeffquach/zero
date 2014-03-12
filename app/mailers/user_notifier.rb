@@ -7,7 +7,7 @@ class UserNotifier < ActionMailer::Base
   	@user = user_friendship.user
   	@friend = user_friendship.friend
 
-  	mail to: @friend.email,
+  	mail to: @friend.email
   		  subject: "#{@user.first_name} wants to be friends on Mindmeetup" 
 	end
 
