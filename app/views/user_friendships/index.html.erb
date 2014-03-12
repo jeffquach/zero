@@ -6,10 +6,10 @@
   <% friend = friendship.friend %>
   <div id="<%= dom_id(friendship) %>" class="friend row">
     <div class="span1">
-      <%= link_to user_path(friend) %>   <!-- changed from profile_path to user_path --> 
+      <%= link_to user_path(friend) %>   
     </div>
     <div class="span7">
-      <strong><%= friend.first_name %></strong><br />
+      <strong><%= friend.full_name %></strong><br />
         <% if friendship.pending? %>
           <em>Friendship is pending.</em> <%= link_to "Delete request",
            edit_user_friendship_path(friendship) %>.
