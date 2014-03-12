@@ -24,7 +24,9 @@ mount_uploader :image, ImageUploader
 	
 	has_many :user_friendships						
 	
-	has_many :friends, -> {where state: 'accepted'}, through: :user_friendships
+	# has_many :friends, -> {where state: 'accepted'}, through: :user_friendships
+
+	has_many :friends, -> {where(user_friendships: {state: 'accepted'})}, through: :user_friendships
 
 	has_many :pending_user_friendships, class_name: 'UserFriendship',
 										foreign_key: :user_id,
