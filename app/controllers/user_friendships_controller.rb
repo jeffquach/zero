@@ -1,6 +1,20 @@
 class UserFriendshipsController < ApplicationController
-	before_filter :require_login, only: [:new]
+	before_filter :require_login
 	
+	def index
+		@user_friendships = current_user.user_friendships.all
+	end
+
+	def accept
+		@user_friendship = current_user.user_friendships.find(params[:id])
+		if @user_friendship.accept!
+			flash[:sucess] = "You are now friends with #{@user_friendship.friend.first_name}"
+		else
+			flash[:error] = "That friendship could not be accepted."
+		end
+ 		redirect_to user_friendships_path
+	end
+
 	def new
 		if params[:friend_id]
 			@friend = User.find(params[:friend_id])
@@ -14,17 +28,31 @@ class UserFriendshipsController < ApplicationController
 	end
 
 	def create
-		if params[:user_friendship] && params[:user_friendship].has_key?(:friend_id)
-		@friend = User.find(params[:user_friendship][:friend_id]) 		
-		@user_friendship = current_user.user_friendships.new(friend: @friend)
-			if @user_friendship.save
-			flash[:success] = "You are now friends with #{@friend.first_name}"
-			redirect_to user_path(@friend)				
-
-		else
+			if params[:user_friendship] && params[:user_friendship].has_key?(:friend_id)
+			@friend = User.find(params[:user_friendship][:friend_id]) 		
+			@user_friendship = UserFriendship.request(current_user, @friend)
+			if @user_friendship.new_record?
+				flash[:error] = "There was a problem creating that friend request." 
+			else		
+			flash[:success] = "Friend request sent"
+			end
+			redirect_to user_path(@friend)		
+	   		else
 			flash[:error] = "Friend required"
 			redirect_to root_path
 		end
 	end
-end
+
+	def edit
+		@user_friendship = current_user.user_friendships.find(params[:id])
+		@friend = @user_friendship.friend
+	end
+
+	def destroy
+	   @user_friendship = current_user.user_friendships.find(params[:id])
+		if @user_friendship.destroy
+			flash[:success] = "Friendship destroyed"
+		end
+		redirect_to user_friendships_path
+	end
 end
