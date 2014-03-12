@@ -120,8 +120,8 @@ Rails.application.config.sorcery.configure do |config|
   # config.github.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=github"
   # config.github.user_info_mapping = {:email => "name"}
   #
-  config.google.key = "726094486124-gs4es4f7o5ku95ltqm0vji7brop5pjcg.apps.googleusercontent.com"
-  config.google.secret = "SnCUQKQayf4ZrKDpmDQYbTHm"
+  config.google.key = "726094486124-o1vsego06f9m61ute06d6evd84g5mj13.apps.googleusercontent.com"
+  config.google.secret = "sD9KTP_EhfQSBWPcOYWja8Zh"
   config.google.callback_url = "http://localhost:3000/oauth/callback?provider=google"
   config.google.user_info_mapping = {:email => "email"}
   #
