@@ -31,13 +31,13 @@ class UserFriendshipsController < ApplicationController
 			if params[:user_friendship] && params[:user_friendship].has_key?(:friend_id)
 			@friend = User.find(params[:user_friendship][:friend_id]) 		
 			@user_friendship = UserFriendship.request(current_user, @friend)
-			if @user_friendship.new_record? 		# removed if in front of @user 
-			flash[:error] = "There was a problem creating that friend request."
-			else
-			flash[:success] = "Friend request sent."
+			if @user_friendship.new_record?
+				flash[:error] = "There was a problem creating that friend request." 
+			else		
+			flash[:success] = "Friend request sent"
 			end
-			redirect_to user_path(@friend)				
-	   	else
+			redirect_to user_path(@friend)		
+	   		else
 			flash[:error] = "Friend required"
 			redirect_to root_path
 		end
