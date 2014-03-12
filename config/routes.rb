@@ -1,8 +1,14 @@
 Mindmeetup::Application.routes.draw do
+  get "oauths/oauth"
+  get "oauths/callback"
   get "password_resets/create"
   get "password_resets/edit"
   get "password_resets/update"
-  get "users/show"
+
+  post "oauth/callback" => "oauths#callback"
+  get "oauth/callback" => "oauths#callback" # for use with Github
+  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+
   root 'users#home'
 
   resources :users do

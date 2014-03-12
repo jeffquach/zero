@@ -39,7 +39,9 @@
           <li><%= link_to "Meetups", meetups_path %></li>
           <li class="divider"></li>
           <li class="has-dropdown">
-            <%= link_to "Profile", user_path(current_user) %>
+            <% if current_user.address && current_user.first_name && current_user.last_name && current_user.city && current_user.state_province && current_user.country && current_user.learning %>
+              <%= link_to "Profile", user_path(current_user) %>
+            <% end %>
             <!-- ul class="dropdown -->
               <li><%= link_to "Search", users_path %></li>
               <li><%= link_to "Settings", edit_user_path(current_user) %></li>
@@ -53,6 +55,9 @@
           <li class="divider"></li>
           <li><%= link_to "Log in", login_path %></li>
           <li class="divider"></li>
+          <li><%= link_to 'Login with Google', auth_at_provider_path(:provider => :google) %></li>
+          <li class="divider"></li>
+          <li><%= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook) %></li>
         <% end %>
       </ul>
     </section>

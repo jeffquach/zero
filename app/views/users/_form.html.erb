@@ -25,14 +25,8 @@
 
   <%= f.label :learning %>
   <%= f.select :learning, options_for_select([ "Javascript", "Ruby on Rails", "Python", "jQuery", "C++", "HTML & CSS", "PHP", "Biology", "Calculus", "Linear Algebra", "Differential Equations", "Physics", "Chemistry", "Medicine", "Statistics", "Electronics", "Android Development", "iOS Development", "Google Glass Development", "Tesla Development", "SmartThings Development", "Occulus Rift Development", "Emotiv Development", "Meta Developers", "Raspberry Pi Development"]) %>
- <%= f.label :image %>
+  <p><em>Upload a profile picture</em></p>
  <%= f.file_field :image %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
 
  <div class="text-center"><%= f.submit class: "button radius" %></div>
 

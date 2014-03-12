@@ -78,9 +78,8 @@ class UsersController < ApplicationController
 
   private
   def user_params
-
-  	 params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :address, :city, :state_province, :image, :country, :currently_available, :study_location_available, :current_online_learning, :education, :languages, :skills, :learning, :preferred_gender, :smoking_allowed, :can_host_children, :can_host_pets, :has_pets, :description)
-
+  	params.require(:user).permit(:authentications_attributes,:first_name, :last_name, :email, :password, :password_confirmation, :address, :city, :state_province, :learning,:image, :country, :currently_available, :smoking_allowed,
+     :study_location_available, :current_online_learning, :education, :languages, :skills, :has_pets, :can_host_children, :can_host_pets, :preferred_gender, :description, admin: false,)
   end
 
   def find_user
