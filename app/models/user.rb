@@ -23,10 +23,13 @@ mount_uploader :image, ImageUploader
 	has_many :invitees
 	
 	has_many :user_friendships						
+
+	has_many :friends, through: :user_friendships,
+						conditions: { user_friendships: { state: 'accepted'} }
 	
 	# has_many :friends, -> {where state: 'accepted'}, through: :user_friendships
 
-	has_many :friends, -> {where(user_friendships: {state: 'accepted'})}, through: :user_friendships
+	# has_many :friends, -> {where(user_friendships: {state: 'accepted'})}, through: :user_friendships
 
 	has_many :pending_user_friendships, class_name: 'UserFriendship',
 										foreign_key: :user_id,
@@ -43,4 +46,9 @@ mount_uploader :image, ImageUploader
 	def parsed_address
 		"#{self.address}, #{self.city}, #{self.state_province}, #{self.country}"
 	end
+
+	def full_name
+		first_name + " " + last_name
+	end
+
 end

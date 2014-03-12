@@ -2,7 +2,7 @@ class UserFriendshipsController < ApplicationController
 	before_filter :require_login
 	
 	def index
-		@user_friendships = current_user.user_friendship.all
+		@user_friendships = current_user.user_friendships.all
 	end
 
 	def accept

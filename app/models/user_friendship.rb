@@ -2,7 +2,7 @@ class UserFriendship < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :friend, class_name: 'User', foreign_key: 'friend_id'
 
-	attr_accessor :user, :friend, :user_id, :friend_id, :state
+	# attr_accessor :user, :friend, :user_id, :friend_id, :state
 
 	state_machine :state, initial: :pending do 
 		after_transition on: :accept, do: :send_acceptance_email  
@@ -15,13 +15,17 @@ class UserFriendship < ActiveRecord::Base
 	
 
 	def self.request(user1, user2)
-		transaction do
-		friendship1 = create!(user: user1, friend: user2, state: 'pending')
-		friendship2 = create!(user: user2, friend: user1, state: 'requested' )
+		 transaction do
+		Rails.logger.info "user1 is #{user1.inspect}"
+		Rails.logger.info "user2 is #{user2.inspect}"
+		friendship1 = UserFriendship.create!(user: user1, friend: user2, state: 'pending')
+		Rails.logger.info "friendship1 is #{friendship1.inspect}"
+
+		friendship2 = UserFriendship.create!(user: user2, friend: user1, state: 'requested' )
 
 		friendship1.send_request_email
 		friendship1
-	   end
+	    end
 	end
 
 
