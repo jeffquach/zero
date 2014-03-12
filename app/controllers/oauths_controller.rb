@@ -7,6 +7,7 @@ class OauthsController < ApplicationController
 
 	def callback
 	provider = auth_params[:provider]
+
 	if @user = login_from(provider)
 	  redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
 	else
@@ -16,7 +17,7 @@ class OauthsController < ApplicationController
 	    @user.activate!
 	    reset_session # protect from session fixation attack
 	    auto_login(@user)
-	    redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
+	    redirect_to edit_user_path(@user), :notice => "Logged in from #{provider.titleize}!"
 	  rescue
 	    redirect_to root_path, :alert => "Failed to login from #{provider.titleize}!"
 	  end
@@ -25,6 +26,7 @@ class OauthsController < ApplicationController
 
 	private
 	def auth_params
-		params.permit(:user_id, :provider, :uid)
+		params.permit(:provider, :code)
+		# params.permit(:user_id, :provider, :uid)
 	end
 end
