@@ -13,7 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require foundation-datetimepicker
 //= require_tree .
 
 
 $(document).foundation();
+
+$('.input-append').fdatepicker('show');

@@ -1,17 +1,20 @@
 <% provide(:title, "All users") %>
 
-<div class="small-12 large-6 large-centered columns">
-<div class="text-center"><h1>Find a study partner. </h1></div>
-<div class="text-center"><h4>Learn with STEM and MOOC students nearby</h4></div>
+<div class="small-12 large-4 large-push-1 medium-6 columns">
+<div class="home-sidebar">
+	<div class="text-center"><h4>Learn with people nearby</h4></div>
 
-<%= form_for :search, url: users_path, method: :get do |f| %>
-  <p>
+		<%= form_for :search, url: users_path, method: :get do |f| %>
+		  <p>
 
-    <%= f.text_field :city_search, placeholder: "Type in a location" %>
-    <%= f.select :learning_search, options_for_select([ "Javascript", "Ruby on Rails", "Python", "jQuery", "C++", "HTML & CSS", "PHP", "Biology", "Calculus", "Linear Algebra", "Differential Equations", "Physics", "Chemistry", "Medicine", "Statistics", "Electronics", "Android Development", "iOS Development", "Google Glass Development", "Tesla Development", "SmartThings Development", "Occulus Rift Development", "Emotiv Development", "Meta Developers", "Raspberry Pi Development" ]) %> 
-    <%= f.submit "Search users" %>
-  </p>
+		    <%= f.text_field :city_search, placeholder: "Type in a location" %>
+		    <%= f.select :learning_search, options_for_select([ "Javascript", "Ruby on Rails", "Python", "jQuery", "C++", "HTML & CSS", "PHP", "Biology", "Calculus", "Linear Algebra", "Differential Equations", "Physics", "Chemistry", "Medicine", "Statistics", "Electronics", "Android Development", "iOS Development", "Google Glass Development", "Tesla Development", "SmartThings Development", "Occulus Rift Development", "Emotiv Development", "Meta Developers", "Raspberry Pi Development" ]) %> 
+		    <div><%= f.submit "Search users", class: "button expand radius", id: "home-search" %></div>
+		  </p>
 
-<% end %>
+		<% end %>
 
+	</div>
 </div>
+
+<div class="text-center" id="home-heading"><h1>Find a study partner. </h1></div>
