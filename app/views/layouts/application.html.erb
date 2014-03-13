@@ -34,6 +34,7 @@
         <% if current_user && logged_in? %>
           <li id="logged-in">Logged in as <%= current_user.first_name %></li>
           <li><%= link_to "Log out", logout_path %></li>
+          <li><%= link_to "Study Partners", user_friendships_path %></li>
           <li><%= link_to "Meetups", meetups_path %></li>
           <li class="has-dropdown">
             <% if current_user.address && current_user.first_name && current_user.last_name && current_user.city && current_user.state_province && current_user.country && current_user.learning %>

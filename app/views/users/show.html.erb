@@ -4,50 +4,39 @@
   <div class="small-12 large-4 columns">
     <div class="users">
     <h1>
-      <%= gravatar_for @user %>
       <%= @user.first_name %>
-      <%= link_to "Add Friend", new_user_friendship_path(friend_id: @user), class: "button radius" %>
-      <%= image_tag @user.image_url(:thumb) %></h1>
+      <%= image_tag @user.image_url(:thumb) %>
+      <%= link_to "Add as Friend", new_user_friendship_path(friend_id: @user), class: "button radius" %>
+      <script>
+    window.___gcfg = {
+      lang: 'en-US'
+    };
+
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/platform.js?onload=renderButton';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+
+    function renderButton(){
+      gapi.hangout.render('g-hangout', {
+          'render': 'createhangout',
+          'widget_size': 175
+      });
+    }
+    </script>
+    <div id="g-hangout"></div>
+    </h1>
     <div>
     
     </div>
-    <p><%= @user.email %></p>
+
+   
     <section>
 
-      <h3>Nearby users</h3>
-        <div>
-          <ul>
-            <% @nearbys.each do |user| %>
+  
 
-              <li><%= link_to user.first_name, user %> (<%= user.distance.round(2) %> km)</li>
-
-            <% end %>
-          </ul>
-        </div>
-
-    </section>
     <p><%= link_to "Create a meetup", new_meetup_path(second_user_id: @user.id) %></p>
-    
-    <script>
-    window.___gcfg = {
-      lang: 'en-US'
-    };
-
-    (function() {
-      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-      po.src = 'https://apis.google.com/js/platform.js?onload=renderButton';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
-
-    function renderButton(){
-      gapi.hangout.render('g-hangout', {
-          'render': 'createhangout',
-          'widget_size': 175
-      });
-    }
-    </script>
-    <div id="g-hangout"></div>
-
   </div>  
 </div> 
 
