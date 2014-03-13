@@ -15,7 +15,10 @@
 		<%= f.text_area :description, style: "height:13em" %>
 
 		<%= f.label :start_time %>
-		<%= f.date_select :start_time, start_year: Time.now.year %>
+		<div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+			<%= f.text_field :start_time, class: "datepicker", size: "16", type: "text" %>
+		<span class="add-on"><i class="icon-th"></i></span>
+		</div>
 
 		<%= f.label :end_time %>
 		<%= f.date_select :end_time, start_year: Time.now.year %>
