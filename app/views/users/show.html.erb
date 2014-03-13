@@ -8,11 +8,14 @@
       <%= @user.first_name %>
       <%= image_tag @user.image_url(:thumb) %></h1>
       <%= link_to "Create a meetup", new_meetup_path(second_user_id: @user.id), class: "button radius" %>
-      <%= link_to "Add as Friend", new_user_friendship_path(friend_id: @user), class: "button radius" %>
-     
-    <div>
     
-    </div>
+      <div id="friend-status">
+        <% if current_user.friends.include?(@user) %>
+        <%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: "button radius" %>
+        <% else %>
+        <%= link_to "Add as Friend", new_user_friendship_path(friend_id: @user), class: "button radius", id: 'add-friendship', data: { friend_id: @user.to_param} %>
+        <% end %>
+      </div>
 <!--    <p><%= @user.email %></p>  -->
 <!--     <section>
 
