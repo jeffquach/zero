@@ -1,18 +1,12 @@
 <% provide(:title, "All users") %>
 
-<div class="hide-for-small tingz">
-
-  	<div id="featured" data-orbit>
-      <img src="http://placehold.it/1200x500&text=Slide Image 1" alt="slide image">
-      <img src="http://placehold.it/1200x500&text=Slide Image 2" alt="slide image">
-      <img src="http://placehold.it/1200x500&text=Slide Image 3" alt="slide image">
-    </div>
-
+<div class="tingz">
+	<%= image_tag "people-study.jpg", alt: "studying" %>
 </div>
 
-                  <div class="small-12 large-4 large-push-1 medium-6 columns">
+<div class="small-12 large-5 large-push-1 medium-6 columns">
 <div class="home-sidebar">
-	<div class="text-center"><h4>Learn with people nearby</h4></div>
+	<div class="text-center"><h3><em>Learn with people nearby</em></h3></div>
 
 		<%= form_for :search, url: users_path, method: :get do |f| %>
 		  <p>
@@ -27,4 +21,4 @@
 	</div>
 </div>
 
-<div class="text-center" id="home-heading"><h1>Find a study partner. </h1></div>
+<div class="text-center" id="home-heading"><span id="headliner">Find a study partner.</span></div>

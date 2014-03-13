@@ -19,4 +19,4 @@
 
 $(document).foundation();
 
-$('.input-append').fdatepicker('show');
+// $('.input-append').fdatepicker('show');

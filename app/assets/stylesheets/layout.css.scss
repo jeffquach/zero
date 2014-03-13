@@ -4,10 +4,6 @@
   font-size: 15px;
 }
 
-.alert-box{
-  margin-top: 20px;
-}
-
 footer{
   position: relative;
   left: 0;
@@ -136,8 +132,24 @@ hr{
   margin-top: 15em;
 }
 
+#headliner{
+  font-size: 3.5em;
+  padding: 20px;
+}
+
 .home-sidebar{
   margin: 11em 4em 10em 3em;
+  position: relative;
+  z-index: 1000;
+  padding: 20px;
+  background-color: white;
+  overflow: auto;
+  border: gray 2px solid;
+  border-radius: 8px;
+}
+
+#alert-box{
+  margin-top: 20px;
   position: relative;
   z-index: 1000;
 }
@@ -148,6 +160,7 @@ hr{
   width: 100%;
   height: 100%;
 }
+
 
 
 
