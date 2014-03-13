@@ -77,10 +77,9 @@ class UsersController < ApplicationController
   end
 
   private
+  
   def user_params
-
      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :address, :city, :state_province, :image, :country, :currently_available, :study_location_available, :current_online_learning, :education, :languages, :skills, :learning, :preferred_gender, :smoking_allowed, :can_host_children, :can_host_pets, :has_pets, :description)
-
   end
 
   def find_user

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  authenticates_with_sorcery!
 mount_uploader :image, ImageUploader
 
 	authenticates_with_sorcery!
@@ -42,6 +43,13 @@ mount_uploader :image, ImageUploader
 	has_many :comments, dependent: :destroy
 
 	has_many :reviews, dependent: :destroy
+
+	authenticates_with_sorcery! do |config|
+		config.authentications_class = Authentication
+	end
+
+	has_many :authentications, :dependent => :destroy
+	accepts_nested_attributes_for :authentications
 
 	def parsed_address
 		"#{self.address}, #{self.city}, #{self.state_province}, #{self.country}"
