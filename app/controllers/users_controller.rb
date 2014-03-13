@@ -5,17 +5,17 @@ class UsersController < ApplicationController
   before_filter :admin_user, only: :destroy
 
   def new
-  	@user = User.new
+    @user = User.new
   end
 
   def create
-  	@user = User.new(user_params)
-  	if @user.save
-  		flash[:success] = "Thank you for signing up! A confirmation email has been sent to your inbox"
-  		redirect_to users_path
-  	else
-  		render :new
-  	end
+    @user = User.new(user_params)
+    if @user.save
+      flash[:success] = "Thank you for signing up! A confirmation email has been sent to your inbox"
+      redirect_to users_path
+    else
+      render :new
+    end
   end
 
   def index
@@ -79,7 +79,7 @@ class UsersController < ApplicationController
   private
   def user_params
 
-  	 params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :address, :city, :state_province, :image, :country, :currently_available, :study_location_available, :current_online_learning, :education, :languages, :skills, :learning, :preferred_gender, :smoking_allowed, :can_host_children, :can_host_pets, :has_pets, :description)
+     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :address, :city, :state_province, :image, :country, :currently_available, :study_location_available, :current_online_learning, :education, :languages, :skills, :learning, :preferred_gender, :smoking_allowed, :can_host_children, :can_host_pets, :has_pets, :description)
 
   end
 
