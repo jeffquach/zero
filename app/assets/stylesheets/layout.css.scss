@@ -138,6 +138,15 @@ hr{
 
 .home-sidebar{
   margin: 11em 4em 10em 3em;
+  position: relative;
+  z-index: 1000;
+}
+
+.tingz{
+  z-index: -1000;
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }
 
 
