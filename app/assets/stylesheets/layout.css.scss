@@ -187,7 +187,19 @@ hr{
 }
 
 .user-profile{
-  margin-top: 1em;
+  margin: 1.8em 0 1em 0;
+  background-color: white;
+  border: 1px solid #D8D8D8;
+  border-radius: 8px;
+}
+
+.profile-highlight{
+  background-color: #F2F2F2;
+  padding: 10px 10px 0 10px;
+}
+
+.user-info{
+  padding: 10px;
 }
 
 .meetup-show{
@@ -221,4 +233,21 @@ hr{
   padding: 10px;
 }
 
+#avatar-image{
+  border: 1px solid #D8D8D8;
+  border-radius: 5px; 
+}
+
+table{
+  border-radius: 5px;
+}
+
+#create-meetup{
+  font-size: 1.5em;
+  margin-top: 0.5em;
+}
+
+.review-boxes{
+  width: 600px;
+}
 
