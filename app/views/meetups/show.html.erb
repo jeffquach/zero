@@ -1,50 +1,54 @@
 <%= provide(:title, "Meetup") %>
 
 <div class="small-12 large-6 large-centered columns">
-<div class="text-center"><h1>Meetup</h1></div>
 
-	<h2>Meetup with: <%= @meetup.people_attending_meetup %></h2>
+	
+		<div class="text-center"><h1>Meetup</h1></div>
+		<div class="meetup-show">
 
-	<h3>Title: <%= @meetup.title %></h3>
+			<h2>Meetup with: <%= @meetup.people_attending_meetup %></h2>
 
-	<p>Studying: <%= @meetup.studying %></p>
+			<h3>Title: <%= @meetup.title %></h3>
 
-	<p>Description: <%= @meetup.description %></p>
+			<p>Studying: <%= @meetup.studying %></p>
 
-	<p>Start time: <%= @meetup.start_time.strftime("%A,  %B %e,  %Y  @ %l:%M %P") %></p>
+			<p>Description: <%= @meetup.description %></p>
 
-	<p>End time: <%= @meetup.end_time.strftime("%A,  %B %e,  %Y  @ %l:%M %P") %></p>
+			<p>Start time: <%= @meetup.start_time.strftime("%A,  %B %e,  %Y  @ %l:%M %P") %></p>
 
-	<p>
+			<p>End time: <%= @meetup.end_time.strftime("%A,  %B %e,  %Y  @ %l:%M %P") %></p>
 
-		<%= form_for @meetup.invitees.find_by(user_id: current_user.id), remote: true do |f| %>
-			<div>
-			<strong><%= @meetup.users.where("user_id = ?", current_user.id).map{|user| user.first_name}.join(",") %></strong>
-			<%= f.submit "Attend", class: "button tiny radius" %>
-			<%= f.submit "Maybe", class: "button tiny radius" %>
-			<%= f.submit "Decline", class: "button tiny radius" %><br/>
+			<p>
 
-			<span id="meetup-label-<%= @meetup.id %>"><%= render partial: "response_form", locals: {response: @meetup.invitees.find_by(user_id: current_user.id).response} %></span>
-			</div>
+				<%= form_for @meetup.invitees.find_by(user_id: current_user.id), remote: true do |f| %>
+					<div>
+					<strong><%= @meetup.users.where("user_id = ?", current_user.id).map{|user| user.first_name}.join(",") %></strong>
+					<%= f.submit "Attend", class: "submit-link" %>
+					<%= f.submit "Maybe", class: "submit-link" %>
+					<%= f.submit "Decline", class: "submit-link" %><br/>
+
+					<span id="meetup-label-<%= @meetup.id %>"><%= render partial: "response_form", locals: {response: @meetup.invitees.find_by(user_id: current_user.id).response} %></span>
+					</div>
 
 
-		<% end %>
-	</p>
+				<% end %>
+			</p>
 
-	<p>
-		<% @meetup.invitees.each do |i| %>
+			<p>
+				<% @meetup.invitees.each do |i| %>
 
-			<% unless current_user?(i.user) %>
-				<p>			
-					<%= i.user.first_name %>
-					<%= render partial: "response_form", locals: {response: i.response} %>
-				</p>
-			<% end %>
-			
-		<% end %>
-	</p>
+					<% unless current_user?(i.user) %>
+						<p>			
+							<%= i.user.first_name %>
+							<%= render partial: "response_form", locals: {response: i.response} %>
+						</p>
+					<% end %>
+					
+				<% end %>
+			</p>
 
-	<p>Number of people: <%= @meetup.number_of_people %></p>
+			<p>Number of people: <%= @meetup.number_of_people %></p>
+	</div>
 
 	
 		<div>

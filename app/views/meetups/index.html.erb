@@ -15,9 +15,9 @@
 				<%= form_for meetup.invitees.find_by(user_id: current_user.id), remote: true do |f| %>
 
 					<div>
-					<%= f.submit "Attend", class: "button tiny radius" %>
-					<%= f.submit "Maybe", class: "button tiny radius" %>
-					<%= f.submit "Decline", class: "button tiny radius" %>
+					<%= f.submit "Attend", class: "submit-link" %>
+					<%= f.submit "Maybe", class: "submit-link" %>
+					<%= f.submit "Decline", class: "submit-link" %>
 					<span id="meetup-label-<%= meetup.id %>"><%= render partial: "response_form", locals: {response: meetup.invitees.find_by(user_id: current_user.id).response} %></span>
 					</div>
 
