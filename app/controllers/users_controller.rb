@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index,:new,:create,:activate]
   before_filter :require_login, only: [:edit,:update,:destroy]
-  before_action :find_user, only: [:show,:edit,:update,:destroy,:infowindow]
+  before_action :find_user, only: [:show,:edit,:update,:destroy,:infowindow,:edit_meetup_info]
   before_filter :admin_user, only: :destroy
 
   def new
@@ -74,6 +74,10 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html {render partial: "infowindow", locals: {user: @user}}
     end
+  end
+
+  def edit_meetup_info
+    
   end
 
   private

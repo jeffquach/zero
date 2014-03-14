@@ -17,6 +17,7 @@ Mindmeetup::Application.routes.draw do
       get :activate
       get :home
       get :infowindow
+      get :edit_meetup_info
     end
   end
 
