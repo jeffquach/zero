@@ -17,6 +17,8 @@
 //= require_tree .
 
 
-$(document).foundation();
+$(document).ready(function(){
+	$(document).foundation();
+})
 
 // $('.input-append').fdatepicker('show');

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  authenticates_with_sorcery!
-mount_uploader :image, ImageUploader
+  	authenticates_with_sorcery!
+	mount_uploader :image, ImageUploader
 
 	authenticates_with_sorcery!
 	before_save {email.downcase!}
