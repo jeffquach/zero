@@ -34,6 +34,12 @@
   <p><em>Upload a profile picture</em></p>
  <%= f.file_field :image %>
 
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+
  <div class="text-center"><%= f.submit class: "button radius" %></div>
 
 <h1>Meeting Information</h1>
@@ -60,7 +66,7 @@
 <%= f.select :has_pets, options_for_select([ "Yes", "No"]) %>
 
  <%= f.label :current_online_learning %>    
- <%= f.select :current_online_learning, options_for_select([ "Edx", "Udacity", "Treehouse", "Coursera", "Khan Academy", "Lynda", "Standford Online", "MIT Free Coureware"]) %>
+ <%= f.select :current_online_learning, options_for_select([ "Edx", "Udacity", "Treehouse", "Coursera", "Khan Academy", "Lynda", "Stanford Online", "MIT Free Coureware"]) %>
 
   <%= f.label :education %>         
   <%= f.text_field :education %>

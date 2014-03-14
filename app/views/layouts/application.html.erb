@@ -63,15 +63,15 @@
  
   <!-- End Top Bar -->
 
-      <div class="row">
-          <div class="small-12 columns">
-            <% flash.each do |key,value| %>
-              <div data-alert class="alert-box <%= key %> radius">
-                <%= value %>
-              </div>
-            <% end %>
+    <div class="small-12 columns alerts">
+      <% flash.each do |key,value| %>
+        <div class="row">
+          <div data-alert class="alert-box <%= key %> radius">
+            <%= value %>
           </div>
         </div>
+      <% end %>
+    </div>
 
     <%= yield %>
     <%= javascript_include_tag "application" %>

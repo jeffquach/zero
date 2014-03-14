@@ -4,8 +4,10 @@
   <div class="small-12 large-4 columns">
     <div class="users">
     <h1>
+
       
       <%= image_tag @user.image_url(:thumb) %>
+
       <%= @user.first_name %>
       <%= link_to "Add as Friend", new_user_friendship_path(friend_id: @user), class: "button radius" %>
       <script>
@@ -31,70 +33,14 @@
     <div>
     
     </div>
-
-   
-    <section>
-
   
 
     <p><%= link_to "Create a meetup", new_meetup_path(second_user_id: @user.id) %></p>
-  </div>  
-</div> 
-
-
-<div class="large-6 columns">
-  <div id="map-canvas" style="height:600px;width:600px;margin-top:30px"></div>
-
-
-  <h2>Reviews</h2>
-  <div id="reviews">
-    <% if @user.reviews.empty? %>
-
-      <h3>No one has given you a review!</h3>
-
-    <% else %>
-      <%= render "reviews" %>
-    <% end %>
-  </div>
-
-
-
-  <h3>Write a review</h3>
-
-    <% if current_user %>
-
-      <%= form_for([@user,@user.reviews.build], remote: true) do |f| %>
-
-        <div id="review-errors"><%= render "review_errors" %></div>
-
-        <%= f.label :content %>
-        <%= f.text_area :content %>
-
-        <%= f.submit class: "button radius" %>
-
-      <% end %>
-
-    <% else %>
-      <h4>Please <%= link_to "log in", login_path %> or <%= link_to "sign up", signup_path %> to write a user review</h4>
-    <% end %>
-</div>
-
-<div class="large-6 columns">
-
-</div>
-
-<%= javascript_tag do %>
-
-  var latitude = <%= @user.latitude %>;
-  var longitude = <%= @user.longitude %>;
-  var showMarker = true;
-
-  var coords = <%= raw @nearbys.map{|user| {latitude: user.latitude, longitude: user.longitude, id: user.id}}.to_json %>;
-
-<% end %>
-
-<div class="user_info"><h1>Profile<h1></div>
-<table class="table table-bordered table-striped" id="description_details" itemprop="breadcrumb">
+    <section>
+      <div>
+        <div class="small-12 large-4 columns"></div>
+    <table>
+            <div>
             <tbody><tr>
             </tr>
             <tr>
@@ -154,3 +100,64 @@
               <td class="value"><%= @user.description %></td>
             </tr>
           </div>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>  
+</div> 
+
+
+<div class="large-6 columns">
+  <div id="map-canvas" style="height:600px;width:600px;margin-top:30px"></div>
+
+
+  <h2>Reviews</h2>
+  <div id="reviews">
+    <% if @user.reviews.empty? %>
+
+      <h3>No one has given you a review!</h3>
+
+    <% else %>
+      <%= render "reviews" %>
+    <% end %>
+  </div>
+
+
+
+  <h3>Write a review</h3>
+
+    <% if current_user %>
+
+      <%= form_for([@user,@user.reviews.build], remote: true) do |f| %>
+
+        <div id="review-errors"><%= render "review_errors" %></div>
+
+        <%= f.label :content %>
+        <%= f.text_area :content %>
+
+        <%= f.submit class: "button radius" %>
+
+      <% end %>
+
+    <% else %>
+      <h4>Please <%= link_to "log in", login_path %> or <%= link_to "sign up", signup_path %> to write a user review</h4>
+    <% end %>
+</div>
+
+<div class="large-6 columns">
+
+</div>
+
+<%= javascript_tag do %>
+
+  var latitude = <%= @user.latitude %>;
+  var longitude = <%= @user.longitude %>;
+  var showMarker = true;
+
+  var coords = <%= raw @nearbys.map{|user| {latitude: user.latitude, longitude: user.longitude, id: user.id}}.to_json %>;
+
+<% end %>
+
+
+  
