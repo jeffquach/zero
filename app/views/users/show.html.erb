@@ -4,8 +4,9 @@
   <div class="small-12 large-4 columns">
     <div class="users">
     <h1>
-      <%= @user.first_name %>
+      
       <%= image_tag @user.image_url(:thumb) %>
+      <%= @user.first_name %>
       <%= link_to "Add as Friend", new_user_friendship_path(friend_id: @user), class: "button radius" %>
       <script>
     window.___gcfg = {

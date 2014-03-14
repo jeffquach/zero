@@ -8,7 +8,7 @@
     <h2 class="user-title">Found users</h2>
     <% @users.each do |user| %>
     <li>
-        <%= gravatar_for user %>
+        <%= image_tag user.image_url(:thumb) %>
         <%= link_to user.first_name, user %>
         <%= "is #{user.distance.round(2)} miles away." %>
         <% if user.admin? && !current_user %>
