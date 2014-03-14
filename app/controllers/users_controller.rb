@@ -38,8 +38,9 @@ class UsersController < ApplicationController
     @nearbys = @user.nearbys(10, units: :km).where("learning ILIKE ?", @user.learning)
 
     @friends = @user.friends
+    @review = Review.new(user_id: @user.id)
 
-    @review = @user.reviews.build
+    # @review = @user.reviews.build
 
   end
 

@@ -21,7 +21,11 @@
       <!-- Title Area -->
       <li class="name">
         <h1>
-          <%= link_to "MindMeetup", root_url %>
+          <% if logged_in? %>
+            <%= link_to "MindMeetup", user_path(current_user) %>
+          <% else %>
+            <%= link_to "MindMeetup", root_url %>
+          <% end %>
         </h1>
       </li>
       <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>

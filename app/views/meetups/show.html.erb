@@ -2,12 +2,13 @@
 
 <div class="small-12 large-6 large-centered columns">
 
-	
-		<div class="text-center"><h1>Meetup</h1></div>
-		<div class="meetup-show">
+	<div class="text-center"><h1>Meetup: <%= @meetup.title %></h1></div>
+		<div class="user-profile">
+		<div class="profile-highlight">
+			<h2 class="text-center">Meetup with: <%= @meetup.people_attending_meetup %></h2>
+		</div>
 
-			<h2>Meetup with: <%= @meetup.people_attending_meetup %></h2>
-
+		<div class="user-info">
 			<h3>Title: <%= @meetup.title %></h3>
 
 			<p>Studying: <%= @meetup.studying %></p>
@@ -25,7 +26,7 @@
 					<strong><%= @meetup.users.where("user_id = ?", current_user.id).map{|user| user.first_name}.join(",") %></strong>
 					<%= f.submit "Attend", class: "submit-link" %>
 					<%= f.submit "Maybe", class: "submit-link" %>
-					<%= f.submit "Decline", class: "submit-link" %><br/>
+					<%= f.submit "Decline", class: "submit-link" %>
 
 					<span id="meetup-label-<%= @meetup.id %>"><%= render partial: "response_form", locals: {response: @meetup.invitees.find_by(user_id: current_user.id).response} %></span>
 					</div>
@@ -48,26 +49,31 @@
 			</p>
 
 			<p>Number of people: <%= @meetup.number_of_people %></p>
+		</div>
+	</div>
+
+	<div class="user-profile">
+		<div class="profile-highlight"><h2>Comments</h2></div>
+	
+			
+			<div class="user-info">
+				<div class="comments">
+					<% if @meetup.comments.any? %>
+						<%= render "comments" %>
+					<% else %>
+						<h3>This meetup has no comments!</h3>
+					<% end %>
+				</div>
+			</div>
+		
 	</div>
 
 	
-		<div>
-			<h2>Comments</h2>
-				<div class="comments">
-					<% if @meetup.comments.any? %>
 
-						<%= render "comments" %>
-
-					<% end %>
-				</div>
-		</div>
-	
-
-	
-
-	<div>
-		<h3>Write a comment</h3>
-			<p>
+	<div class="user-profile">
+		<div class="profile-highlight"><h3>Write a comment</h3></div>
+			<div class="user-info">
+							<p>
 				<% if current_user %>
 
 					<%= form_for([@meetup,@comment], remote: true) do |f| %>
@@ -77,7 +83,7 @@
 						<%= f.label :content %>
 						<%= f.text_area :content %>
 
-						<%= f.submit "Submit comment", class: "button radius" %>
+						<%= f.submit "Submit comment", class: "button radius small" %>
 
 					<% end %>
 
@@ -87,6 +93,7 @@
 
 				<% end %>
 			</p>
+			</div>
 	</div>
 
 </div>
