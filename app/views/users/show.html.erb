@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="small-12 large-4 columns">
-    <div class="users">
+    <div class="user-profile">
     <h1>
       <%= @user.first_name %>
       <%= link_to "Add as Friend", new_user_friendship_path(friend_id: @user), class: "button radius" %>
@@ -38,10 +38,6 @@
     <table>
             <div>
             <tbody><tr>
-            </tr>
-            <tr>
-              <td>Name</td>
-              <td class="value"><%= @user.first_name %></td>
             </tr>
             <tr>
               <td>City</td>
@@ -105,7 +101,7 @@
 
 
 <div class="large-6 columns">
-  <div id="map-canvas" style="height:600px;width:600px;margin-top:30px"></div>
+  <div id="map-canvas" style="height:500px;width:600px;margin-top:30px"></div>
 
 
   <h2>Reviews</h2>

@@ -9,7 +9,7 @@ class OauthsController < ApplicationController
 		provider = auth_params[:provider]
 
 		if @user = login_from(provider)
-		  redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
+		  redirect_to user_path(@user), :notice => "Logged in from #{provider.titleize}!"
 		else
 		  begin
 		    @user = create_from(provider)

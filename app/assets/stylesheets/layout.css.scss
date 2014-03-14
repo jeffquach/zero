@@ -94,6 +94,12 @@ img {
   bottom: 0;
   width: 60%;
   height: 100%;
+  border: 3px solid #E6E6E6;
+  border-radius: 3px;
+  -moz-box-shadow: 0 0 13px #888;
+-webkit-box-shadow: 0 0 13px#888;
+box-shadow: 0 0 13px #888;
+
 }
 
 #users-map{
@@ -165,6 +171,9 @@ hr{
   margin-top: 20px;
 }
 
+.user-profile{
+  margin-top: 1em;
+}
 
 
 
