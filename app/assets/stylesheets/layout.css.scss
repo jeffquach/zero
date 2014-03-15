@@ -132,11 +132,24 @@ box-shadow: 0 0 13px #888;
   text-align: center;
 }
 
-#infoview{
+.infoview{
   list-style-type: none;
+  width:380px;
+  height: 88px; 
 }
 
-#infoface{
+.info-avatar{
+  height: 65px;
+  width: 65px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  padding:2px;
+  border: 1px solid #ddd; 
+  margin: 10px;
+}
+
+.infoface{
   margin: 15px;
 }
 
@@ -251,8 +264,5 @@ table{
   width: 600px;
 }
 
-#meetup-info{
-  margin-left: 1.5em;
-}
 
 

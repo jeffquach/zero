@@ -1,12 +1,12 @@
-<li id="infoview" style="width:180px">
+<li class="infoview">
 
 	<% if @user.image_url(:thumb) %>
-	  <%= image_tag user.image_url(:thumb) %>
+	  <%= image_tag user.image_url(:thumb), class: "info-avatar" %>
 	<% else %>
-	  <%= image_tag "default.png" %>
+	  <%= image_tag "default.png", class: "info-avatar" %>
 	<% end %>
 
-    <span id="infoface"><%= link_to user.first_name, user %></span>
+    <span class="infoface"><%= link_to user.first_name, user %></span>
 
     <% if user.admin? && !current_user %>
 
@@ -14,6 +14,7 @@
 
 
     <% end %>
+
   
   
 </li>
