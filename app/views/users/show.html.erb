@@ -4,14 +4,19 @@
   <div class="small-12 large-4 columns">
     <div class="user-profile">
       <div class="profile-highlight">
-        <h1>
+        <div class="profile-name">
           <% if @user.image_url(:thumb) %>
             <%= image_tag @user.image_url(:thumb), id: "avatar-image" %>
           <% else %>
             <%= image_tag "default.png" %>
           <% end %>
-          <%= @user.first_name %>
-        </h1>
+        </div>
+        <div class="profile-info">
+          <h1>
+            <%= @user.first_name %>
+          </h1>
+          <p><%= link_to "See full bio", "#" %></p>
+        </div>
         <hr>
       </div>
       <div class="user-info">
@@ -115,10 +120,6 @@
             <tr>
               <td>Skills</td>
               <td class="value"><%= @user.skills %></td>
-            </tr>
-            <tr>
-              <td>Description of Goals</td>
-              <td class="value"><%= @user.description %></td>
             </tr>
           </div>
           </tbody>

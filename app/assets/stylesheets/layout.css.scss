@@ -132,27 +132,6 @@ box-shadow: 0 0 13px #888;
   text-align: center;
 }
 
-.infoview{
-  list-style-type: none;
-  width:380px;
-  height: 88px; 
-}
-
-.info-avatar{
-  height: 65px;
-  width: 65px;
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  padding:2px;
-  border: 1px solid #ddd; 
-  margin: 10px;
-}
-
-.infoface{
-  margin: 15px;
-}
-
 hr{
   width: 90%;
   margin-left: 20px;
@@ -173,7 +152,7 @@ hr{
 
 .home-sidebar{
   margin: 11em 4em 10em 3em;
-  position: relative;
+  posion: relative;
   z-index: 1000;
   padding: 20px;
   background-color: white;
@@ -206,6 +185,20 @@ hr{
   border-radius: 8px;
 }
 
+.profile-name{
+  float:left;
+}
+
+.profile-info{
+  margin-left: 20px;
+  float:left;
+}
+
+.profile-infowindow{
+  padding: 10px 10px 0 10px;
+  width: 250px;
+}
+
 .profile-highlight{
   background-color: #F2F2F2;
   padding: 10px 10px 0 10px;
@@ -213,6 +206,10 @@ hr{
 
 .user-info{
   padding: 10px;
+}
+
+.bigger{
+  font-weight: bold;
 }
 
 .meetup-show{

@@ -1,20 +1,13 @@
-<li class="infoview">
-
-	<% if @user.image_url(:thumb) %>
-	  <%= image_tag user.image_url(:thumb), class: "info-avatar" %>
-	<% else %>
-	  <%= image_tag "default.png", class: "info-avatar" %>
-	<% end %>
-
-    <span class="infoface"><%= link_to user.first_name, user %></span>
-
-    <% if user.admin? && !current_user %>
-
-      | <%= link_to "Delete", user, confirm: "Are you sure?", method: :delete %>
-
-
-    <% end %>
-
-  
-  
-</li>
+<div class="profile-infowindow">
+    <div class="profile-name">
+      <% if user.image_url(:thumb) %>
+        <%= image_tag user.image_url(:thumb), id: "avatar-image" %>
+      <% else %>
+        <%= image_tag "default.png" %>
+      <% end %>
+    </div>
+    <div class="profile-info">
+      <h3><%= link_to user.first_name, user, class: "bigger" %></h3>
+      <p><%= link_to "See full bio", "#" %></p>
+    </div>
+</div>
