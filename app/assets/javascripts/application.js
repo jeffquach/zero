@@ -19,6 +19,7 @@
 
 $(document).ready(function(){
 	$(document).foundation();
+	setTimeout(function(){$('.alerts').remove();}, 6000);
 })
 
 // $('.input-append').fdatepicker('show');

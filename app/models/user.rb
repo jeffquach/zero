@@ -15,11 +15,8 @@ class User < ActiveRecord::Base
 	validates :state_province, presence: true
 	validates :country, presence: true
 	validates :learning, presence: true
-	geocoded_by :parsed_address
-	after_validation :geocode, if: :address_changed?
-	after_validation :geocode, if: :city_changed?
-	after_validation :geocode, if: :country_changed?
-	after_validation :geocode, if: :state_province_changed?
+	geocoded_by :full_address
+	after_validation :geocode
 
 	has_many :invitees
 	
@@ -51,7 +48,7 @@ class User < ActiveRecord::Base
 	has_many :authentications, :dependent => :destroy
 	accepts_nested_attributes_for :authentications
 
-	def parsed_address
+	def full_address
 		"#{self.address}, #{self.city}, #{self.state_province}, #{self.country}"
 	end
 
