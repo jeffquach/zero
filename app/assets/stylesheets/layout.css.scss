@@ -208,10 +208,6 @@ hr{
   padding: 10px;
 }
 
-.bigger{
-  font-weight: bold;
-}
-
 .meetup-show{
   min-height: 20px;
   padding: 19px;
@@ -243,7 +239,7 @@ hr{
   padding: 10px;
 }
 
-#avatar-image{
+.avatar-image{
   border: 1px solid #D8D8D8;
   border-radius: 5px; 
 }
@@ -261,5 +257,8 @@ table{
   width: 600px;
 }
 
+.hidden-bio{
+  display:none;
+}
 
 

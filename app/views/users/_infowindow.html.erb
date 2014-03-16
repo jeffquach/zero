@@ -1,13 +1,13 @@
 <div class="profile-infowindow">
     <div class="profile-name">
       <% if user.image_url(:thumb) %>
-        <%= image_tag user.image_url(:thumb), id: "avatar-image" %>
+        <%= image_tag user.image_url(:thumb), class: "avatar-image" %>
       <% else %>
-        <%= image_tag "default.png" %>
+        <%= image_tag "default.png", class: "avatar-image" %>
       <% end %>
     </div>
     <div class="profile-info">
-      <h3><%= link_to user.first_name, user, class: "bigger" %></h3>
+      <h3><%= link_to user.first_name, user, style: "font-weight:bold;font-size:23px;" %></h3>
       <p><%= link_to "See full bio", "#" %></p>
     </div>
 </div>

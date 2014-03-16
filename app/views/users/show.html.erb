@@ -6,16 +6,17 @@
       <div class="profile-highlight">
         <div class="profile-name">
           <% if @user.image_url(:thumb) %>
-            <%= image_tag @user.image_url(:thumb), id: "avatar-image" %>
+            <%= image_tag @user.image_url(:thumb), class: "avatar-image" %>
           <% else %>
-            <%= image_tag "default.png" %>
+            <%= image_tag "default.png", class: "avatar-image" %>
           <% end %>
         </div>
         <div class="profile-info">
-          <h1>
+          <h2>
             <%= @user.first_name %>
-          </h1>
-          <p><%= link_to "See full bio", "#" %></p>
+          </h2>
+          <p><%= link_to "See full bio", "#", class: "show-bio" %></p>
+          <div class="hidden-bio"><%= @user.bio %></div>
         </div>
         <hr>
       </div>
