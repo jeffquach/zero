@@ -26,6 +26,12 @@
   <%= f.label :country %>
   <%= f.text_field :country %>
 
+   <%= f.label :password %>
+  <%= f.password_field :password %>
+
+   <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+
   <%= f.label :learning %>
   <%= f.select :learning, options_for_select([ "Javascript", "Ruby on Rails", "Python", "jQuery", "C++", "HTML & CSS", "PHP", "Biology", "Calculus", "Linear Algebra", "Differential Equations", "Physics", "Chemistry", "Medicine", "Statistics", "Electronics", "Android Development", "iOS Development", "Google Glass Development", "Tesla Development", "SmartThings Development", "Occulus Rift Development", "Emotiv Development", "Meta Developers", "Raspberry Pi Development"]) %>
   <p><em>Upload a profile picture</em></p>
