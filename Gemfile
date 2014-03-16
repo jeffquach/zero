@@ -12,8 +12,8 @@ gem 'geocoder'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'figaro'
-gem 'foundation-datetimepicker-rails'
 gem 'state_machine'
+gem 'jquery-ui-rails'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
