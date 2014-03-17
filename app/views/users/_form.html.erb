@@ -2,11 +2,16 @@
 
  <%= render "shared/error_messages", object: f.object %>
 
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
-
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
+  <div class="row">
+    <div class="large-6 columns">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="large-6 columns">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+  </div>
 
   <%= f.label :bio %>
   <%= f.text_area :bio, style: "height: 7em;" %>
@@ -17,31 +22,36 @@
   <%= f.label :address, "Enter your address (it will NOT be displayed publicly)" %>
   <%= f.text_field :address %>
 
-  <%= f.label :city %>
-  <%= f.text_field :city %>
+  <div class="row">
+    <div class="large-4 columns">
+      <%= f.label :city %>
+      <%= f.text_field :city %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.label :state_province, "State/province" %>
+      <%= f.text_field :state_province %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.label :country %>
+      <%= f.text_field :country %>
+    </div>
+  </div>
 
-  <%= f.label :state_province, "State/province" %>
-  <%= f.text_field :state_province %>
-
-  <%= f.label :country %>
-  <%= f.text_field :country %>
-
-   <%= f.label :password %>
-  <%= f.password_field :password %>
-
-   <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+  <div class="row">
+    <div class="large-6 columns">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    <div class="large-6 columns">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>    
+    </div>
+  </div>
 
   <%= f.label :learning %>
   <%= f.select :learning, options_for_select([ "Javascript", "Ruby on Rails", "Python", "jQuery", "C++", "HTML & CSS", "PHP", "Biology", "Calculus", "Linear Algebra", "Differential Equations", "Physics", "Chemistry", "Medicine", "Statistics", "Electronics", "Android Development", "iOS Development", "Google Glass Development", "Tesla Development", "SmartThings Development", "Occulus Rift Development", "Emotiv Development", "Meta Developers", "Raspberry Pi Development"]) %>
   <p><em>Upload a profile picture</em></p>
  <%= f.file_field :image %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
 
  <div class="text-center"><%= f.submit class: "button radius" %></div>
 
