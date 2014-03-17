@@ -1,6 +1,7 @@
 <% provide(:title, "New meetup") %>
 
-<div class="small-12 large-6 large-centered columns">
+<div class="row">
+	<div class="small-12 large-6 large-centered columns">
 <div class="text-center"><h1>New meetup</h1></div>
 
 	<%= form_for @meetup do |f| %>
@@ -10,30 +11,41 @@
 		<%= f.label :title %>
 		<%= f.text_field :title %>
 
-		<%= f.label :studying %>
-		<%= f.select :studying, options_for_select([ "Biology & Life Sciences", "Business & Management", "Chemistry", "Communication", "Computer Science", "Economics & Finance", "Electronics","Energy & Earth Sciences", "Engineering","Environmental Sciences","Food & Nutrition","Food & Nutrition","Health & Safety", "History","Humanities","Law","Literature","Math","Medicine","Music","Philanthropy","Philosophy & Ethics","Physics","Social Sciences","Statistics & Data Analysis"]) %>
-
-		<%= f.label :description %>
-		<%= f.text_area :description, style: "height:13em" %>
+		<div class='row'>
+			<div class="large-6 columns">
+				<%= f.label :studying %>
+				<%= f.select :studying, options_for_select([ "Biology & Life Sciences", "Business & Management", "Chemistry", "Communication", "Computer Science", "Economics & Finance", "Electronics","Energy & Earth Sciences", "Engineering","Environmental Sciences","Food & Nutrition","Food & Nutrition","Health & Safety", "History","Humanities","Law","Literature","Math","Medicine","Music","Philanthropy","Philosophy & Ethics","Physics","Social Sciences","Statistics & Data Analysis"]) %>
+			</div>
+			<div class="large-6 columns">
+				<%= f.label :number_of_people %>
+				<%= f.number_field :number_of_people %>
+			</div>
+		</div>
 
 		<div class="row">
-			<div class="large-6 columns">
+			<div class="large-3 columns">
 				<%= f.label :start_time, "Start date" %>
 				<%= f.text_field :start_time %>
+			</div>
+
+			<div class="large-3 columns">
+				<%= f.label :start_time, "Start time" %>
+				<input id="meetup-start" name="meetup[start_time]" type="text" class="time ui-timepicker-input" autocomplete="off">
+			</div>
+
+			<div class="large-3 columns">
 				<%= f.label :end_time, "End date" %>
 				<%= f.text_field :end_time %>
 			</div>
 
-			<div class="large-6 columns">
-				<%= f.label :start_time, "Start time" %>
-				<input id="meetup_start_time" name="meetup[start_time]" type="time">
+			<div class="large-3 columns">
 				<%= f.label :end_time, "End time" %>
-				<input id="meetup_end_time" name="meetup[end_time]" type="time">
+				<input id="meetup-end" name="meetup[end_time]" type="text" class="time ui-timepicker-input" autocomplete="off">
 			</div>
 		</div>
 
-		<%= f.label :number_of_people %>
-		<%= f.number_field :number_of_people %>
+		<%= f.label :description %>
+		<%= f.text_area :description, style: "height:13em" %>
 
 		<%= hidden_field_tag "second_user_id", @second_user_id %>
 
@@ -42,4 +54,5 @@
 	<% end %>
 
 
+</div>
 </div>

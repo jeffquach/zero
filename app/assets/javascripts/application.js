@@ -16,6 +16,7 @@
 //= require jquery.ui.datepicker
 //= require jquery.ui.tooltip
 //= require jquery-ui-1.10.4.custom.min
+//= require jquery.timepicker.min
 //= require_tree .
 
 
@@ -24,6 +25,8 @@ $(document).ready(function(){
 	setTimeout(function(){$('.alerts').remove();}, 6000);
 	$('#meetup_start_time').datepicker();
 	$('#meetup_end_time').datepicker();
+	$('#meetup-start').timepicker({ 'scrollDefaultNow': true });
+	$('#meetup-end').timepicker({ 'scrollDefaultNow': true });
 })
 
 // $('.input-append').fdatepicker('show');
