@@ -13,12 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require jquery.ui.datepicker
+//= require jquery.ui.tooltip
+//= require jquery-ui-1.10.4.custom.min
 //= require_tree .
 
 
 $(document).ready(function(){
 	$(document).foundation();
 	setTimeout(function(){$('.alerts').remove();}, 6000);
+	$('#meetup_start_time').datepicker();
+	$('#meetup_end_time').datepicker();
 })
 
 // $('.input-append').fdatepicker('show');

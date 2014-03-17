@@ -24,8 +24,11 @@ class MeetupsController < ApplicationController
 	end
 
 	def index
-		@meetups = Meetup.includes(:invitees).where("invitees.user_id = ?", current_user.id).references(:invitees)
+		# @meetups = current_user.meetups
+		@meetups = Meetup.where('user_id = ?', current_user.id).order('created_at DESC')
 	end
+
+
 
 	def edit
 	end
