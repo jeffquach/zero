@@ -18,6 +18,7 @@ Mindmeetup::Application.routes.draw do
       get :home
       get :infowindow
       get :edit_meetup_info
+      get :tooltip
     end
   end
 

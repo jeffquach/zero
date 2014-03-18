@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index,:new,:create,:activate]
   before_filter :require_login, only: [:edit,:update,:destroy]
-  before_action :find_user, only: [:show,:edit,:update,:destroy,:infowindow,:edit_meetup_info]
+  before_action :find_user, only: [:show,:edit,:update,:destroy,:infowindow,:edit_meetup_info,:tooltip]
   before_filter :admin_user, only: :destroy
 
   def new
@@ -77,8 +77,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit_meetup_info
-    
+  def tooltip
+    respond_to do |format|
+      format.html {render partial: "tooltip"}
+    end
+  end
+
+  def edit_meetup_info   
   end
 
   private

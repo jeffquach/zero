@@ -16,7 +16,7 @@
             <%= @user.first_name %>
           </h2>
           <p><%= link_to "See full bio", "#", class: "show-bio" %></p>
-          <div class="hidden-bio"><%= @user.bio %></div>
+          <input type="hidden" value="<%= @user.id %>" id="hidden-id">
         </div>
         <hr>
       </div>
