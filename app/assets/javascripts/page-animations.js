@@ -11,7 +11,7 @@
 	function runTooltip(){
 		$(document).tooltip({
 			items: '.show-bio',
-			position: { my: "left+15 top", at: "top right" },
+			position: { my: "left+15 top", at: "right center" },
 			content: function(callback){
 				var user_id = $("#hidden-id").attr("value");
 				$.ajax({
