@@ -53,9 +53,9 @@
           </li>
 
         <% else %>
-          <li><%= link_to "Sign up", signup_path %></li>
+          <li><%= link_to "Sign up", "#signup-box", class: "login-window" %></li>
           <li class="divider"></li>
-          <li><%= link_to "Log in", login_path %></li>
+          <li><%= link_to "Log in", "#login-box", class: "login-window" %></li>
           <li class="divider"></li>
           <li><%= link_to 'Login with Google', auth_at_provider_path(:provider => :google) %></li>
           <li class="divider"></li>
@@ -75,6 +75,57 @@
           </div>
         </div>
       <% end %>
+    </div>
+
+    <div id="signup-box" class="login-popup">
+      <%= link_to(image_tag("close_pop.png", class: "btn_close", title: "Close window", alt: "Close"), "#", class: "close") %>
+        <div class="login-header">
+          <h1 class="login-h1">Sign up</h1>
+        </div>
+        
+        <div class="login-buttons">
+          
+          <%= link_to(image_tag("google-up.png", class: "login-image"), auth_at_provider_path(:provider => :google)) %>
+          <%= link_to(image_tag("facebook-up.png", class: "login-image"), auth_at_provider_path(:provider => :facebook)) %>
+
+          <h3 class="text-center">OR</h3>
+
+          <h3 class="text-center"><%= link_to "Sign up here!", signup_path %></h3>
+          
+        </div>
+    </div>
+
+    <div id="login-box" class="login-popup">
+      <%= link_to(image_tag("close_pop.png", class: "btn_close", title: "Close window", alt: "Close"), "#", class: "close") %>
+      <div class="login-header">
+        <h1 class="login-h1">Log in</h1>
+      </div>
+
+      <div class="login-buttons">
+        <%= link_to(image_tag("google.png", class: "login-image"), auth_at_provider_path(:provider => :google)) %>
+        <%= link_to(image_tag("facebook.png", class: "login-image"), auth_at_provider_path(:provider => :facebook)) %>
+
+        <h3 class="text-center">OR</h3>
+
+        <%= form_tag sessions_path, class: "signin" do %>
+          <div class="field">
+            <%= label_tag :email %>
+            <%= text_field_tag :email, params[:email] %>
+          </div>
+          <div class="field">
+            <%= label_tag :password %>
+            <%= password_field_tag :password %>
+          </div>
+          <div class="field">
+            <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+            <%= label_tag :remember_me %>
+          </div>
+          <div class="field">
+            <%= link_to "Forgot password?", new_password_reset_path %>
+          </div><br>
+          <div class="actions text-center"><%= submit_tag "Log in", class: "button radius" %></div>
+        <% end %>
+      </div>
     </div>
 
     <%= yield %>

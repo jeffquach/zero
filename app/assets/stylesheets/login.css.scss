@@ -1,0 +1,66 @@
+/* Mask for background, by default is not display */
+#mask {
+    display: none;
+    background: #000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: 999;
+}
+
+/* You can customize to your needs  */
+.login-popup {
+    display: none;
+    background: #FFF;
+    border: 2px solid #ddd;
+    float: left;
+    font-size: 1.2em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 99999;
+    width: 22em;
+    box-shadow: 0px 0px 20px #999;
+    /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999;
+    /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999;
+    /* Safari, Chrome */
+	border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px;
+    /* Firefox */
+        -webkit-border-radius: 3px;
+    /* Safari, Chrome */;
+}
+
+img.btn_close {
+	float: right;
+    margin: -28px -28px 0 0;
+}
+
+.login-image{
+    width: 21em;
+    height: 3em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.login-header{
+    background-color: #000;
+    text-align: center;
+    margin: 0;
+}
+
+.login-buttons{
+    padding: 10px;
+}
+
+.login-h1{
+    margin: 0;
+    text-align: center;
+    color: white;
+}
