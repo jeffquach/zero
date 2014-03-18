@@ -147,7 +147,10 @@ hr{
 
 #headliner{
   font-size: 3.5em;
-  padding: 20px;
+  padding: 5px;
+  background-color: white;
+  border: 1px white solid;
+  border-radius: 5px;
 }
 
 .home-sidebar{
@@ -261,4 +264,8 @@ table{
   display:none;
 }
 
-
+#home-background{
+  background-size: cover;
+  height:100%;
+  width:100%;
+}
