@@ -28,16 +28,29 @@ class UserFriendshipsController < ApplicationController
 	end
 
 	def create
-			if params[:user_friendship] && params[:user_friendship].has_key?(:friend_id)
+		if params[:user_friendship] && params[:user_friendship].has_key?(:friend_id)
 			@friend = User.find(params[:user_friendship][:friend_id]) 		
 			@user_friendship = UserFriendship.request(current_user, @friend)
-			if @user_friendship.new_record?
-				flash[:error] = "There was a problem creating that friend request." 
-			else		
-			flash[:success] = "Friend request sent"
-			end
-			redirect_to user_path(@friend)		
-	   		else
+
+				respond_to do |format|
+					if @user_friendship.new_record?
+						format.html do
+							flash[:error] = "There was a problem creating that friend request." 
+							redirect_to user_path(@friend)
+						end
+						format.json {render json: @user_friendship.to_json, status: :precondition_failed}
+						
+					else		
+						format.html do
+							flash[:success] = "Friend request sent"
+							redirect_to user_path(@friend)
+						end
+						format.json {render json: @user_friendship.to_json, status: :precondition_failed}
+					end
+				end	
+				
+
+	   	else
 			flash[:error] = "Friend required"
 			redirect_to root_path
 		end

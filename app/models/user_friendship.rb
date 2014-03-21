@@ -18,16 +18,16 @@ class UserFriendship < ActiveRecord::Base
 	
 
 	def self.request(user1, user2)
-		 transaction do
-		Rails.logger.info "user1 is #{user1.inspect}"
-		Rails.logger.info "user2 is #{user2.inspect}"
-		friendship1 = UserFriendship.create!(user: user1, friend: user2, state: 'pending')
-		Rails.logger.info "friendship1 is #{friendship1.inspect}"
+		transaction do
+			# Rails.logger.info "user1 is #{user1.inspect}"
+			# Rails.logger.info "user2 is #{user2.inspect}"
+			friendship1 = UserFriendship.create!(user: user1, friend: user2, state: 'pending')
+			# Rails.logger.info "friendship1 is #{friendship1.inspect}"
 
-		friendship2 = UserFriendship.create!(user: user2, friend: user1, state: 'requested' )
+			friendship2 = UserFriendship.create!(user: user2, friend: user1, state: 'requested' )
 
-		friendship1.send_request_email
-		friendship1
+			# friendship1.send_request_email
+			# friendship1
 	    end
 	end
 

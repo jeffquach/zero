@@ -109,9 +109,9 @@ Rails.application.config.sorcery.configure do |config|
   config.twitter.callback_url = "http://mindmeetup.herokuapp.com/oauth/callback?provider=twitter"
   config.twitter.user_info_mapping = {:email => "email"}
   #
-  config.facebook.key = "482937181828386"
-  config.facebook.secret = "c66c48789c979cfc13aea2d633865053"
-  config.facebook.callback_url = "http://mindmeetup.herokuapp.com/oauth/callback?provider=facebook"
+  config.facebook.key = "#{Figaro.env.facebook_oauth_id}"
+  config.facebook.secret = "#{Figaro.env.facebook_oauth_secret_key}"
+  config.facebook.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=facebook"
   config.facebook.user_info_mapping = {:email => "email", :first_name => "first_name", :last_name => "last_name"}
   config.facebook.access_permissions = ["email", "publish_stream"]
   #
@@ -120,9 +120,9 @@ Rails.application.config.sorcery.configure do |config|
   # config.github.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=github"
   # config.github.user_info_mapping = {:email => "name"}
   #
-  config.google.key = "726094486124-o1vsego06f9m61ute06d6evd84g5mj13.apps.googleusercontent.com"
-  config.google.secret = "sD9KTP_EhfQSBWPcOYWja8Zh"
-  config.google.callback_url = "http://mindmeetup.herokuapp.com/oauth/callback?provider=google"
+  config.google.key = "#{Figaro.env.google_oauth_id}"
+  config.google.secret = "#{Figaro.env.google_oauth_secret_key}"
+  config.google.callback_url = "http://localhost:3000/oauth/callback?provider=google"
   config.google.user_info_mapping = {:email => "email"}
   #
   # config.vk.key = ""

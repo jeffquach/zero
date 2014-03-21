@@ -4,10 +4,10 @@
 
 <p>Do you really want to friend <%= @friend.first_name %>?</p>
 
-<%= form_for @user_friendship, method: :post do |form| %>
-	<div class="form form-actions">
-		<%= form.hidden_field :friend_id, value: @friend.id  %>      
-	<%= submit_tag "Yes, Add Friend", class: "button radius" %>
-	<%= link_to "Cancel", user_path(@friend), class: "button radius" %>     
+<%= form_for @user_friendship, method: :post do |f| %>
+
+	<%= f.hidden_field :friend_id, value: @friend.id  %>      
+	<%= submit_tag "Send study partner request", class: "button radius" %>
+  
 <% end %>
 <% end %>

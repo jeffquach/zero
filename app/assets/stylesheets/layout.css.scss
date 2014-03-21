@@ -254,6 +254,7 @@ table{
 #create-meetup{
   font-size: 1.5em;
   margin-top: 0.5em;
+  padding-left: 20px;
 }
 
 .review-boxes{
@@ -268,4 +269,8 @@ table{
   background-size: cover;
   height:100%;
   width:100%;
+}
+
+.friend-request-form{
+  padding-left: 20px;
 }

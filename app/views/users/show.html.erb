@@ -22,25 +22,41 @@
       </div>
       <div class="user-info">
         <% if logged_in? %>
-          <%= link_to "Add as Friend", new_user_friendship_path(friend_id: @user), class: "button radius" %>
+          <div class="friend-request-form">
+            <% if @user.pending_user_friendships.include?(current_user) %>
+              <p>Friend request sent</p>
+            <% else %>
+              <%= form_for current_user.user_friendships.build(friend_id: @user), method: :post do |f| %>
+
+                <%= f.hidden_field :friend_id, value: @user.id  %>      
+                <%= submit_tag "Send study partner request", class: "button radius tiny", id: "friend-request-button" %>
+                
+              <% end %>
+            <% end %>
+          </div>
           <script>
-            window.___gcfg = {
-              lang: 'en-US'
-            };
 
-            (function() {
-              var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-              po.src = 'https://apis.google.com/js/platform.js?onload=renderButton';
-              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-            })();
+          </script>
+          <div>
+            <script>
+              window.___gcfg = {
+                lang: 'en-US'
+              };
 
-            function renderButton(){
-              gapi.hangout.render('g-hangout', {
-                  'render': 'createhangout',
-                  'widget_size': 175
-              });
-            }
-          </script>
+              (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/platform.js?onload=renderButton';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+              })();
+
+              function renderButton(){
+                gapi.hangout.render('g-hangout', {
+                    'render': 'createhangout',
+                    'widget_size': 175
+                });
+              }
+            </script>
+          </div>
           <div id="g-hangout"></div>
 
           <p id="create-meetup"><%= link_to "Create a meetup", new_meetup_path(second_user_id: @user.id) %></p>
@@ -53,7 +69,7 @@
       <div class="profile-highlight text-center"><h3><em>Search users</em></h3></div>
 
         <div class="user-info">
-                  <%= form_for :search, url: users_path, method: :get do |f| %>
+            <%= form_for :search, url: users_path, method: :get do |f| %>
           <p>
 
             <%= f.text_field :city_search, placeholder: "Type in a location" %>
