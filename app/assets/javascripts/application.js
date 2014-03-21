@@ -22,7 +22,7 @@
 
 $(document).ready(function(){
 	$(document).foundation();
-	setTimeout(function(){$('.alerts').remove();}, 6000);
+	setTimeout(function(){$('.alerts').remove();}, 5000);
 	$('#meetup_start_time').datepicker();
 	$('#meetup_end_time').datepicker();
 	$('#meetup-start').timepicker({ 'scrollDefaultNow': true });

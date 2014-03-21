@@ -23,13 +23,14 @@
       <div class="user-info">
         <% if logged_in? %>
           <div class="friend-request-form">
+            
             <% if @user.pending_user_friendships.include?(current_user) %>
               <p>Friend request sent</p>
             <% else %>
               <%= form_for current_user.user_friendships.build(friend_id: @user), method: :post do |f| %>
 
                 <%= f.hidden_field :friend_id, value: @user.id  %>      
-                <%= submit_tag "Send study partner request", class: "button radius tiny", id: "friend-request-button" %>
+                <%= submit_tag "Send study partner request", class: "button radius tiny" %>
                 
               <% end %>
             <% end %>
