@@ -1,0 +1,19 @@
+<% if current_user.pending_user_friendships.any? %>
+<% @user_friendships.each do |friendship| %>
+  <% if friendship.pending? %>
+  	<div id="pending-<%= friendship.id %>">
+    <%= render "friend_avatar", object: friendship.friend %>
+    <span class="friend-name"><%= link_to friendship.friend.full_name, user_path(friendship.friend) %></span>
+    - <em>Friendship is pending</em> 
+
+	<%= form_for friendship, url: user_friendship_path(friendship), class: "delete-friendship-button", method: :delete do |form| %>
+	    <%= submit_tag "Delete request", class: "button radius tiny" %>
+	  <% end %>
+	</div>  
+  <% end %>
+<% end %> 
+<% else %>
+<h3>Nuthin!</h3>
+<% end %>
+
+

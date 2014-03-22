@@ -278,3 +278,20 @@ table{
 .friend-name{
   font-weight: bold;
 }
+
+.edit_user_friendship{
+  margin-left: 150px;
+}
+
+.delete-friendship{
+  background-color: #F42525;
+  border: 1px solid #F42525;
+  border-radius: 10px;
+  padding: 5px;
+  color: white;
+}
+
+.delete-friendship:hover{
+  color: #D3C9C9;
+  background-color: #BA0C0C;
+}

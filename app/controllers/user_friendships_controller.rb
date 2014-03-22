@@ -64,8 +64,9 @@ class UserFriendshipsController < ApplicationController
 	def destroy
 	   @user_friendship = current_user.user_friendships.find(params[:id])
 		if @user_friendship.destroy
-			flash[:success] = "Friendship destroyed"
+			respond_to do |format|
+				format.json {render json: @user_friendship.to_json}
+			end
 		end
-		redirect_to user_friendships_path
 	end
 end

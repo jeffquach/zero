@@ -16,6 +16,28 @@ $(document).ready(function(){
       }
     });
   });
+
+  // $(".edit_user_friendship").on("ajax:success", function(event, data){
+  //   $tingzSon = $($(event.target).parent()[0])
+  //   $tingzSon.remove();
+  // });
+
+  $(".edit_user_friendship").on("submit", function(event){
+    event.preventDefault();
+    var _this = $(this);
+    var friend = _this.attr('id').split("_");
+
+    $.ajax({
+      url: "/user_friendships/"+friend[friend.length-1],
+      data: {"_method":"delete"},
+      method: "POST",
+      dataType: "json",
+      success: function(data){
+        console.log(data);
+        _this.parent().remove();
+      }
+    });
+  });
 });
 
 // $(document).ready(function(){
