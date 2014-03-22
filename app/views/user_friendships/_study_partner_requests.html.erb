@@ -1,10 +1,31 @@
-<% if current_user.pending_user_friendships.any? %>
+<% if current_user.requested_user_friendships.any? %>
   <% @user_friendships.each do |friendship| %>
     <% if friendship.requested? %>
-      <%= render "friend_avatar", object: friendship.friend %>
-      <h4><%= friendship.friend.full_name %></h4>
-      - <em>Friendship requested</em> <%= link_to "Accept Friendship",
-       edit_user_friendship_path(friendship) %>
+      <div class="requested">
+
+        <div class="requested-friendship">
+          <%= render "friend_avatar", object: friendship.friend %>
+          <span class="friend-name"><%= link_to friendship.friend.full_name, user_path(friendship.friend) %></span>
+          - <em>Friendship requested</em>
+        </div>
+        
+        <div class="requested-friend">
+
+          <form accept-charset="UTF-8" action="<%= accept_user_friendship_path(friendship) %>" class="edit_requested_user_friendship" id="<%= friendship.id %>" method="post">
+            <div style="margin:0;padding:0;display:inline">
+              <input name="utf8" type="hidden" value="✓">
+              <input name="_method" type="hidden" value="put">
+              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+            </div>
+            <input class="button radius tiny" name="commit" type="submit" value="Accept Friendship">
+          </form>
+        </div>
+
+      </div>
     <% end %>
   <% end %>
+
+<% else %>
+  <h4>You have no study partner requests!</h4>
 <% end %>
+
