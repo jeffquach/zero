@@ -279,10 +279,6 @@ table{
   font-weight: bold;
 }
 
-.edit_user_friendship{
-  margin-left: 150px;
-}
-
 .delete-friendship{
   background-color: #F42525;
   border: 1px solid #F42525;
@@ -294,4 +290,13 @@ table{
 .delete-friendship:hover{
   color: #D3C9C9;
   background-color: #BA0C0C;
+}
+
+.pending-friendship{
+  float:left;
+}
+
+.pending-friend{
+  float:left;
+  padding: 18px;
 }

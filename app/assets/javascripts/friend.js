@@ -34,7 +34,10 @@ $(document).ready(function(){
       dataType: "json",
       success: function(data){
         console.log(data);
-        _this.parent().remove();
+        _this.closest(".pending").remove();
+        if ($(".pending-study-partners").children().length === 0) {
+          $(".pending-study-partners").html("<h4>You have no pending requests!</h4>")
+        };
       }
     });
   });
