@@ -4,15 +4,20 @@
     	<div class="pending">
       
         <div class="pending-friendship">
-                <%= render "friend_avatar", object: friendship.friend %>
-        <span class="friend-name"><%= link_to friendship.friend.full_name, user_path(friendship.friend) %></span>
-        - <em>Friendship is pending</em> 
+          <%= render "friend_avatar", object: friendship.friend %>
+          <span class="friend-name"><%= link_to friendship.friend.full_name, user_path(friendship.friend) %></span>
+          - <em>Friendship is pending</em> 
         </div>
         
         <div class="pending-friend">
-                <%= form_for friendship, url: user_friendship_path(friendship), class: "delete-friendship-button", method: :delete do |form| %>
-          <%= submit_tag "Delete request", class: "button radius tiny" %>
-        <% end %>
+          <form accept-charset="UTF-8" action="<%= user_friendship_path(friendship) %>" class="edit_pending_user_friendship" id="<%= friendship.id %>" method="post">
+            <div style="margin:0;padding:0;display:inline">
+              <input name="utf8" type="hidden" value="✓">
+              <input name="_method" type="hidden" value="delete">
+              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+            </div>
+            <input class="button radius tiny" name="commit" type="submit" value="Delete request">
+          </form>
         </div>
         
   	  </div>  

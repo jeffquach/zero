@@ -11,11 +11,11 @@
 	<% end %>
 
 	<div class="form-actions">
+		<%= @user_friendship.id %>
 		<% if @user_friendship.requested? %>
-		<%= form_for @user_friendship, url: accept_user_friendship_path(@user_friendship), method:
-		:put do |form| %>
-		<%= submit_tag "Accept Friendship", class: "button radius" %>
-		<% end %>
+			<%= form_for @user_friendship, url: accept_user_friendship_path(@user_friendship), method: :put do |form| %>
+			<%= submit_tag "Accept Friendship", class: "button radius" %>
+			<% end %>
 		<% end %>
 
 		<%= form_for @user_friendship, url: user_friendship_path(@user_friendship), method:

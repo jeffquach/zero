@@ -25,7 +25,7 @@
           <div class="friend-request-form">
             
             <% if current_user.pending_friends.include?(@user) %>
-              <%= button_tag "Study partner request sent", class: "button radius tiny", disabled: true %>
+              <%= button_tag "Study partner request sent", class: "button radius tiny", style: "background-color: green;", disabled: true %>
             <% else %>
               <%= form_for current_user.user_friendships.build(friend_id: @user), method: :post do |f| %>
 

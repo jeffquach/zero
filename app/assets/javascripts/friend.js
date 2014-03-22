@@ -12,7 +12,7 @@ $(document).ready(function(){
       success: function(data){
         console.log(data);
         _this.hide();
-        $(".friend-request-form").html('<button class="button radius tiny" disabled="disabled" name="button" type="submit">Study partner request sent</button>');
+        $(".friend-request-form").html('<button class="button radius tiny" disabled="disabled" name="button" type="submit" style="background-color:green;">Study partner request sent</button>');
       }
     });
   });
@@ -22,13 +22,13 @@ $(document).ready(function(){
   //   $tingzSon.remove();
   // });
 
-  $(".edit_user_friendship").on("submit", function(event){
+  $(".edit_pending_user_friendship").on("submit", function(event){
     event.preventDefault();
     var _this = $(this);
-    var friend = _this.attr('id').split("_");
+    var friend = _this.attr('id');
 
     $.ajax({
-      url: "/user_friendships/"+friend[friend.length-1],
+      url: "/user_friendships/"+friend,
       data: {"_method":"delete"},
       method: "POST",
       dataType: "json",
