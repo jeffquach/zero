@@ -22,7 +22,7 @@ $(document).ready(function(){
   //   $tingzSon.remove();
   // });
 
-  $(".edit_pending_user_friendship, .delete_pending_user_friendship").on("submit", function(event){
+  $(".edit_pending_user_friendship, .delete_pending_user_friendship, .edit_accepted_user_friendship").on("submit", function(event){
     event.preventDefault();
     var _this = $(this);
     var friend = _this.attr('id');
@@ -34,11 +34,13 @@ $(document).ready(function(){
       dataType: "json",
       success: function(data){
         console.log(data);
-        _this.closest(".pending, .requested").remove();
+        _this.closest(".pending, .requested, .accepted").remove();
         if ($(".pending-study-partners").children().length === 0) {
           $(".pending-study-partners").html("<h4>You have no pending requests!</h4>");
         }else if($(".study-partner-requests").children().length < 1){
           $(".study-partner-requests").html("<h4>You have no pending requests!</h4>");
+        }else if($(".accepted-study-partners").children().length < 1){
+          $(".accepted-study-partners").html("<h4>You have no study partners!</h4>");
         }
       }
     });

@@ -292,11 +292,20 @@ table{
   background-color: #BA0C0C;
 }
 
-.pending-friendship, .requested-friendship{
+.pending-friendship, .requested-friendship, .accepted-friendship{
   float:left;
 }
 
 .pending-friend, .requested-friend{
   float:left;
   padding: 18px;
+}
+
+.accepted-avatar{
+  float:left;
+}
+
+.accepted-friend{
+  padding: 5px;
+  float:left;
 }

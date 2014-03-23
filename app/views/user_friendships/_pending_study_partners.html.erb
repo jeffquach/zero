@@ -1,8 +1,6 @@
 <% if current_user.pending_user_friendships.any? %>
   <% @user_friendships.each do |friendship| %>
-    <% if current_user.accepted_friends.include?(friendship.friend)  %>
-      <h4>You have no pending requests!</h4>  
-    <% elsif friendship.pending? %>
+    <% if friendship.pending? %>
     	<div class="pending">
       
         <div class="pending-friendship">

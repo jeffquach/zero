@@ -13,12 +13,12 @@ $(document).ready(function() {
 		dataType: 'script'
 	})
 }
-	function geolocationError(error) {
-		console.log("There was an error :(");
-	}
-	if ("geolocation" in navigator) {
-		navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
-	} else {
-		alert("Get a better browser");
-	}
+	// function geolocationError(error) {
+	// 	console.log("There was an error :(");
+	// }
+	// if ("geolocation" in navigator) {
+	// 	navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
+	// } else {
+	// 	alert("Get a better browser");
+	// }
 });

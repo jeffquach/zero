@@ -2,7 +2,7 @@ class UserFriendshipsController < ApplicationController
 	before_filter :require_login
 	
 	def index
-		@user_friendships = current_user.user_friendships.all
+		@user_friendships = current_user.user_friendships
 	end
 
 	def update
@@ -66,6 +66,7 @@ class UserFriendshipsController < ApplicationController
 		if @user_friendship.destroy
 			respond_to do |format|
 				format.json {render json: @user_friendship.to_json}
+				format.html {redirect_to user_friendships_path, notice: "You have deleted a study partner!"}
 			end
 		end
 	end
