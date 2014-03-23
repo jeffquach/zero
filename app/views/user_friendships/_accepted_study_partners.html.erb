@@ -10,22 +10,26 @@
 					    - <em>Friendship started <%= friendship.updated_at.strftime("%A,  %B %e,  %Y") %></em> 
 					</div>
 					<div class="accepted-friend">
-						<form accept-charset="UTF-8" action="<%= user_friendship_path(friendship) %>" class="edit_accepted_user_friendship" id="<%= friendship.id %>" method="post">
-				            <div style="margin:0;padding:0;display:inline">
-				              <input name="utf8" type="hidden" value="✓">
-				              <input name="_method" type="hidden" value="delete">
-				              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-				            </div>
-				            <input class="button radius tiny" name="commit" type="submit" value="Remove">
-			            </form>
-			            <form accept-charset="UTF-8" action="<%= block_user_friendship_path(friendship) %>" class="block_requested_user_friendship" id="<%= friendship.id %>" method="post">
-				            <div style="margin:0;padding:0;display:inline">
-				              <input name="utf8" type="hidden" value="✓">
-				              <input name="_method" type="hidden" value="put">
-				              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-				            </div>
-				            <input class="button radius tiny" name="commit" type="submit" value="Block">
-			        	</form>
+						<div class="accepted-friend">
+							<form accept-charset="UTF-8" action="<%= user_friendship_path(friendship) %>" class="edit_accepted_user_friendship" id="<%= friendship.id %>" method="post">
+					            <div style="margin:0;padding:0;display:inline">
+					              <input name="utf8" type="hidden" value="✓">
+					              <input name="_method" type="hidden" value="delete">
+					              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+					            </div>
+					            <input class="button radius tiny" name="commit" type="submit" value="Remove">
+				            </form>
+						</div>
+						<div class="accepted-friend">
+							<form accept-charset="UTF-8" action="<%= block_user_friendship_path(friendship) %>" class="block_requested_user_friendship" id="<%= friendship.id %>" method="post">
+					            <div style="margin:0;padding:0;display:inline">
+					              <input name="utf8" type="hidden" value="✓">
+					              <input name="_method" type="hidden" value="put">
+					              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+					            </div>
+					            <input class="button radius tiny" name="commit" type="submit" value="Block">
+				        	</form>
+						</div>
 					</div>
 				</div>
 
