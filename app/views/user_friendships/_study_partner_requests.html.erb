@@ -1,5 +1,5 @@
 <% if current_user.requested_user_friendships.any? %>
-  <% @user_friendships.each do |friendship| %>
+  <% current_user.user_friendships.each do |friendship| %>
     <% if friendship.requested? %>
       <div class="requested">
 

@@ -9,6 +9,7 @@ class UserFriendshipsController < ApplicationController
 		@user_friendship = current_user.user_friendships.find(params[:id])
 		if @user_friendship.accept!
 			respond_to do |format|
+				format.html {redirect_to user_friendships_path}
 				format.js
 			end
 		end
