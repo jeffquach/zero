@@ -7,14 +7,13 @@ class UserFriendship < ActiveRecord::Base
 	after_destroy :delete_mutual_friendship!
 
 	state_machine :state, initial: :pending do 
-		
+		after_transition on: :accept, do: [:accept_mutual_friendship!]
 		state :requested
 
 		event :accept do
 			transition any => :accepted
 		end
 	end
-	
 
 	def self.request(user1, user2)
 		transaction do
@@ -46,8 +45,7 @@ class UserFriendship < ActiveRecord::Base
 
 	def accept_mutual_friendship!
 		#Grab the mutual friendship and update the state without using the state machine so as not to invoke callbacks
-		mutual_friendship = self.class.where({user_id: friend_id, friend_id: user_id}).first
-		mutual_friendship.update_attribute(:state, 'accpeted')
+		mutual_friendship.update_attribute(:state, 'accepted')
 	end
 
 	def delete_mutual_friendship!
