@@ -58,11 +58,10 @@ $(document).ready(function(){
       dataType: 'script',
       success: function(data){
         console.log(data);
-        _this.closest(".requested").remove();
+        _this.closest(".requested, .blocked").remove();
         if ($(".study-partner-requests").children().length === 0) {
           $(".study-partner-requests").html("<h4>You have no pending requests!</h4>")
         };
-
       }
     });
   });

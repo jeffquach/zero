@@ -20,7 +20,7 @@
             <input class="button radius tiny" name="commit" type="submit" value="Accept Friendship">       
           </form>
 
-                    <form accept-charset="UTF-8" action="<%= user_friendship_path(friendship) %>" class="delete_pending_user_friendship" id="<%= friendship.id %>" method="post">
+          <form accept-charset="UTF-8" action="<%= user_friendship_path(friendship) %>" class="delete_pending_user_friendship" id="<%= friendship.id %>" method="post">
             <div style="margin:0;padding:0;display:inline">
               <input name="utf8" type="hidden" value="✓">
               <input name="_method" type="hidden" value="delete">

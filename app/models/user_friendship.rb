@@ -12,6 +12,8 @@ class UserFriendship < ActiveRecord::Base
 
 		after_transition on: :block, do: [:block_mutual_friendship!]
 
+		after_transition on: :unblock, do: [:accept_mutual_friendship!]
+
 		state :requested
 		state :blocked
 
@@ -21,6 +23,10 @@ class UserFriendship < ActiveRecord::Base
 
 		event :block do
 			transition any => :blocked
+		end
+
+		event :unblock do
+			transition any => :accepted
 		end
 	end
 

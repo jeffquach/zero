@@ -296,9 +296,13 @@ table{
   float:left;
 }
 
-.pending-friend, .requested-friend{
+.pending-friend{
   float:left;
   padding: 18px;
+}
+
+.requested-friendship{
+  padding: 10px;
 }
 
 .accepted-avatar, .blocked-avatar{
