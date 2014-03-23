@@ -64,6 +64,26 @@ $(document).ready(function(){
         };
 
       }
-    })
-  })
+    });
+  });
+
+  $(".block_requested_user_friendship").on("submit", function(event){
+    event.preventDefault();
+    var _this = $(this);
+    var friend = _this.attr('id');
+
+    $.ajax({
+      url: "/user_friendships/"+friend+"/block",
+      data: {'_method':'put'},
+      dataType: 'script',
+      method: "POST",
+      success: function(data){
+        console.log(data);
+        _this.closest('.accepted').remove();
+        if($(".accepted-study-partners").children().length < 1){
+          $(".accepted-study-partners").html("<h4>You have no study partners!</h4>");
+        }
+      }
+    });
+  });
 });

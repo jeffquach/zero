@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
 
 	has_many :accepted_friends, through: :accepted_user_friendships, source: :friend
 
+	has_many :blocked_user_friendships, -> {where state: 'blocked'}, class_name: 'UserFriendship', foreign_key: :user_id
+
+	has_many :blocked_friends, through: :blocked_user_friendships, source: :friend
+
 	has_many :meetups, through: :invitees, dependent: :destroy
 
 	has_many :comments, dependent: :destroy
