@@ -41,22 +41,25 @@ $(document).ready(function(){
       }
     });
   });
+
+  $(".edit_requested_user_friendship").on("submit", function(event){
+    event.preventDefault();
+    var _this = $(this);
+    var friend = _this.attr('id');
+
+    $.ajax({
+      url: "/user_friendships/"+friend,
+      data: {'_method':'put'},
+      method: "POST",
+      dataType: 'script',
+      success: function(data){
+        console.log(data);
+        _this.closest(".requested").remove();
+        if ($(".study-partner-requests").children().length === 0) {
+          $(".study-partner-requests").html("<h4>You have no pending requests!</h4>")
+        };
+
+      }
+    })
+  })
 });
-
-// $(document).ready(function(){
-// 	$("#new_user_friendship").on("ajax:success", function(event, data){
-// 		console.log(data);
-// 		$(".friend-request-form").html("<p>Friend request sent</p>")
-// 	})
-// })
-
-
-// $(document).ready(function(){
-
-//   $("#add-friend").on("ajax:success", function(event, data){
-//     console.log("here");
-//     console.log(data);
-//     $(".friend-status").html("<p>Friend Request Sent</p>");
-//   });
-
-// });

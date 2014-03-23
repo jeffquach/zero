@@ -1,0 +1,12 @@
+<% if current_user.accepted_friends.any? %>
+	<% current_user.user_friendships.each do |friendship| %>
+		<% if friendship.accepted? %>
+		  <%= render "friend_avatar", object: friendship.friend %>
+		  <h4><%= friendship.friend.full_name %></h4>
+		  - <em>Friendship started <%= friendship.updated_at %>.</em> <%= link_to "Update
+		   friendship", edit_user_friendship_path(friendship) %>
+		<% end %>
+	<% end %> 
+<% else %>
+	<h4>yo haters!</h4>
+<% end %>

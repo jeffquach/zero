@@ -22,11 +22,7 @@ Mindmeetup::Application.routes.draw do
     end
   end
 
-  resources :user_friendships do
-    member do
-      put :accept
-    end        
-  end
+  resources :user_friendships 
 
 
   resources :meetups do
