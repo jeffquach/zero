@@ -5,7 +5,12 @@
 
 
   <% if params[:search] && params[:search][:city_search] && params[:search][:learning_search] %>
-    <h2 class="user-title">Found users</h2>
+   <div class="user-title"><div class="user-found">Found users</div><div id="search-box"><span id="search-button">Advanced search</span></div></div>
+
+   <div id="search-form" style="display:none;">
+     Blang blang son!
+   </div>
+    
     <% @users.each do |user| %>
     <li>
 

@@ -28,10 +28,11 @@ class UsersController < ApplicationController
     else
       redirect_to root_url
     end
+    @search = User.search(params[:q])
+    @users_search = @search.result
   end
 
   def home
-    
   end
 
   def show

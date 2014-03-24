@@ -130,6 +130,7 @@ box-shadow: 0 0 13px #888;
 
 .user-title{
   text-align: center;
+  font-size: 36px;
 }
 
 hr{
@@ -313,3 +314,36 @@ table{
   padding: 5px;
   float:left;
 }
+
+.user-found{
+
+}
+
+#search-box{
+  font-size: 23px;
+}
+
+#search-button{
+  background-color: orange;
+  padding: 0.6em;
+  margin-right: 21.8em;
+  border: 0.1em solid orange;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#search-form{
+    display:block;
+    float:left;
+    padding:8px;
+    margin:10px 20px 10px 20px;
+    border:1px solid red;
+    width:29.5em;
+    height:27em;
+    background-color:#000000;
+    color:white;
+    position:absolute;
+  }
+
+
