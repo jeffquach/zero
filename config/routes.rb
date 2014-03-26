@@ -22,6 +22,10 @@ Mindmeetup::Application.routes.draw do
     end
   end
 
+  resources :subjects 
+
+  resources :topics
+  
   resources :user_friendships do
     member do
       put :block

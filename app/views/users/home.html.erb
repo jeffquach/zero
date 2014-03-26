@@ -12,9 +12,16 @@
 		  <p>
 
 		    <%= f.text_field :city_search, placeholder: "Type in a location" %>
-		    <%= f.select :learning_search, options_for_select([ "Javascript", "Ruby on Rails", "Python", "jQuery", "C++", "HTML & CSS", "PHP", "Biology", "Calculus", "Linear Algebra", "Differential Equations", "Physics", "Chemistry", "Medicine", "Statistics", "Electronics", "Android Development", "iOS Development", "Google Glass Development", "Tesla Development", "SmartThings Development", "Occulus Rift Development", "Emotiv Development", "Meta Developers", "Raspberry Pi Development" ]) %> 
+
+		    <%= f.fields_for :subjects do |l| %>
+
+			    <%= l.select :subject_search, options_for_select([ "Javascript", "Ruby on Rails", "Python", "jQuery", "C++", "HTML & CSS", "PHP", "Biology", "Calculus", "Linear Algebra", "Differential Equations", "Physics", "Chemistry", "Medicine", "Statistics", "Electronics", "Android Development", "iOS Development", "Google Glass Development", "Tesla Development", "SmartThings Development", "Occulus Rift Development", "Emotiv Development", "Meta Developers", "Raspberry Pi Development" ]) %> 	
+
+		    <% end %>
+
 		    <div><%= f.submit "Search users", class: "button expand radius", id: "home-search" %></div>
 		  </p>
+
 
 		<% end %>
 

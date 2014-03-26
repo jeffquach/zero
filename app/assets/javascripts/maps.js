@@ -54,7 +54,7 @@ function addEventToMarker(marker, user_id) {
 $(document).ready(function(){
 	if ($('#map-canvas').length > 0){
 		initialize();
-		if(coords.length > 0) addMarkers(coords);
+		// if(coords.length > 0) addMarkers(coords);
 	}
 
 });

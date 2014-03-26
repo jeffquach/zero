@@ -40,7 +40,7 @@
           <li><%= link_to "Log out", logout_path %></li>
           <li><%= link_to "Meetups", meetups_path %></li>
           <li class="has-dropdown">
-            <% if current_user.address && current_user.first_name && current_user.last_name && current_user.city && current_user.state_province && current_user.country && current_user.learning %>
+            <% if current_user.address && current_user.first_name && current_user.last_name && current_user.city && current_user.state_province && current_user.country %>
             <%= link_to "Account", "#" %>
             <% end %>
             <ul class="dropdown">
@@ -48,6 +48,7 @@
               <li><%= link_to "Study Partners", user_friendships_path %></li>
               <li><%= link_to "Search", users_path %></li>
               <li><%= link_to "User info", edit_user_path(current_user) %></li>
+              <li><%= link_to "Learning", new_topic_path %></li>
               <li><%= link_to "Meetup info", edit_meetup_info_user_path(current_user) %>
             </ul>
           </li>
@@ -126,6 +127,8 @@
 
     <%= yield %>
     <%= javascript_include_tag "application" %>
+
+    <%= params %>
     
   </body>
 </html>

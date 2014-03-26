@@ -14,9 +14,12 @@ class User < ActiveRecord::Base
 	validates :city, presence: true
 	validates :state_province, presence: true
 	validates :country, presence: true
-	validates :learning, presence: true
 	geocoded_by :full_address
 	after_validation :geocode
+
+	has_many :topics
+
+	has_many :subjects, through: :topics
 
 	has_many :invitees
 	

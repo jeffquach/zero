@@ -7,7 +7,6 @@ FactoryGirl.define do
 		city "Toronto"
 		state_province "ON"
 		country "Canada"
-		learning "Javascript"
 		password "tingzaregood"
 		password_confirmation "tingzaregood"
 	end
@@ -35,6 +34,16 @@ FactoryGirl.define do
 	factory :review do
 		content "This guy is good meng!"
 		user
+	end
+
+	factory :subject do
+		name "Computer science"
+	end
+
+	factory :topic do
+		name "Javascript"
+		user
+		subject
 	end
 end
 

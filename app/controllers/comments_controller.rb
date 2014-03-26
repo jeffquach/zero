@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
 	before_action :find_comment, only: [:edit,:destroy,:update]
 	
 	def create
-		
 		@comment = @meetup.comments.build(comment_params)
 		@comment.user = current_user
 		@comment.user_id = current_user.id
