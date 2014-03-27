@@ -13,7 +13,9 @@
 
 		    <%= text_field_tag :city_search, nil, placeholder:"Type in a location" %>
 
-		    <%= select_tag :subject_search, options_from_collection_for_select(Subject.all, :id, :name) %>
+		    <%= select_tag :subject_search, options_from_collection_for_select(Subject.all, :id, :name), prompt: "Select subject" %>
+
+		    <%= select_tag :topic_search, options_for_select(Topic.order('lower(name) ASC').pluck(:name).uniq), prompt: "Select topic" %>
 
 		    <div><%= submit_tag "Search users", class: "button expand radius", id: "home-search" %></div>
 		  </p>
