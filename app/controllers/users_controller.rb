@@ -19,8 +19,9 @@ class UsersController < ApplicationController
   end
 
   def index
-    if params[:search] && params[:search][:city_search] && params[:search][:subject_search]
-      @users = User.near(params[:search][:city_search],100).where("learning ILIKE ?",params[:search][:learning_search])
+    if params[:city_search] && params[:subject_search]
+      @users = User.near(params[:city_search],100).includes(:subjects).where("subjects.id = ?", params[:subject_search]).references(:subjects)
+      Rails.logger.info "TELL me what this is #{@users.inspect}"
       if @users.empty?
         flash[:alert] = "No users found"
         redirect_to root_url and return
@@ -28,15 +29,13 @@ class UsersController < ApplicationController
     else
       redirect_to root_url
     end
-    @search = User.search(params[:q])
-    @users_search = @search.result
   end
 
   def home
   end
 
   def show
-    # @nearbys = @user.nearbys(10, units: :km).where("learning ILIKE ?", @user.learning)
+    @nearbys = @user.nearbys(10, units: :km).joins(:topics).where("name ILIKE ?", @user.topics.first.name)
 
     @friends = @user.friends
     @review = Review.new(user_id: @user.id)

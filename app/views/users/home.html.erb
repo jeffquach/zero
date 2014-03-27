@@ -8,18 +8,14 @@
 <div class="home-sidebar">
 	<div class="text-center"><h3><em>Learn with people nearby</em></h3></div>
 
-		<%= form_for :search, url: users_path, method: :get do |f| %>
+		<%= form_tag users_path, method: :get do %>
 		  <p>
 
-		    <%= f.text_field :city_search, placeholder: "Type in a location" %>
+		    <%= text_field_tag :city_search, nil, placeholder:"Type in a location" %>
 
-		    <%= f.fields_for :subjects do |l| %>
+		    <%= select_tag :subject_search, options_from_collection_for_select(Subject.all, :id, :name) %>
 
-			    <%= l.select :subject_search, options_for_select([ "Javascript", "Ruby on Rails", "Python", "jQuery", "C++", "HTML & CSS", "PHP", "Biology", "Calculus", "Linear Algebra", "Differential Equations", "Physics", "Chemistry", "Medicine", "Statistics", "Electronics", "Android Development", "iOS Development", "Google Glass Development", "Tesla Development", "SmartThings Development", "Occulus Rift Development", "Emotiv Development", "Meta Developers", "Raspberry Pi Development" ]) %> 	
-
-		    <% end %>
-
-		    <div><%= f.submit "Search users", class: "button expand radius", id: "home-search" %></div>
+		    <div><%= submit_tag "Search users", class: "button expand radius", id: "home-search" %></div>
 		  </p>
 
 

@@ -4,7 +4,7 @@
   <ul id="users-map">
 
 
-  <% if params[:search] && params[:search][:city_search] && params[:search][:learning_search] %>
+  <% if params[:city_search] && params[:subject_search] %>
    <div class="user-title"><div class="user-found">Found users</div><div id="search-box"><span id="search-button">Advanced search</span></div></div>
 
    <div id="search-form" style="display:none;">
@@ -20,7 +20,8 @@
           <%= image_tag "default.png", class: "avatar-image" %>
         <% end %>
         <%= link_to user.first_name, user %>
-        <%= "is #{user.distance.round(2)} miles away." %>
+      
+        <%= "is #{user.distance_to(params[:city_search]).round(2)} miles away." %> 
         <% if user.admin? && !current_user %>
           | <%= link_to "Delete", user, confirm: "Are you sure?", method: :delete %>
 
@@ -46,4 +47,5 @@
   var showMarker = false;
 
   var coords = <%= raw @users.map{|user| {latitude: user.latitude, longitude: user.longitude, id: user.id}}.to_json %>;  
+
 <% end %>

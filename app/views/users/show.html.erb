@@ -211,7 +211,7 @@
   var longitude = <%= @user.longitude %>;
   var showMarker = true;
 
-  
+  var coords = <%= raw @nearbys.map{|user| {latitude: user.latitude, longitude: user.longitude, id: user.id}}.to_json %>;
 
 <% end %>
 
