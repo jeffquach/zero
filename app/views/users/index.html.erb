@@ -21,7 +21,12 @@
           <% end %>
           <%= link_to user.first_name, user %>
         
-          <%= "is #{user.distance_to(params[:city_search]).round(2)} miles away." %> 
+          <% if @users.count > 1 %>
+
+            <%= "is #{user.distance_to(params[:city_search]).round(2)} miles away." %> 
+
+          <% end %>
+
           <% if user.admin? && !current_user %>
             | <%= link_to "Delete", user, confirm: "Are you sure?", method: :delete %>
 

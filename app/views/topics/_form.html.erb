@@ -9,8 +9,11 @@
 
 	<% end %>
 
-	<%= f.label :name, "Topic" %>
+	<%= f.label :name, "Topic", placeholder: "Enter a topic" %>
 	<%= f.text_field :name %>
+
+	<%= f.label :experience, "Level of expertise" %>
+	<%= f.select :experience, options_for_select(["Beginner","Novice","Intermediate","Advanced","Expert"]), prompt: "Select level of expertise" %>
 
 	<div class="text-center"><%= f.submit class: "button radius" %></div>
 

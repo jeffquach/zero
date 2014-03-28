@@ -52,8 +52,13 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      flash[:notice] = "You have updated your user information"
-      redirect_to @user
+      if !@user.subjects.any? || !@user.topics.any?
+        flash[:notice] = "You have updated your user information, please tell us what you're learning"
+        redirect_to new_topic_path
+      else
+        flash[:notice] = "You have updated your user information"
+        redirect_to edit_user_path(@user)
+      end
     else
       render :edit
     end
