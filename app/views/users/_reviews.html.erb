@@ -1,20 +1,25 @@
-<% @user.reviews.each do |review| %>
+<% if logged_in? %>
 
-	<% if logged_in? %>
+	<% @user.reviews.each do |review| %>
 
-	<p>Review: <%= review.content %> Written by: <%= current_user.first_name %> |
-	    <% if review.review_writer_id == current_user.id %>
+		
 
-	      <%= link_to "Edit", edit_user_review_path(@user,review) %> | 
-	      <%= link_to "Delete", user_review_path(@user,review), data: {confirm: "Are you sure?"}, method: :delete, remote: true %>
+		<p>Review: <%= review.content %> Written by: <%= current_user.first_name %> |
+		    <% if review.review_writer_id == current_user.id %>
 
-	    <% end %>
-	  </p>
+		      <%= link_to "Edit", edit_user_review_path(@user,review) %> | 
+		      <%= link_to "Delete", user_review_path(@user,review), data: {confirm: "Are you sure?"}, method: :delete, remote: true %>
+
+		    <% end %>
+		  </p>
+
 
 	<% end %>
 
+<% else %>
+
+	<h4>Sign up or log in to see reviews</h4>
 
 <% end %>
-
 
 
