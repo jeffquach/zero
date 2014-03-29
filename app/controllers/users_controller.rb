@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @nearbys = @user.nearbys(10, units: :km).joins(:topics).where("name ILIKE ?", @user.topics.first.name)
+    @nearbys = @user.nearbys(10, units: :km).joins(:topics).where("name ILIKE ?", @user.topics.first.name) if @user.topics.any?
 
     @friends = @user.friends
     @review = Review.new(user_id: @user.id)

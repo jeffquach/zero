@@ -32,17 +32,6 @@ ActiveRecord::Schema.define(version: 20140328031821) do
     t.datetime "updated_at"
   end
 
-  create_table "friendships", force: true do |t|
-    t.integer  "chosen_study_partner_id"
-    t.integer  "accepted_study_partner_id"
-    t.string   "status",                    default: "pending"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "friendships", ["accepted_study_partner_id"], name: "index_friendships_on_accepted_study_partner_id", using: :btree
-  add_index "friendships", ["chosen_study_partner_id"], name: "index_friendships_on_chosen_study_partner_id", using: :btree
-
   create_table "invitees", force: true do |t|
     t.integer  "user_id"
     t.integer  "meetup_id"
@@ -127,6 +116,7 @@ ActiveRecord::Schema.define(version: 20140328031821) do
     t.string   "has_pets"
     t.string   "can_host_pets"
     t.string   "can_host_children"
+    t.string   "description"
     t.string   "image"
     t.string   "currently_available"
     t.boolean  "study_location_available"

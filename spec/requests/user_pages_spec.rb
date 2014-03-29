@@ -3,8 +3,6 @@ require 'spec_helper'
 describe "UserPages" do
 
 	let(:user) {FactoryGirl.create(:user)}
-	let(:subject) {FactoryGirl.create(:subject)}
-	let(:topic) {FactoryGirl.create(:topic)}
 	
 	subject{page}
 
@@ -36,10 +34,29 @@ describe "UserPages" do
 		before do
 			visit root_path
 			fill_in "city_search", with: "Las Vegas"
-			select('Chemistry', :from => 'subject_search')
+			has_select?('subject_search',selected: "Chemistry")
+			has_select?('topic_search',selected: "Python")
 			click_button "Search users"
 		end
-		it{should have_content("No users found")}
+		# it {should have_content("No users found")}
+	end
+
+	describe "sending a friend request" do
+		let(:other_user) {FactoryGirl.create(:user)}
+		before do
+			visit root_path
+			user.activate!
+			click_link "Log in"
+			fill_in "Email", with: user.email
+			fill_in "Password", with: "tingzaregood" # Hardcoded the password to get this mother to work!
+			click_button "Log in"
+			visit user_path(user)
+			click_button "Send study partner request"
+		end
+		it {should have_content(other_user.first_name)}
+		it {should have_content("Reviews")}
+		it {should have_content("See full bio")}
+		it {should have_content("Study partner request sent")}
 	end
 end
 

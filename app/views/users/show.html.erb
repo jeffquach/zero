@@ -34,7 +34,7 @@
               <%= form_for current_user.user_friendships.build(friend_id: @user), method: :post do |f| %>
 
                 <%= f.hidden_field :friend_id, value: @user.id  %>      
-                <%= submit_tag "Send study partner request", class: "button radius tiny" %>
+                <%= f.submit "Send study partner request", class: "button radius tiny" %>
                 
               <% end %>
             <% end %>
@@ -211,7 +211,11 @@
   var longitude = <%= @user.longitude %>;
   var showMarker = true;
 
-  var coords = <%= raw @nearbys.map{|user| {latitude: user.latitude, longitude: user.longitude, id: user.id}}.to_json %>;
+  <% if @nearbys %>
+
+      var coords = <%= raw @nearbys.map{|user| {latitude: user.latitude, longitude: user.longitude, id: user.id}}.to_json %>;
+
+  <% end %>
 
 <% end %>
 
