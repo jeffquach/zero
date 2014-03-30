@@ -45,8 +45,8 @@ class TopicsController < ApplicationController
 	def destroy
 		if @edit_topic.destroy
 			respond_to do |format|
+				format.js
 				format.html {redirect_to new_topic_path}
-				format.js {redirect_to new_topic_path, alert: "You deleted a topic!"}
 			end
 		end
 	end

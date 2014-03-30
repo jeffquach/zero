@@ -2,12 +2,9 @@
 
 	<span class="subject-name"><%= subject.name %></span>
 
-	<%= link_to "Delete subject", subject, data: {confirm: "Are you sure?"}, method: :delete %>
-
 	<br>
 
 	<br>
-
 
 	<% current_user.topics.each do |topic| %>
 
@@ -17,7 +14,7 @@
 
 			<b>Experience:</b> <%= topic.experience %>
 
-			<%= link_to "Delete topic", topic, data: {confirm: "Are you sure?"}, method: :delete %>
+			<%= link_to "Delete topic", topic, class: "delete-topic", data: {confirm: "Are you sure?"}, method: :delete %>
 			
 			<br>
 		<% end %>

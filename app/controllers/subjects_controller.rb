@@ -17,16 +17,6 @@ class SubjectsController < ApplicationController
 		end
 	end
 
-	def destroy
-		@subject = Subject.find(params[:id])
-		if @subject.destroy
-			respond_to do |format|
-				format.html {redirect_to new_topic_path}
-				format.js {redirect_to new_topic_path, alert: "You deleted a subject"}
-			end
-		end
-	end
-
 	private
 	def subject_params
 		params.require(:subject).permit(:name, topics_attributes: [:id,:name,:user_id,:subject_id])

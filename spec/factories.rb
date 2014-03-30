@@ -36,7 +36,7 @@ FactoryGirl.define do
 		user
 	end
 
-	factory :subject do
+	factory :subjects do
 		name "Computer science"
 	end
 
@@ -45,6 +45,10 @@ FactoryGirl.define do
 		user
 		subject
 	end
+
+	factory :subject do
+    	name "Computer Science"
+  	end
 end
 
 

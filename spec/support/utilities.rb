@@ -9,7 +9,7 @@ def sign_in(user, options={})
     visit root_path
     click_link "Log in"
     fill_in "Email",    with: user.email
-    fill_in "Password", with: "tingzaregood"
+    fill_in "Password", with: "tingzaregood" # Have to hardcode this in when using sorcery
     click_button "Log in"
   end
 end
