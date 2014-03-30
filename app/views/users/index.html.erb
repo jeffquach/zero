@@ -8,7 +8,24 @@
    <div class="user-title"><div class="user-found">Found users</div><div id="search-box"><span id="search-button">Advanced search</span></div></div>
 
    <div id="search-form" style="display:none;">
-     Blang blang son!
+
+    <h3 class="text-center">Advanced Search</h3>
+
+    <%= form_tag users_path, method: :get do %>
+      <p>
+
+        <%= text_field_tag :city_search, nil, placeholder:"Type in a location" %>
+
+        <%= select_tag :subject_search, options_from_collection_for_select(Subject.all, :id, :name), prompt: "Select subject" %>
+
+        <%= select_tag :topic_search, options_for_select(Topic.order('lower(name) ASC').pluck(:name).uniq), prompt: "Select topic" %>
+
+        <%= select_tag :experience, options_for_select(["Beginner","Novice","Intermediate","Advanced","Expert"]), prompt: "Select level of expertise" %>
+
+        <div><%= submit_tag "Search users", class: "button expand radius", id: "home-search" %></div>
+      </p>
+
+     <% end %>
    </div>
 
       <% @users.each do |user| %>

@@ -26,6 +26,7 @@ class UsersController < ApplicationController
       @users = User.near(params[:city_search],100)
       @users = @users.includes(:subjects).where("subjects.id = ?", params[:subject_search]).references(:subjects) if params[:subject_search].present?
       @users = @users.joins(:topics).where('topics.name = ?', params[:topic_search]) if params[:topic_search].present?
+      @users = @users.where('topics.experience = ?', params[:experience]) if params[:experience].present?
       if @users.empty?
         flash[:alert] = "No users found"
         redirect_to root_url and return
