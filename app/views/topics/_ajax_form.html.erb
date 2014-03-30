@@ -6,7 +6,7 @@
 <% end %>
 
 <%= object.label :name, "Topic", placeholder: "Enter a topic" %>
-<%= object.text_field :name %>
+<%= object.text_field :name, value: "" %>
 
 <%= object.label :experience, "Level of expertise" %>
 <%= object.select :experience, options_for_select(["Beginner","Novice","Intermediate","Advanced","Expert"]), prompt: "Select level of expertise" %>

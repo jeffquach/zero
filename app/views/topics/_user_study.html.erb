@@ -1,0 +1,18 @@
+			<% current_user.subjects.uniq.each do |subject| %>
+
+	<h3><%= subject.name %> (<%= subject.id %>)</h3>
+
+	<% current_user.topics.each do |topic| %>
+
+		<% if topic.subject_id == subject.id %>
+			
+			<b>Topic:</b> <%= topic.name %>
+
+			<b>Experience:</b> <%= topic.experience %>
+			
+			<br>
+		<% end %>
+
+	<% end %>
+
+	<% end %>

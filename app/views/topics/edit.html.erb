@@ -5,7 +5,27 @@
 
 		<div class="text-center"><h1>Subjects I am studying</h1></div>
 
-		<%= render "form" %>
+		<div class="user-studying">
+			<%= render "user_study" %>
+		</div>
+
+
+
+		<div class="new-topic">
+
+		<%= form_for @topic do |f| %>
+
+			<%= render "shared/error_messages", object: f.object %>
+
+			<div class="topic-form">
+				<%= render "ajax_form", object: f %>
+			</div>
+
+			<div class="text-center"><%= f.submit class: "button radius" %></div>
+
+		<% end %>
+
+		</div>
 
 	</div>
 </div>

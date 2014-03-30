@@ -13,7 +13,7 @@ class TopicsController < ApplicationController
 		@topic.subject_id = params[:subject][:id]
 		if @topic.save
 			flash[:success] = "Success!"
-			render :new
+			redirect_to edit_topic_path(current_user)
 		else
 			flash[:error] = "Error!"
 			render :new
@@ -21,13 +21,19 @@ class TopicsController < ApplicationController
 	end
 
 
-	def edit	
+	def edit
+		@topic = Topic.new
+		@subjects = current_user.subjects.map(&:topics)
+		@topic.build_subject
 	end
 
 	def update
-		if @topic.update_attributes(topic_params)
-			flash[:success] = "You have updated your learning information"
-			render :edit
+		@user = User.find(params[:id])
+		if @edit_topic.update_attributes(topic_params)
+			respond_to do |format|
+				format.html {render :edit}
+				format.js {render :edit, success: "You have updated your learning information"}
+			end
 		else
 			render :edit
 		end
@@ -42,10 +48,10 @@ class TopicsController < ApplicationController
 
 	private
 	def topic_params
-		params.require(:topic).permit(:name,:subject_id,:user_id, :experience,  subjects_attributes: [:name])
+		params.require(:topic).permit(:name,:subject_id,:user_id, :experience,  subject_attributes: [:name])
 	end
 
 	def find_topic
-		@topic = Topic.find(params[:id])
+		@edit_topic = Topic.find(params[:id])
 	end
 end

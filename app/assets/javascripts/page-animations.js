@@ -26,6 +26,12 @@
 		});
 	}
 
+	$(document).ready(function(){
+		$(".edit-topic").submit(function(){
+			$(".new-topic").remove();
+		})
+	})
+
 }());
 
 

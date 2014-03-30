@@ -1,0 +1,27 @@
+<%= form_for @topic do |f| %>
+	
+	<%= render "shared/error_messages", object: f.object %>
+
+
+			<% @user.topics.each do |t| %>
+
+			<%= f.fields_for :subject do |s| %>
+
+				<%= s.label :name, "Subject" %>
+				<%= collection_select :subject, :id, Subject.all, :id, :name, {prompt:"Select subject"} %>
+
+			<% end %>
+
+		<%= f.label :name, "Topic", placeholder: "Enter a topic" %>
+		<%= f.text_field :name, value: t.name %>
+
+		<%= f.label :experience, "Level of expertise" %>
+		<%= f.select :experience, options_for_select(["Beginner","Novice","Intermediate","Advanced","Expert"]), prompt: t.experience %>
+
+	<% end %>
+
+	<% end %>
+
+	<div class="text-center"><%= f.submit class: "button radius" %></div>
+
+<% end %>
