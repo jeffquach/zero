@@ -19,11 +19,13 @@ class UsersController < ApplicationController
   end
 
   def index
-    if params[:city_search].blank? || params[:subject_search].blank? || params[:topic_search].blank?
+    if params[:city_search].blank?
       flash[:alert] = "The search field cannot be blank!"
       redirect_to root_url and return
     elsif params[:city_search] && params[:subject_search] && params[:topic_search]
-      @users = User.near(params[:city_search],100).includes(:subjects).where("subjects.id = ?", params[:subject_search]).references(:subjects).joins(:topics).where('topics.name = ?', params[:topic_search])
+      @users = User.near(params[:city_search],100)
+      @users = @users.includes(:subjects).where("subjects.id = ?", params[:subject_search]).references(:subjects) if params[:subject_search].present?
+      @users = @users.joins(:topics).where('topics.name = ?', params[:topic_search]) if params[:topic_search].present?
       if @users.empty?
         flash[:alert] = "No users found"
         redirect_to root_url and return
