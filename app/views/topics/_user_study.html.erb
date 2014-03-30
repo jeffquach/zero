@@ -1,6 +1,13 @@
-			<% current_user.subjects.uniq.each do |subject| %>
+<% current_user.subjects.uniq.each do |subject| %>
 
-	<h3><%= subject.name %> (<%= subject.id %>)</h3>
+	<span class="subject-name"><%= subject.name %></span>
+
+	<%= link_to "Delete subject", subject, data: {confirm: "Are you sure?"}, method: :delete %>
+
+	<br>
+
+	<br>
+
 
 	<% current_user.topics.each do |topic| %>
 
@@ -9,10 +16,14 @@
 			<b>Topic:</b> <%= topic.name %>
 
 			<b>Experience:</b> <%= topic.experience %>
+
+			<%= link_to "Delete topic", topic, data: {confirm: "Are you sure?"}, method: :delete %>
 			
 			<br>
 		<% end %>
 
 	<% end %>
 
-	<% end %>
+	<hr>
+
+<% end %>

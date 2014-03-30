@@ -5,9 +5,12 @@
 
 		<div class="text-center"><h1>Subjects I am studying</h1></div>
 
-		<div class="user-studying">
+		<div id="user-studying">
 			<%= render "user_study" %>
 		</div>
+
+		
+		<h3>Add a topic</h3>
 
 		<%= form_for @topic do |f| %>
 
@@ -20,6 +23,9 @@
 			<div class="text-center"><%= f.submit class: "button radius" %></div>
 
 		<% end %>
+
+
+
 
 	</div>
 </div>

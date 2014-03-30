@@ -24,7 +24,6 @@ class UsersController < ApplicationController
       redirect_to root_url and return
     elsif params[:city_search] && params[:subject_search] && params[:topic_search]
       @users = User.near(params[:city_search],100).includes(:subjects).where("subjects.id = ?", params[:subject_search]).references(:subjects).joins(:topics).where('topics.name = ?', params[:topic_search])
-      Rails.logger.info "TELL me what this is #{@users.inspect}"
       if @users.empty?
         flash[:alert] = "No users found"
         redirect_to root_url and return

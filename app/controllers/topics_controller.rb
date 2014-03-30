@@ -12,11 +12,14 @@ class TopicsController < ApplicationController
 		@topic.user_id = current_user.id
 		@topic.subject_id = params[:subject][:id]
 		if @topic.save
-			flash[:success] = "Success!"
-			redirect_to edit_topic_path(current_user)
+			respond_to do |format|
+				format.js
+				format.html {redirect_to new_topic_path}
+			end
 		else
-			flash[:error] = "Error!"
-			render :new
+			respond_to do |format|
+				format.html {render :new, error: "There was an error saving your data"}
+			end
 		end
 	end
 
@@ -40,9 +43,11 @@ class TopicsController < ApplicationController
 	end
 
 	def destroy
-		if @topic.destroy
-			flash[:alert] = "You deleted a topic!"
-			redirect_to @user
+		if @edit_topic.destroy
+			respond_to do |format|
+				format.html {redirect_to new_topic_path}
+				format.js {redirect_to new_topic_path, alert: "You deleted a topic!"}
+			end
 		end
 	end
 
