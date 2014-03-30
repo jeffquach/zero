@@ -18,6 +18,7 @@ class TopicsController < ApplicationController
 			end
 		else
 			respond_to do |format|
+				format.js
 				format.html {render :new, error: "There was an error saving your data"}
 			end
 		end
@@ -46,7 +47,12 @@ class TopicsController < ApplicationController
 		if @edit_topic.destroy
 			respond_to do |format|
 				format.js
-				format.html {redirect_to new_topic_path}
+				format.html {render :new}
+			end
+		else
+			respond_to do |format|
+				format.js
+				format.html {render :new}
 			end
 		end
 	end

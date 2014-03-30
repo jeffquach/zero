@@ -11,16 +11,16 @@ describe "UserPages" do
 		specify{expect(response).to redirect_to(login_path)}
 	end
 
-	# describe "a user trying to change another user's information" do
-	# 	let(:other_user) {FactoryGirl.create(:user, email: "sumting@wong.com")}
-	# 	before do
-	# 		sign_in user
-	# 		get edit_user_path(other_user)
-	# 	end
-	# 	specify{expect(response).to redirect_to(login_path)}
-	# 	before{delete user_path(other_user)}
-	# 	specify{expect(response).to redirect_to(login_path)}
-	# end
+	describe "a user trying to change another user's information" do
+		let(:other_user) {FactoryGirl.create(:user, email: "sumting@wong.com")}
+		before do
+			sign_in user
+			get edit_user_path(other_user)
+		end
+		specify{expect(response).to redirect_to(login_path)}
+		before{delete user_path(other_user)}
+		specify{expect(response).to redirect_to(login_path)}
+	end
 
 	describe "entering invalid information when searching for a user on the home page" do
 		before do
@@ -33,9 +33,10 @@ describe "UserPages" do
 	describe "when a user is not found" do
 		before do
 			visit root_path
+			FactoryGirl.create_list(:subject, 1)
 			fill_in "city_search", with: "Las Vegas"
-			has_select?('subject_search',selected: "Chemistry")
-			has_select?('topic_search',selected: "Python")
+			select "Computer Science", from: "subject_search"
+			select "Ruby", from: "topic_search"
 			click_button "Search users"
 		end
 		# it {should have_content("No users found")}

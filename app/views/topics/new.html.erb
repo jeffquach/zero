@@ -14,7 +14,7 @@
 
 		<%= form_for @topic do |f| %>
 
-			<%= render "shared/error_messages", object: f.object %>
+			<div class="topic-errors"><%= render "topic_errors" %></div>
 
 			<div class="topic-form">
 				<%= render "ajax_form", object: f %>

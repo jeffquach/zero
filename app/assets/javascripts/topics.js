@@ -14,5 +14,23 @@ $(document).ready(function(){
 			}
 		});
 	});
+
+	$(".delete-topic").on("click",function(e){
+		e.preventDefault();
+		var _this = $(this);
+		var topic_id = _this.attr('href');
+
+		$.ajax({
+			url: topic_id,
+			data: {"_method":"delete"},
+			method: "POST",
+			dataType: "script",
+			success: function(data){
+				console.log(data);
+				_this.remove();
+			}
+		});
+	});
 });
+
 

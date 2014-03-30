@@ -1,2 +1,5 @@
-$("#user-studying").html("<%= escape_javascript(render "user_study") %>");
-
+<% if @topic.errors.any? %>
+	$(".topic-errors").html("<%= escape_javascript(render "topic_errors") %>");
+<% else %>
+	$("#user-studying").html("<%= escape_javascript(render "user_study") %>");
+<% end %>
