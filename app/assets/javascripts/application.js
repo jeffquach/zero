@@ -12,16 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
 //= require jquery.ui.datepicker
 //= require jquery.ui.tooltip
 //= require jquery-ui-1.10.4.custom.min
 //= require jquery.timepicker.min
+//= require bootstrap/dropdown
+//= require bootstrap/modal
 //= require_tree .
 
 
 $(document).ready(function(){
-	$(document).foundation();
 	setTimeout(function(){$('.alerts').remove();}, 3500);
 	$('#meetup_start_time').datepicker();
 	$('#meetup_end_time').datepicker();

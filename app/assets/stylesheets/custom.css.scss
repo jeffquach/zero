@@ -1,7 +1,49 @@
+@import "bootstrap";
+
+.name{
+  padding: 13px 0 0 20px;
+  font-size: 23px;
+  background-color: none;
+}
+
+.navbar {
+  margin: 0;
+  height: 60px;
+}
+
+nav{
+  height: 100px;
+}
+
+.navbar-nav{
+  margin: 0 -15px;
+  background-color: #222222;
+}
+
+.navbar-inverse .navbar-collapse{
+  padding-top: 3px;
+}
+
+a{
+  color: #999999;
+  &:hover{
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus{
+  background-color: #222222;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: black;
+}
+
 #logged-in{
   color: #fff;
-  padding: 10px;
-  font-size: 15px;
+  padding: 14px 10px 5px 0;
+  font-size: 16px;
 }
 
 footer{
@@ -156,8 +198,8 @@ hr{
 
 .home-sidebar{
   margin: 11em 4em 10em 3em;
-  posion: relative;
-  z-index: 1000;
+  position: relative;
+  z-index: 500;
   padding: 20px;
   background-color: white;
   overflow: auto;
@@ -347,7 +389,7 @@ table{
     position:absolute;
   }
 
-
 .subject-name{
   font-size: 23px;
 }
+

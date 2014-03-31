@@ -1,5 +1,10 @@
 $(document).ready(function(){
-	$(".login-window").click(function(){
+	$(".login-window").on("click",function(){
+		$("body").css({"background-color":"black","z-index":"2333"})
+		.click(function(){
+			$("body").removeAttr("style");
+			$(".login-popup").fadeOut(300);
+		}); 
 		var loginBox = $(this).attr('href');
 		$(loginBox).fadeIn(300);
 
@@ -8,15 +13,14 @@ $(document).ready(function(){
 
 		$(loginBox).css({'margin-top':-popupMarginTop,'margin-left':-popupMarginLeft});
 
-		$('body').append('<div id="mask"></div>');
-		$("#mask").fadeIn(300); 
+		$("body").append('<div id="mask-thing"></div>');
 
 		return false;
 
 	});
-	$(".close, #mask").on("click", function(){
-		$("#mask, .login-popup").fadeOut(300, function(){
-			$("#mask").remove();
+	$(".close, #mask-thing").on("click", function(){
+		$("#mask-thing, .login-popup").fadeOut(300, function(){
+			$("#mask-thing").remove();
 		});
 		return false;
 	});

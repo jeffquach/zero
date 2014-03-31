@@ -6,7 +6,7 @@ gem 'rails', '4.0.3'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
-gem 'foundation-rails'
+gem 'bootstrap-sass', '~> 3.1.1'
 gem 'sorcery'
 gem 'faker'
 gem 'geocoder'

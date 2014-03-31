@@ -9,8 +9,6 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require foundation_and_overrides
- *= require foundation
  *= require jquery.ui.datepicker
  *= require jquery.ui.tooltip
  *= require jquery-ui-1.10.4.custom.min
@@ -18,4 +16,4 @@
  *= require_tree .
  */
 
- @import "foundation_and_overrides";
+
