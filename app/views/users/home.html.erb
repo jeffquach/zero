@@ -1,28 +1,50 @@
-<% provide(:title, "All users") %>
+<% provide(:title, "All users") %>	
 
+<div class="jumbotron">
 
-<div class="small-12 large-5 large-push-1 medium-6 columns">
-<div class="home-sidebar">
-	<div class="text-center"><h3><em>Learn with people nearby</em></h3></div>
-
-		<%= form_tag users_path, method: :get do %>
-		  <p>
-
-		    <%= text_field_tag :city_search, nil, placeholder:"Type in a location" %>
-
-		    <%= select_tag :subject_search, options_from_collection_for_select(Subject.all, :id, :name), prompt: "Select subject" %>
-
-		    <%= select_tag :topic_search, options_for_select(Topic.order('lower(name) ASC').pluck(:name).uniq), prompt: "Select topic" %>
-
-		    <div><%= submit_tag "Search users", class: "button expand radius", id: "home-search" %></div>
-		  </p>
-
-
-		<% end %>
-
-</div>
-</div>
-<div class="text-center" id="home-heading">
-	<span id="headliner">Find a study partner.</span>
+				<div class="tingz">
+   <div>
+     <%= image_tag "math-notebook.jpg", alt: "calculator", class: "img-responsive" %>
+   </div>
+   <div>
+     <%= image_tag "stuff.jpg", alt: "pens", class: "img-responsive" %>
+   </div>
+   <div class="squish">
+   	<%= image_tag "people-study2.jpg", alt: "studying", class: "img-responsive" %>
+   </div>
 </div>
 
+	<div class="container">
+
+		<div class="col-md-4">
+			<div class="home-sidebar">
+			<div class="text-center"><h3 class="sidebar-title"><em>Learn with people nearby</em></h3></div>
+
+				<%= form_tag users_path, class: "form-signin", role: "form", method: :get do %>
+				  <p>
+
+				    <%= text_field_tag :city_search, nil, class: "form-control", placeholder:"Type in a location" %>
+
+				    <br>
+
+				    <%= select_tag :subject_search, options_from_collection_for_select(Subject.all, :id, :name), class: "form-control", prompt: "Select subject" %>
+
+				    <br>
+
+				    <%= select_tag :topic_search, options_for_select(Topic.order('lower(name) ASC').pluck(:name).uniq), class: "form-control", prompt: "Select topic" %>
+
+				    <br>
+
+				    <div><%= submit_tag "Search users", class: "btn btn-lg btn-primary btn-block", id: "home-search" %></div>
+				  </p>
+
+
+				<% end %>
+
+			</div>
+		</div>
+		<div class="col-md-8 col-xs-12" id="home-heading">
+			<span id="headliner">Find a study partner.</span>
+		</div>
+	  </div>
+</div>

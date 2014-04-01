@@ -27,6 +27,16 @@ $(document).ready(function(){
 	$('#meetup_end_time').datepicker();
 	$('#meetup-start').timepicker({ 'scrollDefaultNow': true });
 	$('#meetup-end').timepicker({ 'scrollDefaultNow': true });
+
+	$(".tingz > div:gt(0)").hide();
+
+	setInterval(function() { 
+	  $('.tingz > div:first').fadeOut(1000)
+	    .next()
+	    .fadeIn(1000)
+	    .end()
+	    .appendTo('.tingz');
+	},  3000);
 })
 
 // $('.input-append').fdatepicker('show');
