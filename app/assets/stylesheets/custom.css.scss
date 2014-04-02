@@ -90,10 +90,6 @@ a{
   padding: 10px 0 10px 0;
 }
 
-.home-container{
-  height: 468px;
-}
-
 .jumbotron {
   background: transparent;
   padding: 50px 0 0 0;
@@ -101,15 +97,17 @@ a{
 
 .jumbotron{
   padding-bottom: 0;
-  height: 500px;
+}
+
+.feature-headline{
+  padding: 50px;
 }
 
 @media all and (max-width: 1280px) and (min-width: 700px){
   .tingz{
-    z-index: -1000;
-    position: fixed;
+    position: relative;
     width: 100%;
-    height: 100%;
+    height: 70%;
     min-width: 60%;
     background-size: 100% auto;
   }
@@ -128,7 +126,7 @@ a{
 }
 
 #home-heading{
-  margin: 4em 0 13em 0;
+  margin: 4em 0 0 0;
   text-align:center;
   font-size: 3.5em;
 }
@@ -143,6 +141,41 @@ a{
 
 .tingz > div { 
     position: absolute; 
+}
+
+.row{
+  margin: 0 -15px 0 -15px;
+}
+
+.featurette{
+  margin: 100px;
+  height: 300px;
+}
+
+.featurette-heading{
+  margin-top: 120px;
+}
+
+.text-space{
+  padding-left: 80px;
+}
+
+.featurette-divider{
+  width: 90%;
+  margin-left: 60px;
+}
+
+.small-bar{
+  height: 150px;
+  padding: 50px 70px 0 70px;
+}
+
+.small-text-space{
+  padding-left: 50px;
+}
+
+footer{
+  padding: 0 70px 0 60px;
 }
 
 .home-sidebar{
