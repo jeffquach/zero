@@ -11,18 +11,18 @@
 
     <h3 class="text-center">Advanced Search</h3>
 
-    <%= form_tag users_path, method: :get do %>
+    <%= form_tag users_path, role: "form", method: :get do %>
       <p>
 
-        <%= text_field_tag :city_search, nil, placeholder:"Type in a location" %>
+        <%= text_field_tag :city_search, nil, placeholder:"Type in a location", class: "form-control" %> <br>
 
-        <%= select_tag :subject_search, options_from_collection_for_select(Subject.all, :id, :name), prompt: "Select subject" %>
+        <%= select_tag :subject_search, options_from_collection_for_select(Subject.all, :id, :name), prompt: "Select subject", class: "form-control" %> <br>
 
-        <%= select_tag :topic_search, options_for_select(Topic.order('lower(name) ASC').pluck(:name).uniq), prompt: "Select topic" %>
+        <%= select_tag :topic_search, options_for_select(Topic.order('lower(name) ASC').pluck(:name).uniq), prompt: "Select topic", class: "form-control" %> <br>
 
-        <%= select_tag :experience, options_for_select(["Beginner","Novice","Intermediate","Advanced","Expert"]), prompt: "Select level of expertise" %>
+        <%= select_tag :experience, options_for_select(["Beginner","Novice","Intermediate","Advanced","Expert"]), prompt: "Select level of expertise", class: "form-control" %> <br>
 
-        <div><%= submit_tag "Search users", class: "button expand radius", id: "home-search" %></div>
+        <div><%= submit_tag "Search users", class: "btn btn-lg btn-primary btn-block", id: "home-search" %></div>
       </p>
 
      <% end %>

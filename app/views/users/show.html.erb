@@ -1,7 +1,9 @@
 <% provide(:title, @user.first_name) %>
 
-<div class="row">
-  <div class="small-12 large-4 columns">
+<div class="canvas">
+  <div class="show-container profile-container">
+  <div class="row">
+  <div class="col-md-4">
     <div class="user-profile">
       <div class="profile-highlight">
         <div class="profile-name">
@@ -88,10 +90,16 @@
 
     <section>
       <div>
-        <div class="small-12 large-4 columns"></div>
+        <div class="col-md-4"></div>
           <div id="meetup-info">
-                <table>
+            <table>
             <div>
+            <thead>
+                <tr>
+                    <th><%= @user.first_name %>'s preferences</th>
+                    <th>Information</th>
+                </tr>
+            </thead>
             <tbody><tr>
             </tr>
             <tr>
@@ -152,7 +160,7 @@
 </div> 
 
 
-<div class="large-6 columns">
+<div class="col-md-6">
   <div id="map-canvas" style="height:500px;width:600px;margin-top:30px"></div>
 
   <div class="review-boxes">
@@ -203,6 +211,7 @@
   </div>
 
 </div>
+</div>
 
 
 <%= javascript_tag do %>
@@ -221,3 +230,5 @@
 
 
   
+
+</div>
