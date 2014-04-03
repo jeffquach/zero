@@ -27,20 +27,21 @@
           <div class="friend-request-form">
             
             <% if current_user.pending_friends.include?(@user) %>
-              <%= button_tag "Study partner request sent", class: "button radius tiny", style: "background-color: green;", disabled: true %>
+              <%= button_tag "Study partner request sent", class: "btn btn-success", style: "background-color: green;", disabled: true %>
             <% elsif current_user.accepted_friends.include?(@user) %>
-              <%= button_tag "You and #{@user.first_name} are friends", class: "button radius tiny", style: "background-color: green;", disabled: true %>
+              <%= button_tag "You and #{@user.first_name} are friends", class: "btn btn-success", style: "background-color: green;", disabled: true %>
             <% elsif current_user.blocked_friends.include?(@user) %>
-              <%= button_tag "#{@user.first_name} has blocked you!", class: "button radius tiny", style: "background-color: red;", disabled: true %>
+              <%= button_tag "#{@user.first_name} has blocked you!", class: "btn btn-danger", style: "background-color: red;", disabled: true %>
             <% else %>
               <%= form_for current_user.user_friendships.build(friend_id: @user), method: :post do |f| %>
 
                 <%= f.hidden_field :friend_id, value: @user.id  %>      
-                <%= f.submit "Send study partner request", class: "button radius tiny" %>
+                <%= f.submit "Send study partner request", class: "btn btn-primary" %>
                 
               <% end %>
             <% end %>
           </div>
+          <br>
           <script>
 
           </script>
@@ -73,16 +74,28 @@
     </div> 
 
     <div class="user-profile">
-      <div class="profile-highlight text-center"><h3><em>Search users</em></h3></div>
+      <div class="profile-highlight text-center"><h3 class="pad-header"><em>Search users</em></h3></div>
 
         <div class="user-info">
-            <%= form_for :search, url: users_path, method: :get do |f| %>
+            
+        <%= form_tag users_path, class: "form-signin", role: "form", method: :get do %>
           <p>
 
-            <%= f.text_field :city_search, placeholder: "Type in a location" %>
-            <%= f.select :learning_search, options_for_select([ "Javascript", "Ruby on Rails", "Python", "jQuery", "C++", "HTML & CSS", "PHP", "Biology", "Calculus", "Linear Algebra", "Differential Equations", "Physics", "Chemistry", "Medicine", "Statistics", "Electronics", "Android Development", "iOS Development", "Google Glass Development", "Tesla Development", "SmartThings Development", "Occulus Rift Development", "Emotiv Development", "Meta Developers", "Raspberry Pi Development" ]) %> 
-            <div><%= f.submit "Search users", class: "button expand radius", id: "home-search" %></div>
+            <%= text_field_tag :city_search, nil, class: "form-control", placeholder:"Type in a location" %>
+
+            <br>
+
+            <%= select_tag :subject_search, options_from_collection_for_select(Subject.all, :id, :name), class: "form-control", prompt: "Select subject" %>
+
+            <br>
+
+            <%= select_tag :topic_search, options_for_select(Topic.order('lower(name) ASC').pluck(:name).uniq), class: "form-control", prompt: "Select topic" %>
+
+            <br>
+
+            <div><%= submit_tag "Search users", class: "btn btn-lg btn-primary btn-block", id: "home-search" %></div>
           </p>
+
 
         <% end %>
         </div>
@@ -166,7 +179,7 @@
   <div class="review-boxes">
         <div class="user-profile">
         <div class="profile-highlight">
-          <h2>Reviews</h2>
+          <h2 class="pad-header">Reviews</h2>
         </div>
         <div class="user-info">
           <div id="reviews">
@@ -186,7 +199,7 @@
 
     <div class="user-profile">
         <div class="profile-highlight">
-          <h3>Write a review for <%= @user.first_name %></h3>
+          <h3 class="pad-header">Write a review for <%= @user.first_name %></h3>
         </div>
 
         <div class="user-info">
@@ -197,9 +210,11 @@
               <div id="review-errors"><%= render "review_errors" %></div>
 
               <%= f.label :content %>
-              <%= f.text_area :content, style: "height: 9em;" %>
+              <%= f.text_area :content, style: "height: 9em;", class: "form-control" %>
 
-              <%= f.submit class: "button radius small" %>
+              <br>
+
+              <%= f.submit class: "btn btn-primary" %>
 
             <% end %>
 

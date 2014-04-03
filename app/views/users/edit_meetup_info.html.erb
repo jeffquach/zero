@@ -1,76 +1,99 @@
 <% provide(:title, @user.first_name) %>
 
+<div class="canvas">
+  <div class="form-container">
+    
 <div class="row">
-	<div class="small-12 large-6 large-centered columns">
+  <div class="col-md-6 col-md-offset-3">
 
-		<div class="text-center"><h1>Edit meetup information</h1></div>
+    <div class="user-profile">
 
-			<%= form_for @user do |f| %>
+    <div class="profile-highlight pad-header"><h1>Edit meetup information</h1></div>
+
+    <div class="user-info">
+
+      <%= form_for @user do |f| %>
 
         <div class="row">
-          <div class="large-4 columns">
+          <div class="col-md-4">
             <%= f.label :currently_available %>  
-            <%= f.select :currently_available, options_for_select([ "Yes", "No", "Maybe"]) %>
+            <%= f.select :currently_available, options_for_select([ "Yes", "No", "Maybe"]), {},class: "form-control" %>
           </div>
-          <div class="large-4 columns">
+          <div class="col-md-4">
             <%= f.label :smoking_allowed %>      
-            <%= f.select :smoking_allowed, options_for_select([ "Yes", "No"]) %>
+            <%= f.select :smoking_allowed, options_for_select([ "Yes", "No"]), {}, class: "form-control" %>
           </div>
-          <div class="large-4 columns">
+          <div class="col-md-4">
             <%= f.label :has_pets %>         
-            <%= f.select :has_pets, options_for_select([ "Yes", "No"]) %>
+            <%= f.select :has_pets, options_for_select([ "Yes", "No"]), {}, class: "form-control" %>
           </div>
         </div>
 
+        <br>
+    
         <div class="row">
-          <div class="large-6 columns">
+          <div class="col-md-6">
             <%= f.label :study_location_available %> 
-            <%= f.select :study_location_available, options_for_select([ "Yes", "No"]) %>
+            <%= f.select :study_location_available, options_for_select([ "Yes", "No"]),{}, class: "form-control" %>
           </div>
-          <div class="large-6 columns">
+          <div class="col-md-6">
             <%= f.label :preferred_gender_of_study_partner %>     
-            <%= f.select :preferred_gender, options_for_select([ "Male", "Female", "Any"]) %>
+            <%= f.select :preferred_gender, options_for_select([ "Male", "Female", "Any"]),{}, class: "form-control" %>
           </div>
         </div>
 
+        <br>
+
         <div class="row">
-          <div class="large-6 columns">
+          <div class="col-md-6">
             <%= f.label :can_host_children %>    
-            <%= f.select :can_host_children, options_for_select([ "Yes", "No"]) %>
+            <%= f.select :can_host_children, options_for_select([ "Yes", "No"]),{}, class: "form-control" %>
           </div>
-          <div class="large-6 columns">
+          <div class="col-md-6">
             <%= f.label :can_host_pets %>      
-            <%= f.select :can_host_pets, options_for_select([ "Yes", "No"]) %>
+            <%= f.select :can_host_pets, options_for_select([ "Yes", "No"]),{}, class: "form-control" %>
           </div>
         </div>
 
+        <br>
+
         <div class="row">
-          <div class="large-6 columns">
+          <div class="col-md-6">
              <%= f.label :current_online_learning %>    
-             <%= f.select :current_online_learning, options_for_select([ "Edx", "Udacity", "Treehouse", "Coursera", "Khan Academy", "Lynda", "Stanford Online", "MIT Free Courseware"]) %>
+             <%= f.select :current_online_learning, options_for_select([ "Edx", "Udacity", "Treehouse", "Coursera", "Khan Academy", "Lynda", "Stanford Online", "MIT Free Courseware"]),{}, class: "form-control" %>
           </div>
-          <div class="large-6 columns">
+          <div class="col-md-6">
                 <%= f.label :education %>         
-                <%= f.text_field :education %>
+                <%= f.text_field :education, class: "form-control" %>
           </div>
         </div>
 
+        <br>
+
         <div class="row">
-          <div class="large-6 columns">
+          <div class="col-md-6">
             <%= f.label :languages %>     
-            <%= f.text_field :languages %>
+            <%= f.text_field :languages, class: "form-control" %>
           </div>
-          <div class="large-6 columns">
+          <div class="col-md-6">
             <%= f.label :skills %>            
-            <%= f.text_field :skills %>    
+            <%= f.text_field :skills, class: "form-control" %>    
           </div>
-        </div>      
+        </div>     
+
+        <br> 
   
-        <div class="text-center"><%= f.submit class: "button radius" %></div>
+        <div class="text-center"><%= f.submit class: "btn btn-primary btn-lg" %></div>
 
-			<% end %>
+      <% end %>
 
-	</div>
+      </div>
+
+  </div>
+</div>
+
 </div>
 
  
+  </div>
+</div>

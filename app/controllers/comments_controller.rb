@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
 				format.html {redirect_to meetup_path(@meetup), success: "A new comment was created!"}
 				format.js 
 			else
-				format.html {redirect_to meetup_path(@meetup), alert: "There was an error in your comment"}
+				format.html {redirect_to meetup_path(@meetup), danger: "There was an error in your comment"}
 			end
 		end
 	end
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
 
 	def update
 		if @comment.update_attributes(comment_params)
-			flash[:notice] = "You've updated your comment!"
+			flash[:info] = "You've updated your comment!"
 			redirect_to meetup_path(@meetup)
 		end
 	end

@@ -1,12 +1,16 @@
 <%= object.fields_for :subject do |s| %>
 
 	<%= s.label :name, "Subject" %>
-	<%= collection_select :subject, :id, Subject.all, :id, :name, {prompt:"Select a subject"} %>
+	<%= collection_select :subject, :id, Subject.all, :id, :name, {prompt:"Select a subject"}, class: "form-control" %>
 
 <% end %>
 
+<br>
+
 <%= object.label :name, "Topic", placeholder: "Enter a topic" %>
-<%= object.text_field :name, value: "" %>
+<%= object.text_field :name, value: "", class: "form-control" %>
+
+<br>
 
 <%= object.label :experience, "Level of expertise" %>
-<%= object.select :experience, options_for_select(["Beginner","Novice","Intermediate","Advanced","Expert"]), prompt: "Select level of expertise" %>
+<%= object.select :experience, options_for_select(["Beginner","Novice","Intermediate","Advanced","Expert"]), {}, class: "form-control" %>

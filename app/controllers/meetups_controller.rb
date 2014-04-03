@@ -35,7 +35,7 @@ class MeetupsController < ApplicationController
 
 	def update
 		if @meetup.update_attributes(meetup_params)
-			flash[:notice] = "You have successfully updated your meetup"
+			flash[:info] = "You have successfully updated your meetup"
 			redirect_to meetup_path(@meetup)
 		else
 			render :edit
@@ -52,7 +52,7 @@ class MeetupsController < ApplicationController
 
 	def destroy
 		if @meetup.destroy
-			flash[:alert] = "You deleted your meetup!"
+			flash[:danger] = "You deleted your meetup!"
 			redirect_to meetups_path
 		end
 	end

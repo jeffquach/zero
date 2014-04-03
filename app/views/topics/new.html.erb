@@ -1,31 +1,54 @@
 <% provide(:title, "New") %>
 
-<div class="row">
-	<div class="small-12 large-6 large-centered columns">
+<div class="canvas">
+	<div class="form-container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+		
+				<div class="user-profile">
 
-		<div class="text-center"><h1>Subjects I am studying</h1></div>
+				<div class="profile-highlight pad-header text-center"><h1>Subjects I am studying</h1></div>
 
-		<div id="user-studying">
-			<%= render "user_study" %>
+				<div class="user-info text-center">
+					<div id="user-studying">
+						<%= render "user_study" %>
+						</div>
+
+				</div>
+
+				</div>
+			</div>
 		</div>
 
-		
-		<h3>Add topic</h3>
 
-		<%= form_for @topic do |f| %>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="user-profile">
 
-			<div class="topic-errors"><%= render "topic_errors" %></div>
+				<div class="profile-highlight pad-header text-center"><h3>Add topic</h3></div>
 
-			<div class="topic-form">
-				<%= render "ajax_form", object: f %>
+				<div class="user-info">
+					<%= form_for @topic do |f| %>
+
+					<div class="topic-errors"><%= render "topic_errors" %></div>
+
+					<div class="topic-form">
+						<%= render "ajax_form", object: f %>
+					</div>
+
+					<br>
+
+					<div class="text-center"><%= f.submit class: "btn btn-primary" %></div>
+
+				<% end %>
+				</div>
 			</div>
-
-			<div class="text-center"><%= f.submit class: "button radius" %></div>
-
-		<% end %>
+		</div>
 
 
 
-
+</div>
 	</div>
 </div>
+
+		

@@ -12,7 +12,7 @@ $(document).ready(function(){
       success: function(data){
         console.log(data);
         _this.hide();
-        $(".friend-request-form").html('<button class="button radius tiny" disabled="disabled" name="button" type="submit" style="background-color:green;">Study partner request sent</button>');
+        $(".friend-request-form").html('<button class="btn btn-success" disabled="disabled" name="button" type="submit" style="background-color:green;">Study partner request sent</button>');
       }
     });
   });

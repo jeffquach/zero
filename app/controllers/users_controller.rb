@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def index
     if params[:city_search].blank?
-      flash[:alert] = "The search field cannot be blank!"
+      flash[:danger] = "The search field cannot be blank!"
       redirect_to root_url and return
     elsif params[:city_search] && params[:subject_search] && params[:topic_search]
       @users = User.near(params[:city_search],100)
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       @users = @users.joins(:topics).where('topics.name = ?', params[:topic_search]) if params[:topic_search].present?
       @users = @users.where('topics.experience = ?', params[:experience]) if params[:experience].present?
       if @users.empty?
-        flash[:alert] = "No users found"
+        flash[:danger] = "No users found"
         redirect_to root_url and return
       end
     else
@@ -40,8 +40,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @nearbys = @user.nearbys(10, units: :km).joins(:topics).where("name ILIKE ?", @user.topics.first.name) if @user.topics.any?
-
+    @nearbys = @user.nearbys(10, units: :km)
     @friends = @user.friends
     @review = Review.new(user_id: @user.id)
 
@@ -55,10 +54,10 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(user_params)
       if !@user.subjects.any? || !@user.topics.any?
-        flash[:notice] = "You have updated your user information, please tell us what you're learning"
+        flash[:info] = "You have updated your user information, please tell us what you're learning"
         redirect_to new_topic_path
       else
-        flash[:notice] = "You have updated your user information"
+        flash[:info] = "You have updated your user information"
         redirect_to edit_user_path(@user)
       end
     else
@@ -68,14 +67,14 @@ class UsersController < ApplicationController
 
   def destroy
     if @user.destroy
-      redirect_to users_path, alert: "You deleted a user!"
+      redirect_to users_path, danger: "You deleted a user!"
     end
   end
 
   def activate
     if (@user = User.load_from_activation_token(params[:id]))
       @user.activate!
-      redirect_to(login_path, :notice => 'User was successfully activated.')
+      redirect_to(login_path, :info => 'User was successfully activated.')
     else
       not_authenticated
     end

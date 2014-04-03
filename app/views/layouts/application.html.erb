@@ -45,7 +45,6 @@
                 <ul class="dropdown-menu">
                   <li><%= link_to "Profile", user_path(current_user) %></li>
                   <li><%= link_to "Study Partners", user_friendships_path %></li>
-                  <li><%= link_to "Search", users_path %></li>
                   <li><%= link_to "Learning", new_topic_path %></li>
                   <li class="divider"></li>
                   <li><%= link_to "User info", edit_user_path(current_user) %></li>
@@ -68,13 +67,9 @@
  
   <!-- End Top Bar -->
 
-    <div class="small-12 columns alerts">
-      <% flash.each do |key,value| %>
-        <div class="row">
-          <div data-alert class="alert-box <%= key %> radius">
-            <%= value %>
-          </div>
-        </div>
+    <div class="col-md-12 alerts">
+      <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "alert alert-#{key} alert-box") %>
       <% end %>
     </div>
 

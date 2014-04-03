@@ -9,7 +9,7 @@ class OauthsController < ApplicationController
 		provider = auth_params[:provider]
 
 		if @user = login_from(provider)
-		  redirect_to user_path(@user), :notice => "Logged in from #{provider.titleize}!"
+		  redirect_to user_path(@user), :info => "Logged in from #{provider.titleize}!"
 		else
 		  begin
 		    @user = create_from(provider)
@@ -17,9 +17,9 @@ class OauthsController < ApplicationController
 		    @user.activate!
 		    reset_session # protect from session fixation attack
 		    auto_login(@user)
-		    redirect_to edit_user_path(@user), :notice => "Logged in from #{provider.titleize}!"
+		    redirect_to edit_user_path(@user), :info => "Logged in from #{provider.titleize}!"
 		  rescue
-		    redirect_to root_path, :alert => "Failed to login from #{provider.titleize}!"
+		    redirect_to root_path, :danger => "Failed to login from #{provider.titleize}!"
 		  end
 		end
 	end
