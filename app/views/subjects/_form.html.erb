@@ -1,17 +1,10 @@
-<%= form_for @topic do |f| %>
+<%= form_for @subject do |f| %>
 	
-	<%= render "shared/error_messages" %>
+	<%= render "shared/error_messages", object: f.object %>
 
-	<%= f.fields_for :subject do |s| %>
+	<%= f.label :name, "Subject" %>
+	<%= f.text_field :name, class: "form-control" %>
 
-		<%= s.label :name, "Subject" %>
-		<%= collection_select :subject, :id, Subject.all, :id, :name, {prompt:"Select a subject"} %>
-
-	<% end %>
-
-	<%= f.label :name, "Topic" %>
-	<%= f.text_field :name %>
-
-	<div class="text-center"><%= f.submit class: "button radius" %></div>
+	<div class="text-center"><%= f.submit class: "btn btn-primary" %></div>
 
 <% end %>

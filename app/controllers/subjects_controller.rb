@@ -3,12 +3,11 @@ class SubjectsController < ApplicationController
 
 	def new
 		@subject = current_user.subjects.build
-		@topic = @subject.topics.build
 	end
 
 	def create
 		@subject = current_user.subjects.build(subject_params)
-		if @subject.save && @topic.save
+		if @subject.save
 			flash[:success] = "New subject created!"
 			redirect_to user_path(current_user)
 		else
