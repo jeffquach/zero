@@ -109,8 +109,8 @@ Rails.application.config.sorcery.configure do |config|
   config.twitter.callback_url = "http://mindmeetup.herokuapp.com/oauth/callback?provider=twitter"
   config.twitter.user_info_mapping = {:email => "email"}
   #
-  config.facebook.key = "#{Figaro.env.heroku_facebook_oauth_id}"
-  config.facebook.secret = "#{Figaro.env.heroku_facebook_oauth_secret_key}"
+  config.facebook.key = "#{Figaro.env.facebook_oauth_id}"
+  config.facebook.secret = "#{Figaro.env.facebook_oauth_secret_key}"
   config.facebook.callback_url = "http://mindmeetup.herokuapp.com/oauth/callback?provider=facebook"
   config.facebook.user_info_mapping = {:email => "email", :first_name => "first_name", :last_name => "last_name"}
   config.facebook.access_permissions = ["email", "publish_stream"]
