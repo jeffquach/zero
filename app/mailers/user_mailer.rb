@@ -21,7 +21,7 @@ class UserMailer < ActionMailer::Base
 
   def activation_success_email(user)
     @user = user
-    @url  = "http://mindmeetup.herokuapp.com/#login-box"
+    @url  = "http://mindmeetup.herokuapp.com/"
     mail(:to => user.email,
          :subject => "Your account is now activated")
   end

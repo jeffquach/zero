@@ -13,28 +13,34 @@
 
   <body class="canvas">
 
-  <div class="row">
-    <header role="banner" class="navbar navbar-inverse navbar-fixed-top bs-docs-nav">
-  <div class="header_line_red"></div>
-    <div class="container" id="header_container">
-    <div class="navbar-header">
-      <button data-target=".bs-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <div class="name">
-          <% if current_user && logged_in? %>
-            <p><%= link_to "MindMeetup", user_path(current_user) %></p>
-          <% else %>
-            <p><%= link_to "MindMeetup", root_url %></p>
-          <% end %>
-        
-      </div>
-    </div>
-      <% if logged_in? %>
-          <nav class="collapse navbar-collapse bs-navbar-collapse navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+
+        <!-- Left navbar -->
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="name">
+              <% if current_user && logged_in? %>
+                <p><%= link_to "MindMeetup", user_path(current_user) %></p>
+              <% else %>
+                <p><%= link_to "MindMeetup", root_url %></p>
+              <% end %>
+            
+          </div>
+        </div>
+
+        <!-- End of left navbar -->
+
+        <!-- Start of right navbar -->
+
+        <div class="navbar-collapse collapse">
+          <% if logged_in? %>
             <ul class="nav navbar-nav navbar-right" id="header-navigation">
               <li id="logged-in">Logged in as <%= current_user.first_name %></li>
               <li><%= link_to "Log out", logout_path %></li>
@@ -51,18 +57,18 @@
                 </ul>
               </li>
             </ul>
-          </nav>
-      <% else %>
-          <nav class="collapse navbar-collapse bs-navbar-collapse collapse" role="navigation">
+          <% else %>
             <ul class="nav navbar-nav navbar-right" id="header_navigation">
               <li><a href="#" data-toggle="modal" data-target="#myModal">Sign up</a></li>
               <li><a href="#" data-toggle="modal" data-target="#myModal2">Log in</a></li>
             </ul>
-          </nav>
-      <% end %>
+          <% end %>
+        </div>
+
+        <!-- End of right navbar -->
+
+      </div>
     </div>
-    </header>
-  </div>
  
   <!-- End Top Bar -->
 
@@ -72,78 +78,84 @@
       <% end %>
     </div>
 
-    <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close-modal" type="button" class="btn btn-default" data-dismiss="modal">X</button>
-        <h2 class="modal-title" id="myModalLabel">Sign up</h2>
-      </div>
-        <div class="login-buttons">
-            
-            <div class="oauth-buttons">
-                          <%= link_to(image_tag("google-up.png", class: "login-image"), auth_at_provider_path(:provider => :google)) %>
-            <%= link_to(image_tag("facebook-up.png", class: "login-image"), auth_at_provider_path(:provider => :facebook)) %>
-            </div>
+    <!-- Signup Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close-modal" type="button" class="btn btn-default" data-dismiss="modal">X</button>
+            <h2 class="modal-title" id="myModalLabel">Sign up</h2>
+          </div>
+            <div class="login-buttons">
+                
+                <div class="oauth-buttons">
+                  <%= link_to(image_tag("google-up.png", class: "login-image"), auth_at_provider_path(:provider => :google)) %>
+                  <%= link_to(image_tag("facebook-up.png", class: "login-image"), auth_at_provider_path(:provider => :facebook)) %>
+                </div>
 
+                <h3 class="text-center">OR</h3>
+
+                <h3 class="text-center"><%= link_to "Sign up here!", signup_path %></h3>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- End of signup modal -->
+
+    <!-- Start of login modal -->
+
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close-modal" type="button" class="btn btn-default" data-dismiss="modal">X</button>
+            <h2 class="modal-title" id="myModalLabel">Log in</h2>
+          </div>
+          <div class="modal-body">
+            <div class="oauth-buttons">
+              <%= link_to(image_tag("google.png", class: "login-image"), auth_at_provider_path(:provider => :google)) %>
+              <%= link_to(image_tag("facebook.png", class: "login-image"), auth_at_provider_path(:provider => :facebook)) %>
+            </div>
             <h3 class="text-center">OR</h3>
 
-            <h3 class="text-center"><%= link_to "Sign up here!", signup_path %></h3>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <div class="oauth-login-form">
+              <%= form_tag sessions_path, class: "form-signin", role: "form" do %>
+                <div class="field">
+                  <%= label_tag :email %>
+                  <%= text_field_tag :email, params[:email], class: "form-control" %>
+                </div>
+                <br>
+                <div class="field">
+                  <%= label_tag :password %>
+                  <%= password_field_tag :password, nil, class: "form-control" %>
+                </div>
+                <div class="remember-me-box">
+                  <div class="field">
+                    <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+                    <%= label_tag :remember_me %>
+                  </div>
+                  <div class="field">
+                    <%= link_to "Forgot password?", new_password_reset_path %>
+                  </div><br>
+                </div>
+                <div class="actions text-center"><%= submit_tag "Log in", class: "btn btn-lg btn-primary btn-block" %></div>
+              <% end %>
             </div>
-
+          
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
         </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close-modal" type="button" class="btn btn-default" data-dismiss="modal">X</button>
-        <h2 class="modal-title" id="myModalLabel">Log in</h2>
-      </div>
-      <div class="modal-body">
-        <div class="oauth-buttons">
-          <%= link_to(image_tag("google.png", class: "login-image"), auth_at_provider_path(:provider => :google)) %>
-          <%= link_to(image_tag("facebook.png", class: "login-image"), auth_at_provider_path(:provider => :facebook)) %>
-        </div>
-        <h3 class="text-center">OR</h3>
-
-        <div class="oauth-login-form">
-          <%= form_tag sessions_path, class: "form-signin", role: "form" do %>
-            <div class="field">
-              <%= label_tag :email %>
-              <%= text_field_tag :email, params[:email], class: "form-control" %>
-            </div>
-            <br>
-            <div class="field">
-              <%= label_tag :password %>
-              <%= password_field_tag :password, nil, class: "form-control" %>
-            </div>
-            <div class="remember-me-box">
-              <div class="field">
-                <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-                <%= label_tag :remember_me %>
-              </div>
-              <div class="field">
-                <%= link_to "Forgot password?", new_password_reset_path %>
-              </div><br>
-            </div>
-            <div class="actions text-center"><%= submit_tag "Log in", class: "btn btn-lg btn-primary btn-block" %></div>
-          <% end %>
-        </div>
-      
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
-  </div>
-</div>
+
+    <!-- End of login modal -->
 
     <%= yield %>
     <%= javascript_include_tag "application" %>
