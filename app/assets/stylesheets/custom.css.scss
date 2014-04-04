@@ -13,11 +13,6 @@ $profile-gray: darken(#f2f2f2, 5%);
   height: 60px;
 }
 
-.show-container{
-  position: absolute;
-  z-index: 3;
-}
-
 .navbar-inverse{
   background-color: white;
   border-color: #A3A3A3;
@@ -130,10 +125,10 @@ a{
   height:531px;
 }
 
-@media all and (max-width: 1280px) and (min-width: 700px){
-
+.featurette{
+  padding: 30px 50px 30px 0;
+  margin: 0 50px 0 30px;
 }
-
 
 @media all and (max-width: 1000px) and (min-width: 300px){
   #home-heading{
@@ -155,6 +150,9 @@ a{
   opacity: 0.9;
 }
 
+.image-squeeze{
+  width:100%;
+}
 .small-text-space{
   padding-left: 50px;
 }
@@ -210,7 +208,7 @@ a{
 
 .featurette-divider, .featurette-divider-small{
   width: 90%;
-  margin-left: 60px;
+  margin:auto;
 }
 
 @media (max-width: 700px) and (min-width: 200px){
@@ -221,7 +219,7 @@ a{
 
 .small-bar{
   height: 150px;
-  padding: 50px 40px 30px 70px;
+  padding: 20px 40px 0 70px;
 }
 
 
@@ -251,7 +249,10 @@ footer{
 }
 
 .profile-container{
-  padding: 50px 50px 0 170px;
+  padding: 50px 0px 0 80px;
+  position: absolute;
+  z-index: 3;
+  margin: 10px 0 10px;
 }
 
 #logged-in{
@@ -405,7 +406,7 @@ hr{
 }
 
 .user-profile{
-  margin: 1.8em 0 1em 0;
+  margin: 2em 0 1em 0;
   background-color: white;
   border: 1px solid #D8D8D8;
   border-radius: 8px;
@@ -652,7 +653,7 @@ thead th {
   background-size: 100%;
   background-position: left top;
   min-width: 1024px;
-  min-height:600%;
+  min-height:100%;
   width: 100%;
   height: auto;
   background-size: 100% 100%;
