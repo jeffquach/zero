@@ -25,13 +25,12 @@
         <span class="icon-bar"></span>
       </button>
       <div class="name">
-
-        <% if logged_in? %>
-          <%= link_to "MindMeetup", user_path(current_user) %>
-        <% else %>
-          <%= link_to "MindMeetup", root_url %>
-        <% end %>
-
+          <% if current_user && logged_in? %>
+            <p><%= link_to "MindMeetup", user_path(current_user) %></p>
+          <% else %>
+            <p><%= link_to "MindMeetup", root_url %></p>
+          <% end %>
+        
       </div>
     </div>
       <% if logged_in? %>
@@ -148,8 +147,6 @@
 
     <%= yield %>
     <%= javascript_include_tag "application" %>
-
-    <%= params %>
     
   </body>
 </html>

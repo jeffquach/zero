@@ -39,4 +39,6 @@ $(document).ready(function(){
 	},  3000);
 })
 
+$(document).on('page:load', ready);
+
 // $('.input-append').fdatepicker('show');
