@@ -265,10 +265,16 @@ footer{
 }
 
 .profile-container{
-  padding: 50px 0px 0 80px;
+  padding: 50px 0px 0 100px;
   position: absolute;
   z-index: 3;
   margin: 10px 0 10px;
+}
+
+@media screen and (max-width: 1110px){
+  .profile-container{
+    padding: 50px 0px 0 25px;
+  }
 }
 
 #logged-in{
@@ -593,7 +599,7 @@ table {
   border-collapse: separate;
   background:#fff;
   border-radius: 5px;
-  margin:50px auto;
+  margin:20px auto;
   box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
   width: 100%;
 }
@@ -656,12 +662,10 @@ thead th {
 
 .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus{
   color: black;
-  background-color: #e0e0e0;
 }
 
 .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus{
   color:black;
-  background-color:#e0e0e0;
 }
 
 
