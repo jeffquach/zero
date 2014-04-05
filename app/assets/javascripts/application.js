@@ -13,11 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.datepicker
-//= require jquery.ui.tooltip
 //= require jquery-ui-1.10.4.custom.min
 //= require jquery.timepicker.min
-//= require bootstrap/dropdown
-//= require bootstrap/modal
+//= require bootstrap
 //= require_tree .
 
 
