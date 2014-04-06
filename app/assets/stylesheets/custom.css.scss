@@ -131,15 +131,6 @@ a{
   padding: 50px;
 }
 
-.tingz{
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-width: 100%;
-  background-size: cover;
-  background: no-repeat center center fixed;
-}
-
 .image-container{
   background-image:image-url("background.png");
   height:531px;
@@ -183,9 +174,9 @@ a{
 
 @media (max-width: 1300px) and (min-width: 990px){
   .featurette{
-  margin: 100px;
-  height: 300px;
-}
+    margin: 100px;
+    height: 300px;
+  }
 }
 
 @media (max-width: 990px) and (min-width: 600px){
@@ -224,6 +215,25 @@ a{
 
 .tingz > div { 
     position: absolute; 
+}
+
+@media screen and (max-width: 990px){
+  .tingz{
+    margin-left: 8.88888%;
+  }
+}
+
+@media screen and (max-width: 750px){
+  .resize-image{
+    max-width: 100%;
+    height:100%;
+  }
+}
+
+@media screen and (max-width: 650px){
+  .tingz{
+    margin-left: 0;
+  }
 }
 
 .featurette-divider, .featurette-divider-small{
