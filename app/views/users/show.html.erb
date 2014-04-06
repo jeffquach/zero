@@ -3,198 +3,191 @@
 <div class="container">
   <div class="profile-container">
   <div class="row">
-  <div class="col-lg-4 col-sm-5 col-xs-12">
-    <div class="user-profile">
-      <div class="profile-highlight">
-        <div class="profile-name">
-          <% if @user.image_url(:thumb) %>
-            <%= image_tag @user.image_url(:thumb), class: "avatar-image" %>
-          <% else %>
-            <%= image_tag "default.png", class: "avatar-image" %>
-          <% end %>
-        </div>
-        <div class="profile-info">
-          <h2>
-            <%= @user.first_name %>
-          </h2>
-          <p><a href="#" data-toggle="tooltip" data-placement="bottom" data-html="true" class="show-bio">See full bio</a></p>
-          <input type="hidden" value="<%= @user.id %>" id="hidden-id">
-        </div>
-        <hr>
-      </div>
-      <div class="user-info">
-        <% if logged_in? %>
-          <div class="friend-request-form">
-            
-            <% if current_user.pending_friends.include?(@user) %>
-              <%= button_tag "Study partner request sent", class: "btn btn-success", style: "background-color: green;", disabled: true %>
-            <% elsif current_user.accepted_friends.include?(@user) %>
-              <%= button_tag "You and #{@user.first_name} are friends", class: "btn btn-success", style: "background-color: green;", disabled: true %>
-            <% elsif current_user.blocked_friends.include?(@user) %>
-              <%= button_tag "#{@user.first_name} has blocked you!", class: "btn btn-danger", style: "background-color: red;", disabled: true %>
+    <div class="col-md-4 col-sm-5">
+      <div class="user-profile">
+        <div class="profile-highlight">
+          <div class="profile-name">
+            <% if @user.image_url(:thumb) %>
+              <%= image_tag @user.image_url(:thumb), class: "avatar-image" %>
             <% else %>
-              <%= form_for current_user.user_friendships.build(friend_id: @user), method: :post do |f| %>
-
-                <%= f.hidden_field :friend_id, value: @user.id  %>      
-                <%= f.submit "Send study partner request", class: "btn btn-primary" %>
-                
-              <% end %>
+              <%= image_tag "default.png", class: "avatar-image" %>
             <% end %>
           </div>
-          <br>
-          <script>
-
-          </script>
-          <div>
-            <script>
-              window.___gcfg = {
-                lang: 'en-US'
-              };
-
-              (function() {
-                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-                po.src = 'https://apis.google.com/js/platform.js?onload=renderButton';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-              })();
-
-              function renderButton(){
-                gapi.hangout.render('g-hangout', {
-                    'render': 'createhangout',
-                    'widget_size': 175
-                });
-              }
-            </script>
+          <div class="profile-info">
+            <h2>
+              <%= @user.first_name %>
+            </h2>
+            <p><a href="#" data-toggle="tooltip" data-placement="bottom" data-html="true" class="show-bio">See full bio</a></p>
+            <input type="hidden" value="<%= @user.id %>" id="hidden-id">
           </div>
-          <div id="g-hangout"></div>
+          <hr>
+        </div>
+        <div class="user-info">
+          <% if logged_in? %>
+            <div class="friend-request-form">
+              
+              <% if current_user.pending_friends.include?(@user) %>
+                <%= button_tag "Study partner request sent", class: "btn btn-success", style: "background-color: green;", disabled: true %>
+              <% elsif current_user.accepted_friends.include?(@user) %>
+                <%= button_tag "You and #{@user.first_name} are friends", class: "btn btn-success", style: "background-color: green;", disabled: true %>
+              <% elsif current_user.blocked_friends.include?(@user) %>
+                <%= button_tag "#{@user.first_name} has blocked you!", class: "btn btn-danger", style: "background-color: red;", disabled: true %>
+              <% else %>
+                <%= form_for current_user.user_friendships.build(friend_id: @user), method: :post do |f| %>
 
-          <p id="create-meetup"><%= link_to "Create a meetup", new_meetup_path(second_user_id: @user.id) %></p>
-        <% end %>
+                  <%= f.hidden_field :friend_id, value: @user.id  %>      
+                  <%= f.submit "Send study partner request", class: "btn btn-primary" %>
+                  
+                <% end %>
+              <% end %>
+            </div>
+            <br>
+            <script>
+
+            </script>
+            <div>
+              <script>
+                window.___gcfg = {
+                  lang: 'en-US'
+                };
+
+                (function() {
+                  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                  po.src = 'https://apis.google.com/js/platform.js?onload=renderButton';
+                  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                })();
+
+                function renderButton(){
+                  gapi.hangout.render('g-hangout', {
+                      'render': 'createhangout',
+                      'widget_size': 175
+                  });
+                }
+              </script>
+            </div>
+            <div id="g-hangout"></div>
+
+            <p id="create-meetup"><%= link_to "Create a meetup", new_meetup_path(second_user_id: @user.id) %></p>
+          <% end %>
+        </div>
+
+      </div> 
+
+      <div class="user-profile">
+        <div class="profile-highlight text-center"><h3 class="pad-header"><em>Search users</em></h3></div>
+
+          <div class="user-info">
+              
+          <%= form_tag users_path, class: "form-signin", role: "form", method: :get do %>
+            <p>
+
+              <%= text_field_tag :city_search, nil, class: "form-control", placeholder:"Type in a location" %>
+
+              <br>
+
+              <%= select_tag :subject_search, options_from_collection_for_select(Subject.all, :id, :name), class: "form-control", prompt: "Select subject" %>
+
+              <br>
+
+              <%= select_tag :topic_search, options_for_select(Topic.order('lower(name) ASC').pluck(:name).uniq), class: "form-control", prompt: "Select topic" %>
+
+              <br>
+
+              <div><%= submit_tag "Search users", class: "btn btn-lg btn-primary btn-block", id: "home-search" %></div>
+            </p>
+
+
+          <% end %>
+          </div>
       </div>
 
+    
+            <div id="meetup-info">
+              <table>
+                <thead>
+                    <tr>
+                        <th><%= @user.first_name %>'s preferences</th>
+                        <th>Information</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>City</td>
+                    <td class="value"><%= @user.city %></td>
+                  </tr>
+                    <tr>
+                    <td>Available to study</td>
+                    <td class="value"><%= @user.currently_available %></td>
+                  </tr>
+                  <tr>
+                    <td>Study Location Available </td>
+                    <td class="value"><%= @user.study_location_available %></td>
+                  </tr>
+                  <tr>
+                    <td>Preferred Gender</td>
+                    <td class="value"><%= @user.preferred_gender %></td>
+                  </tr>
+                  <tr>
+                    <td>Languages</td>
+                    <td class="value"><%= @user.languages %></td>
+                  </tr>
+                  <tr>
+                    <td>Smoking Allowed</td>
+                    <td class="value"><%= @user.smoking_allowed %></td>
+                  </tr>
+                  <tr>
+                    <td>Can Host Children</td>
+                    <td class="value"><%= @user.can_host_children %></td>
+                  </tr>
+                  <tr>
+                    <td>Can Host Pets</td>
+                    <td class="value"><%= @user.can_host_pets %></td>
+                  </tr>
+                  <tr>
+                    <td>Has Pets</td>
+                    <td class="value"><%= @user.has_pets %></td>
+                  </tr>
+                  <tr>
+                    <td>Current Online Learning</td>
+                    <td class="value"><%= @user.current_online_learning %></td>
+                  </tr>
+                  <tr>
+                    <td>Education</td>
+                    <td class="value"><%= @user.education %></td>
+                  </tr>
+                  <tr>
+                    <td>Skills</td>
+                    <td class="value"><%= @user.skills %></td>
+                  </tr>
+                </tbody>
+            </table>
+          </div>
+      
     </div> 
 
-    <div class="user-profile">
-      <div class="profile-highlight text-center"><h3 class="pad-header"><em>Search users</em></h3></div>
 
+    <div class="col-md-8 col-sm-7">
+      <div class="map-canvas">
+      </div>
+
+      <div class="user-profile">
+        <div class="profile-highlight">
+          <h2 class="pad-header">Reviews</h2>
+        </div>
         <div class="user-info">
-            
-        <%= form_tag users_path, class: "form-signin", role: "form", method: :get do %>
-          <p>
+          <div id="reviews">
+            <% if @user.reviews.empty? %>
 
-            <%= text_field_tag :city_search, nil, class: "form-control", placeholder:"Type in a location" %>
+              <h3>No one has given you a review!</h3>
 
-            <br>
-
-            <%= select_tag :subject_search, options_from_collection_for_select(Subject.all, :id, :name), class: "form-control", prompt: "Select subject" %>
-
-            <br>
-
-            <%= select_tag :topic_search, options_for_select(Topic.order('lower(name) ASC').pluck(:name).uniq), class: "form-control", prompt: "Select topic" %>
-
-            <br>
-
-            <div><%= submit_tag "Search users", class: "btn btn-lg btn-primary btn-block", id: "home-search" %></div>
-          </p>
-
-
-        <% end %>
-        </div>
-    </div>
-
-    
-        <div class="col-lg-4 col-sm-5">
-          <div id="meetup-info">
-            <table>
-              <thead>
-                  <tr>
-                      <th><%= @user.first_name %>'s preferences</th>
-                      <th>Information</th>
-                  </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>City</td>
-                  <td class="value"><%= @user.city %></td>
-                </tr>
-                  <tr>
-                  <td>Available to study</td>
-                  <td class="value"><%= @user.currently_available %></td>
-                </tr>
-                <tr>
-                  <td>Study Location Available </td>
-                  <td class="value"><%= @user.study_location_available %></td>
-                </tr>
-                <tr>
-                  <td>Preferred Gender</td>
-                  <td class="value"><%= @user.preferred_gender %></td>
-                </tr>
-                <tr>
-                  <td>Languages</td>
-                  <td class="value"><%= @user.languages %></td>
-                </tr>
-                <tr>
-                  <td>Smoking Allowed</td>
-                  <td class="value"><%= @user.smoking_allowed %></td>
-                </tr>
-                <tr>
-                  <td>Can Host Children</td>
-                  <td class="value"><%= @user.can_host_children %></td>
-                </tr>
-                <tr>
-                  <td>Can Host Pets</td>
-                  <td class="value"><%= @user.can_host_pets %></td>
-                </tr>
-                <tr>
-                  <td>Has Pets</td>
-                  <td class="value"><%= @user.has_pets %></td>
-                </tr>
-                <tr>
-                  <td>Current Online Learning</td>
-                  <td class="value"><%= @user.current_online_learning %></td>
-                </tr>
-                <tr>
-                  <td>Education</td>
-                  <td class="value"><%= @user.education %></td>
-                </tr>
-                <tr>
-                  <td>Skills</td>
-                  <td class="value"><%= @user.skills %></td>
-                </tr>
-              </tbody>
-          </table>
-        </div>
-      </div>
-    
-  </div> 
-
-
-  <div class="col-lg-6 col-sm-5">
-    <div class="row">
-          <div id="map-canvas" style="height:500px;width:600px;margin-top:30px"></div>
-    </div>
-
-    <div class="row">
-      <div class="review-boxes">
-          <div class="user-profile">
-            <div class="profile-highlight">
-              <h2 class="pad-header">Reviews</h2>
-            </div>
-            <div class="user-info">
-              <div id="reviews">
-                <% if @user.reviews.empty? %>
-
-                  <h3>No one has given you a review!</h3>
-
-                <% else %>
-                  <%= render "reviews" %>
-                <% end %>
-              </div>
-            </div>
+            <% else %>
+              <%= render "reviews" %>
+            <% end %>
           </div>
+        </div>
       </div>
-    </div>
 
-    <div class="row">
+
       <div class="user-profile">
           <div class="profile-highlight">
             <h3 class="pad-header">Write a review for <%= @user.first_name %></h3>
@@ -221,11 +214,8 @@
             <% end %>
           </div>
       </div>
-    </div>
 
     </div>
-
-  </div>
 </div>
 
 
