@@ -569,6 +569,7 @@ table{
   font-size: 15px;
   font-weight: bold;
   color:white;
+  float:left;
   &:hover{
     cursor: pointer;
   }
@@ -576,7 +577,9 @@ table{
 
 .user-found{
   color:darken(#F4F4F4, 50%);
+  margin-right: 3em;
 }
+
 #search-form{
     display:block;
     float:left;

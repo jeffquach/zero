@@ -5,7 +5,7 @@
 
 
   <% if params[:city_search] && params[:subject_search] || params[:city_search] && params[:subject_search] && params[:topic_search] %>
-   <div class="user-title"><div class="user-found">Found users</div><div id="search-box"><span id="search-button">Advanced search</span></div></div>
+   <div class="user-title"><span class="user-found">Found users</span><span id="search-button">Advanced search</span></div>
 
    <div id="search-form" style="display:none;">
 
@@ -74,5 +74,5 @@
   var coords = <%= raw @users.map{|user| {latitude: user.latitude, longitude: user.longitude, id: user.id}}.to_json %>; 
 
 <% end %> 
-
+document.body.className = document.body.className.replace("canvas","");
 <% end %>
