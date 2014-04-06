@@ -3,7 +3,7 @@
 <div class="container">
   <div class="profile-container">
   <div class="row">
-  <div class="col-lg-4 col-sm-5">
+  <div class="col-lg-4 col-sm-5 col-xs-12">
     <div class="user-profile">
       <div class="profile-highlight">
         <div class="profile-name">
@@ -101,7 +101,7 @@
         </div>
     </div>
 
-    <section>
+    
         <div class="col-lg-4 col-sm-5">
           <div id="meetup-info">
             <table>
@@ -164,13 +164,16 @@
           </table>
         </div>
       </div>
-    </section>
+    
   </div> 
 
 
-  <div class="col-lg-7 col-sm-5">
-    <div id="map-canvas" style="height:500px;width:600px;margin-top:30px"></div>
+  <div class="col-lg-6 col-sm-5">
+    <div class="row">
+          <div id="map-canvas" style="height:500px;width:600px;margin-top:30px"></div>
+    </div>
 
+    <div class="row">
       <div class="review-boxes">
           <div class="user-profile">
             <div class="profile-highlight">
@@ -189,10 +192,9 @@
             </div>
           </div>
       </div>
+    </div>
 
-
-
-
+    <div class="row">
       <div class="user-profile">
           <div class="profile-highlight">
             <h3 class="pad-header">Write a review for <%= @user.first_name %></h3>
@@ -219,6 +221,7 @@
             <% end %>
           </div>
       </div>
+    </div>
 
     </div>
 

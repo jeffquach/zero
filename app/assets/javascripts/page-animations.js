@@ -1,12 +1,12 @@
 (function(){
 
 	$(document).ready(function(){
-		$('.show-bio').show();
-		$('.hidden-bio').hide();
-		$('.show-bio').click(function(){
-			$('.hidden-bio').slideToggle(1);
-		});
-		runBootstrapTooltip()
+		// $('.show-bio').show();
+		// $('.hidden-bio').hide();
+		// $('.show-bio').click(function(){
+		// 	$('.hidden-bio').slideToggle(1);
+		// });
+		runBootstrapTooltip();
 	});
 
 	function runTooltip(){
@@ -28,7 +28,7 @@
 	}
 
 	function runBootstrapTooltip(){
-		$(".show-bio").mouseenter(function(event){
+		$(".show-bio").mouseover(function(event){
 			event.preventDefault();
 			var user_id = $("#hidden-id").attr("value");
 			var self = $(this);
@@ -38,12 +38,14 @@
 				method: 'GET',
 				dataType: 'html',
 				success: function(data){
+					console.log(data);
 					self.tooltip({
-						title: data
+						title: data,
+						trigger: "hover focus active"
 					});
 				}
-			})
-		})
+			});
+		});
 	}
 }());
 
