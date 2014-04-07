@@ -41,7 +41,8 @@ $(document).ready(function(){
 		todayHighlight: 1,
 		startView: 2,
 		forceParse: 0,
-        showMeridian: 1
+        showMeridian: 1,
+        pickerPosition: "bottom-left"
     });
 })
 
