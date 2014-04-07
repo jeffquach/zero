@@ -8,4 +8,8 @@ describe Review do
   	review.user = user
   	review.should be_valid
   end
+
+  it "shouldn't allow a user to create a review unless they have finished a meetup with someone else" do
+  	
+  end
 end

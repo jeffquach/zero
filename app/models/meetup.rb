@@ -1,5 +1,5 @@
 class Meetup < ActiveRecord::Base
-	has_many :invitees
+	has_many :invitees, dependent: :destroy
 	has_many :users, through: :invitees
 	belongs_to :user 
 	validates :studying, :title, presence: true
@@ -8,8 +8,10 @@ class Meetup < ActiveRecord::Base
 	validates :end_time, presence: true
 	validates :number_of_people, presence: true, numericality: {only_integer: true}
 
-	validate :end_time_before_start_time
 	validate :at_least_two_people_attending_meetup
+	validate :start_time_not_before_today
+	validate :end_time_before_start_time
+	validate :time_interval_within_eight_hours
 
 	has_many :comments
 
@@ -26,6 +28,18 @@ class Meetup < ActiveRecord::Base
 	def at_least_two_people_attending_meetup
 		if number_of_people < 2
 			errors.add(:base, "You have to have at least 2 people at your meetup!")
+		end
+	end
+
+	def time_interval_within_eight_hours
+		if end_time - start_time > 28800
+			errors.add(:base, "You cannot create a meetup greater than 8 hours apart")
+		end
+	end
+
+	def start_time_not_before_today
+		if start_time < DateTime.now
+			errors.add(:base, "You cannot create a meetup at a date prior to today")
 		end
 	end
 end

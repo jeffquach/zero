@@ -111,7 +111,7 @@ Rails.application.config.sorcery.configure do |config|
   #
   config.facebook.key = "#{Figaro.env.facebook_oauth_id}"
   config.facebook.secret = "#{Figaro.env.facebook_oauth_secret_key}"
-  config.facebook.callback_url = "http://mindmeetup.herokuapp.com/oauth/callback?provider=facebook"
+  config.facebook.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=facebook"
   config.facebook.user_info_mapping = {:email => "email", :first_name => "first_name", :last_name => "last_name"}
   config.facebook.access_permissions = ["email", "publish_stream"]
   #
@@ -120,9 +120,9 @@ Rails.application.config.sorcery.configure do |config|
   # config.github.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=github"
   # config.github.user_info_mapping = {:email => "name"}
   #
-  config.google.key = "#{Figaro.env.heroku_google_oauth_id}"
-  config.google.secret = "#{Figaro.env.heroku_google_oauth_secret_key}"
-  config.google.callback_url = "http://mindmeetup.herokuapp.com/oauth/callback?provider=google"
+  config.google.key = "#{Figaro.env.google_oauth_id}"
+  config.google.secret = "#{Figaro.env.google_oauth_secret_key}"
+  config.google.callback_url = "http://localhost:3000/oauth/callback?provider=google"
   config.google.user_info_mapping = {:email => "email"}
   #
   # config.vk.key = ""

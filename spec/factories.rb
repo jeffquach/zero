@@ -19,7 +19,7 @@ FactoryGirl.define do
 		title "Let's study Javascript!"
 		studying "Javascript"
 		description "Javascript is the coolest thing in the world"
-		start_time Time.now
+		start_time 1.hour.from_now
 		end_time 3.hours.from_now
 		number_of_people 2
 		user
@@ -42,6 +42,7 @@ FactoryGirl.define do
 
 	factory :topic do
 		name "Javascript"
+		experience "Beginner"
 		user
 		subject
 	end
