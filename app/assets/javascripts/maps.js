@@ -8,7 +8,7 @@ function initialize(){
 		zoom: 13,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
-	map = new google.maps.Map($('#map-canvas')[0],mapOptions);
+	map = new google.maps.Map($('.map-canvas, .big-map-canvas')[0],mapOptions);
 	if (addMarker) {
 	    var myMarker = new google.maps.Marker({
 	        position: new google.maps.LatLng(latitude, longitude),
@@ -52,7 +52,7 @@ function addEventToMarker(marker, user_id) {
 
 
 $(document).ready(function(){
-	if ($('#map-canvas').length > 0){
+	if ($('.map-canvas, .big-map-canvas').length > 0){
 		initialize();
 		if(coords.length > 0) addMarkers(coords);
 	}

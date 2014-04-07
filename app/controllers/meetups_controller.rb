@@ -25,7 +25,7 @@ class MeetupsController < ApplicationController
 
 	def index
 		# @meetups = current_user.meetups
-		@meetups = Meetup.where('user_id = ?', current_user.id).order('created_at DESC')
+		@meetups = Meetup.where('user_id = ? AND end_time > ?', current_user.id, Time.now).order('created_at DESC')
 	end
 
 

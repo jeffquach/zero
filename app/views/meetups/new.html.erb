@@ -1,66 +1,73 @@
 <% provide(:title, "New meetup") %>
 
-	<div class="form-container">
+<div class="form-container">
 	<div class="row">
-	<div class="col-md-6 col-md-offset-3">
-		<div class="user-profile">
-<div class="profile-highlight pad-header"><h1>New meetup</h1></div>
+		<div class="col-md-6 col-md-offset-3">
+			<div class="user-profile">
+			<div class="profile-highlight pad-header"><h1>New meetup</h1></div>
 
-<div class="user-info">
-	<%= form_for @meetup do |f| %>
+			<div class="user-info">
+				<%= form_for @meetup do |f| %>
 
-		<%= render "shared/error_messages", object: f.object %>
+					<%= render "shared/error_messages", object: f.object %>
 
-		<%= f.label :title %>
-		<%= f.text_field :title, class: "form-control" %>
+					<%= f.label :title %>
+					<%= f.text_field :title, class: "form-control" %>
 
-		<div class='row'>
-			<div class="col-md-6">
-				<%= f.label :studying %>
-				<%= f.select :studying, options_from_collection_for_select(Subject.all, :id, :name), {}, class: "form-control" %>
-			</div>
-			<div class="col-md-6">
-				<%= f.label :number_of_people %>
-				<%= f.select :number_of_people, options_for_select([2,3,4,5,6]), {}, class: "form-control" %>
-			</div>
+					<br>
+
+					<div class='row'>
+						<div class="col-md-6">
+							<%= f.label :studying %>
+							<%= f.text_field :studying, class: "form-control" %>
+						</div>
+
+						<div class="col-md-6">
+							<%= f.label :number_of_people %>
+							<%= f.select :number_of_people, options_for_select([2,3,4,5,6]), {}, class: "form-control" %>
+						</div>
+					</div>
+
+					<br>
+
+					<div class="row">
+						<div class="col-md-6">
+							<%= f.label :start_time, "Start date" %>
+							<div class="input-group date form_datetime" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+			 					<%= f.text_field :start_time, class: "form-control" %>
+			                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+								<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+			                </div>
+						</div>
+
+
+						<div class="col-md-6">
+							<%= f.label :end_time, "End date" %>
+							<div class="input-group date form_datetime" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+			                    <%= f.text_field :end_time, class: "form-control" %>
+			                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+								<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+			                </div>
+						</div>
+
+					</div>
+
+					<br>
+
+					<%= f.label :description %>
+					<%= f.text_area :description, style: "height:13em", class: "form-control" %>
+
+					<%= hidden_field_tag "second_user_id", @second_user_id %>
+
+					<br>
+
+					<div class="text-center"><%= f.submit "Create meetup", class: "btn btn-primary btn-lg" %></div>
+
+			<% end %>
+
 		</div>
 
-		<div class="row">
-			<div class="col-md-3">
-				<%= f.label :start_time, "Start date" %>
-				<%= f.text_field :start_time, class: "form-control" %>
-			</div>
-
-			<div class="col-md-3">
-				<%= f.label :start_time, "Start time" %>
-				<input id="meetup-start" name="meetup[start_time]" type="text" class="time ui-timepicker-input form-control" autocomplete="off">
-			</div>
-
-			<div class="col-md-3">
-				<%= f.label :end_time, "End date" %>
-				<%= f.text_field :end_time, class: "form-control" %>
-			</div>
-
-			<div class="col-md-3">
-				<%= f.label :end_time, "End time" %>
-				<input id="meetup-end" name="meetup[end_time]" type="text" class="time ui-timepicker-input form-control" autocomplete="off">
-			</div>
 		</div>
-
-		<%= f.label :description %>
-		<%= f.text_area :description, style: "height:13em", class: "form-control" %>
-
-		<%= hidden_field_tag "second_user_id", @second_user_id %>
-
-		<br>
-
-		<div class="text-center"><%= f.submit "Create meetup", class: "btn btn-primary btn-lg" %></div>
-
-	<% end %>
-
-</div>
-
-</div>
-</div>
+	</div>
 </div>
 </div>

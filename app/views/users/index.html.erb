@@ -1,11 +1,11 @@
-<div id="map-canvas"></div>
+<div class="big-map-canvas"></div>
 
 <div id="users-div">
   <ul id="users-map">
 
 
   <% if params[:city_search] && params[:subject_search] || params[:city_search] && params[:subject_search] && params[:topic_search] %>
-   <div class="user-title"><div class="user-found">Found users</div><div id="search-box"><span id="search-button">Advanced search</span></div></div>
+   <div class="user-title"><span class="user-found"><h2>Found users</h2></span><span id="search-button">Advanced search</span></div>
 
    <div id="search-form" style="display:none;">
 
@@ -28,32 +28,35 @@
      <% end %>
    </div>
 
+    <div class="user-index">
       <% @users.each do |user| %>
-      <li>
 
-          <% if user.image_url(:thumb) %>
-            <%= image_tag user.image_url(:thumb), class: "avatar-image" %>
-          <% else %>
-            <%= image_tag "default.png", class: "avatar-image" %>
-          <% end %>
-          <%= link_to user.first_name, user %>
-        
-          <% if @users.count > 1 %>
+        <li>
 
-            <%= "is #{user.distance_to(params[:city_search]).round(2)} miles away." %> 
+            <% if user.image_url(:thumb) %>
+              <%= image_tag user.image_url(:thumb), class: "avatar-image" %>
+            <% else %>
+              <%= image_tag "default.png", class: "avatar-image" %>
+            <% end %>
+            <%= link_to user.first_name, user %>
+          
+            <% if @users.count > 1 %>
 
-          <% end %>
+              <%= "is #{user.distance_to(params[:city_search]).round(2)} miles away." %> 
 
-          <% if user.admin? && !current_user %>
-            | <%= link_to "Delete", user, confirm: "Are you sure?", method: :delete %>
+            <% end %>
 
-          <% end %>
-        
-      </li>
+            <% if user.admin? && !current_user %>
+              | <%= link_to "Delete", user, confirm: "Are you sure?", method: :delete %>
 
-      <hr>
+            <% end %>
+          
+        </li>
+
+        <hr>
 
       <% end %>
+    </div>
 
   <% end %>
 
@@ -65,16 +68,17 @@
 
 <%= javascript_tag do %>
 
-<% if params[:city_search] != "" %>
+  <% if params[:city_search] != "" %>
 
     var latitude = <%= @users.first.latitude %>;
-  var longitude = <%= @users.first.longitude %>;
-  var showMarker = false;
+    var longitude = <%= @users.first.longitude %>;
+    var showMarker = false;
 
-  var coords = <%= raw @users.map{|user| {latitude: user.latitude, longitude: user.longitude, id: user.id}}.to_json %>; 
+    var coords = <%= raw @users.map{|user| {latitude: user.latitude, longitude: user.longitude, id: user.id}}.to_json %>; 
 
-<% end %> 
+  <% end %> 
+
+document.body.className = document.body.className.replace("canvas","");
 
 <% end %>
 
-<script>document.body.className = document.body.className.replace("canvas","");</script>
