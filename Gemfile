@@ -14,14 +14,11 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'figaro'
 gem 'state_machine'
-gem 'jquery-ui-rails'
 gem 'rails_12factor'
-gem 'ransack'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
   gem 'quiet_assets'
-  gem 'pry-debugger'
 end
 #
 group :test do
