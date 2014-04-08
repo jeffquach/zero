@@ -181,6 +181,7 @@
               <h3>No one has given you a review!</h3>
 
             <% else %>
+              <h4>Average rating: <%= @user.average_rating %> </h4>
               <%= render "reviews" %>
             <% end %>
           </div>

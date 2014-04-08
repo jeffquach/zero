@@ -70,4 +70,8 @@ class User < ActiveRecord::Base
 		first_name + " " + last_name
 	end
 
+	def average_rating
+		(reviews.sum(:rating))/reviews.count
+	end
+
 end
