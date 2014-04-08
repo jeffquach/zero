@@ -11,7 +11,9 @@
 		      <%= link_to "Delete", user_review_path(@user,review), data: {confirm: "Are you sure?"}, method: :delete, remote: true %>
 
 		    <% end %>
-		  </p>
+		</p>
+
+		<p>Rating: <%= review.rating %></p>
 
 
 	<% end %>

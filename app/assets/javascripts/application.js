@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-datetimepicker.min
 //= require bootstrap
+//= require raty
 //= require_tree .
 
 
@@ -43,6 +44,14 @@ $(document).ready(function(){
 		forceParse: 0,
         showMeridian: 1,
         pickerPosition: "bottom-left"
+    });
+
+    $(".stars").raty({
+    	half:true,
+    	path: '/assets',
+    	scoreName: "review[rating]",
+    	size:23,
+    	width: "150px"
     });
 })
 
