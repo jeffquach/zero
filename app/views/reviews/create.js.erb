@@ -3,6 +3,20 @@
 <% else %>
 	$("#review-errors").html("");
 	$("#reviews").html("<%= escape_javascript(render "users/reviews") %>");
+	$(".star-review").raty({
+    	readOnly: true,
+    	half:true,
+    	path: '/assets',
+    	score: function(){
+    		return $(this).attr('data-score');
+    	}
+    });
 	$("#new_review")[0].reset();
+	$(".stars").raty({
+    	half:true,
+    	path: '/assets',
+    	readOnly: true,
+    	score: 0
+    });
 <% end %>
 

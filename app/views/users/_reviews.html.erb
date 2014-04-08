@@ -2,6 +2,8 @@
 
 	<% @user.reviews.each do |review| %>
 
+		<span>Rating: <%= review.rating %>/5</span>
+		<div class="star-review" data-score="<%= review.rating %>"></div>
 		
 
 		<p>Review: <%= review.content %> Written by: <%= current_user.first_name %> |
@@ -12,9 +14,6 @@
 
 		    <% end %>
 		</p>
-
-		<p>Rating: <%= review.rating %></p>
-
 
 	<% end %>
 

@@ -49,10 +49,19 @@ $(document).ready(function(){
     $(".stars").raty({
     	half:true,
     	path: '/assets',
-    	scoreName: "review[rating]",
-    	size:23,
-    	width: "150px"
+    	scoreName: "review[rating]"
     });
+
+	$(".star-review").raty({
+    	readOnly: true,
+    	half:true,
+    	path: '/assets',
+    	score: function(){
+    		return $(this).attr('data-score');
+    	}
+    });
+
+
 })
 
 // $('.input-append').fdatepicker('show');
