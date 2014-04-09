@@ -1,7 +1,10 @@
+<h4>Average rating: <%= @user.average_rating %> </h4>
 <% if logged_in? %>
 
 	<% @user.reviews.each do |review| %>
 
+		<span>Rating: <%= number_with_precision(review.rating, precision: 2, significant: true, strip_insignificant_zeros: true) %>/5</span>
+		<div class="star-review" data-score="<%= review.rating %>"></div>
 		
 
 		<p>Review: <%= review.content %> Written by: <%= current_user.first_name %> |
@@ -11,8 +14,7 @@
 		      <%= link_to "Delete", user_review_path(@user,review), data: {confirm: "Are you sure?"}, method: :delete, remote: true %>
 
 		    <% end %>
-		  </p>
-
+		</p>
 
 	<% end %>
 

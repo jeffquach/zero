@@ -1,4 +1,4 @@
-<% provide(:title, @user.first_name) %>
+  <% provide(:title, @user.first_name) %>
  
 <div class="container">
   <div class="profile-container">
@@ -193,22 +193,33 @@
             <h3 class="pad-header">Write a review for <%= @user.first_name %></h3>
           </div>
 
-          <div class="user-info">
-            <% if current_user %>
+          <div class="user-info review-message">
+            <% if logged_in? %>
 
-              <%= form_for([@user,@user.reviews.build], remote: true) do |f| %>
+              <% if @user.find_corresponding_user_id.include?(current_user.id) && @user.already_reviewed.empty? && @user.finished_meetup? %>
 
-                <div id="review-errors"><%= render "review_errors" %></div>
+                <%= form_for([@user,@user.reviews.build], remote: true) do |f| %>
 
-                <%= f.label :content %>
-                <%= f.text_area :content, style: "height: 9em;", class: "form-control" %>
+                  <div id="review-errors"><%= render "review_errors" %></div>
 
-                <br>
+                  <%= f.label :rating %>
+                  <div class="stars"></div>
 
-                <%= f.submit class: "btn btn-primary" %>
+                  <%= f.label :content %>
+                  <%= f.text_area :content, style: "height: 9em;", class: "form-control" %>
 
+                  <br>
+
+                  <%= f.submit class: "btn btn-primary" %>
+
+                <% end %>
+              
+              <% elsif !@user.already_reviewed.empty? %>
+                <%= render "review_complete_message" %>
+              <% else %>
+                <h4>A review can only be written after finishing a meetup</h4>
               <% end %>
-
+              
             <% else %>
               <h4>Please <%= link_to "log in", login_path %> or <%= link_to "sign up", signup_path %> to write a user review</h4>
             <% end %>
