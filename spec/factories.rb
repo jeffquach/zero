@@ -33,6 +33,7 @@ FactoryGirl.define do
 
 	factory :review do
 		content "This guy is good meng!"
+		rating 4.5
 		user
 	end
 

@@ -20,8 +20,6 @@ class User < ActiveRecord::Base
 	has_many :topics
 
 	has_many :subjects, through: :topics
-
-	has_many :invitees
 	
 	has_many :user_friendships						
 
@@ -49,6 +47,8 @@ class User < ActiveRecord::Base
 
 	has_many :blocked_friends, through: :blocked_user_friendships, source: :friend
 
+	has_many :invitees
+
 	has_many :meetups, through: :invitees, dependent: :destroy
 
 	has_many :comments, dependent: :destroy
@@ -71,7 +71,15 @@ class User < ActiveRecord::Base
 	end
 
 	def average_rating
-		(reviews.sum(:rating))/reviews.count
+		((reviews.sum(:rating))/reviews.count).round(2)
+	end
+
+	def find_corresponding_user_id
+		meetups.map{|d| d.invitees.map{|d| d.user_id}}.flatten
+	end
+
+	def already_reviewed
+		reviews.map{|d| d.review_writer_id}
 	end
 
 end

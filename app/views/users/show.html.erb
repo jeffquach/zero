@@ -181,7 +181,6 @@
               <h3>No one has given you a review!</h3>
 
             <% else %>
-              <h4>Average rating: <%= @user.average_rating %> </h4>
               <%= render "reviews" %>
             <% end %>
           </div>
@@ -195,7 +194,7 @@
           </div>
 
           <div class="user-info">
-            <% if current_user %>
+            <% if logged_in? && @user.find_corresponding_user_id.include? current_user.id && !@user.already_reviewed %>
 
               <%= form_for([@user,@user.reviews.build], remote: true) do |f| %>
 
@@ -213,6 +212,10 @@
 
               <% end %>
 
+            <% elsif logged_in? && !@user.find_corresponding_user_id.include? current_user.id %>
+              <h4>A review can only be written after creating and finishing a meetup</h4>
+            <% elsif logged_in? && @user.already_reviewed %>
+              <h4>You have already given <%= @user.first_name %> a review</h4>
             <% else %>
               <h4>Please <%= link_to "log in", login_path %> or <%= link_to "sign up", signup_path %> to write a user review</h4>
             <% end %>

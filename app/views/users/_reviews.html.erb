@@ -1,8 +1,9 @@
+<h4>Average rating: <%= @user.average_rating %> </h4>
 <% if logged_in? %>
 
 	<% @user.reviews.each do |review| %>
 
-		<span>Rating: <%= review.rating %>/5</span>
+		<span>Rating: <%= number_with_precision(review.rating, precision: 2, significant: true, strip_insignificant_zeros: true) %>/5</span>
 		<div class="star-review" data-score="<%= review.rating %>"></div>
 		
 
