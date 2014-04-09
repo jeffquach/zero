@@ -75,9 +75,14 @@ describe "UserPages" do
 		it {should have_content("Ruby")}
 	end
 
-	describe "creating a review with without creating a meetup" | do 
-		before {sign_in user}
-		it {should have_content("A review can only be written after creating and finishing a meetup")}
+	describe "creating a review with without creating a meetup" do 
+		before do
+			sign_in user
+			FactoryGirl.create(:meetup)
+			Timecop.freeze(DateTime.now + 3)
+			FactoryGirl.create(:review)
+		end
+		it {should have_content("A review can only be written after finishing a meetup")}
 	end
 end
 

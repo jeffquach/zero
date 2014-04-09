@@ -75,11 +75,14 @@ class User < ActiveRecord::Base
 	end
 
 	def find_corresponding_user_id
-		meetups.map{|d| d.invitees.map{|d| d.user_id}}.flatten
+		self.meetups.map{|d| d.invitees.map{|d| d.user_id}}.flatten
 	end
 
 	def already_reviewed
-		reviews.map{|d| d.review_writer_id}
+		self.reviews.map{|d| d.review_writer_id}
 	end
 
+	def finished_meetup?
+		meetups.where("end_time < ?", DateTime.now).any?
+	end
 end
