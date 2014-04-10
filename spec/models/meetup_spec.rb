@@ -25,12 +25,27 @@ describe Meetup do
   end
 
   it "should allow a user to create a meetup in an interval less than 8 hours apart" do
-    m = Meetup.new(title: "Thingy!", studying: "Javascript", description: "This stuff is awesome!", start_time: 1.hour.from_now, end_time: 5.hours.from_now, user_id: user.id, number_of_people: 2)
+    m = Meetup.create(title: "Thingy!", studying: "Javascript", description: "This stuff is awesome!", start_time: 1.hour.from_now, end_time: 5.hours.from_now, user_id: user.id, number_of_people: 2)
     m.should be_valid
   end
 
   it "shouldn't allow a user to create a meetup at a time before today" do
-    m = Meetup.new(title: "Thingy!", studying: "Javascript", description: "This stuff is awesome!", start_time: 2.days.ago, end_time: 1.day.ago, user_id: user.id, number_of_people: 2)
+    m = Meetup.create(title: "Thingy!", studying: "Javascript", description: "This stuff is awesome!", start_time: 2.days.ago, end_time: 1.day.ago, user_id: user.id, number_of_people: 2)
     m.should_not be_valid
+  end
+
+  it "should let a user create a meetup on the same day" do
+    m = Meetup.create(title: "Thingy!", studying: "Javascript", description: "This stuff is awesome!", start_time: 3.hours.from_now, end_time: 5.hours.from_now, user_id: user.id, number_of_people: 2)
+    m.should be_valid
+  end
+
+  it "should return true" do
+    m = Meetup.create(title: "Thingy!", studying: "Javascript", description: "This stuff is awesome!", start_time: 5.minutes.from_now, end_time: 5.hours.from_now, user_id: user.id, number_of_people: 2)
+    expect(m.start_time_not_before_today).to be_false
+  end
+
+  it "should return false" do
+    m = Meetup.create(title: "Thingy!", studying: "Javascript", description: "This stuff is awesome!", start_time: 5.minutes.ago, end_time: 5.hours.from_now, user_id: user.id, number_of_people: 2)
+    expect(m.start_time_not_before_today).to be_true
   end
 end

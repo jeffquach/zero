@@ -38,8 +38,8 @@ class Meetup < ActiveRecord::Base
 	end
 
 	def start_time_not_before_today
-		if start_time < DateTime.now
-			errors.add(:base, "You cannot create a meetup at a date prior to today")
+		if start_time < DateTime.now 
+			errors.add(:base, "You cannot create a meetup at a date prior to today OR you must make your meetup at least 5 hours in advance")
 		end
 	end
 end

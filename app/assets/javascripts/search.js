@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$("#search-button").click(function(){
-		$("#search-form").slideToggle();
+	$("#search-button, .user-preferences").click(function(){
+		$("#search-form, #meetup-info").slideToggle();
 	})
 })

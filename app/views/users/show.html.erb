@@ -100,9 +100,11 @@
           <% end %>
           </div>
       </div>
-
+        
+        <div class="user-preferences text-center">See <%= @user.first_name %>'s preferences</div>
+          
     
-            <div id="meetup-info">
+            <div id="meetup-info" style="display:none;">
               <table>
                 <thead>
                     <tr>
@@ -160,8 +162,8 @@
                     <td class="value"><%= @user.skills %></td>
                   </tr>
                 </tbody>
-            </table>
-          </div>
+              </table>
+            </div>
       
     </div> 
 
