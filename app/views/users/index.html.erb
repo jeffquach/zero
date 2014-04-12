@@ -1,7 +1,7 @@
 <div class="big-map-canvas"></div>
 
 <div id="users-div">
-  <ul id="users-map">
+  <ul class="users-map">
 
 
   <% if params[:city_search] && params[:subject_search] || params[:city_search] && params[:subject_search] && params[:topic_search] %>
@@ -29,7 +29,7 @@
    </div>
 
     <div class="user-index">
-      <% @users.each do |user| %>
+      <% @users.sample(20).each do |user| %>
 
         <li>
 

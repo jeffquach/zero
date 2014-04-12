@@ -84,4 +84,8 @@ class User < ActiveRecord::Base
 	def finished_meetup?
 		meetups.where("end_time < ?", DateTime.now).any?
 	end
+
+	def self.user_feed(city,topic_name,experience)
+		where('city = ?', city).joins(:topics).where('topics.name = ? AND topics.experience = ?',topic_name, experience).limit(5).order('RANDOM()')
+	end
 end

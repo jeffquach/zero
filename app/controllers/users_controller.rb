@@ -43,6 +43,9 @@ class UsersController < ApplicationController
     @nearbys = @user.nearbys(10, units: :km)
     @friends = @user.friends
     @review = Review.new(user_id: @user.id)
+    index = rand(@user.topics.length - 1)
+    @random_topic_name = @user.topics[index].name
+    @random_experience = @user.topics[index].experience 
 
     # @review = @user.reviews.build
 

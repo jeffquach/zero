@@ -27,11 +27,11 @@ namespace :brap do
 	end
 	def make_topics
 		users = User.all
-		3.times do |n|
-			index = rand(8)
-			exp_index = rand(4)
-			experience = ["Beginner","Novice","Intermediate","Advanced","Expert"]
-			topics = ["Ruby","Javascript","C++","Python","C","Java", "Perl","PHP","Objective-C"]
+		2.times do |n|
+			index = rand(1)
+			exp_index = rand(1)
+			experience = ["Beginner","Novice"]
+			topics = ["Ruby","Javascript"]
 			users[39..-1].each{|u| u.topics.create!(name: topics[index],user_id:n+1,subject_id:29, experience: experience[exp_index])}
 		end
 	end

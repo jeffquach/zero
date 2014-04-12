@@ -40,5 +40,12 @@ describe User do
       expect(user.finished_meetup?).to be_false
     end
   end
+
+  it "should show other users within a city studying the same topic" do
+    user.topics.create(name:"Javascript",experience:"Beginner")
+    user1 = User.create(first_name:"Blang",last_name:"Chong",address: "1 Yonge St.",city: "Toronto",state_province: "Ontario",country:"Canada")
+    user1.topics.create(name:"Javascript",experience:"Beginner")
+    user.user_feed.should == user1
+  end
   
 end

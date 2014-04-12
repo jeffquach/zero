@@ -7,11 +7,7 @@
       <div class="user-profile">
         <div class="profile-highlight">
           <div class="profile-name">
-            <% if @user.image_url(:thumb) %>
-              <%= image_tag @user.image_url(:thumb), class: "avatar-image" %>
-            <% else %>
-              <%= image_tag "default.png", class: "avatar-image" %>
-            <% end %>
+            <%= render "avatar" %>
           </div>
           <div class="profile-info">
             <h2>
@@ -100,6 +96,38 @@
           <% end %>
           </div>
       </div>
+
+      <div class="user-profile">
+        <div class="profile-highlight text-center"><h3 class="pad-header"><em>Suggested study partners</em></h3></div>
+
+          <div class="user-info suggested-partners">
+
+            <% @suggested_study_partners = User.all.user_feed(@user.city,@random_topic_name,@random_experience)  %>
+             
+            <% if @suggested_study_partners.count < 2 %>
+              <h4>There are currently no suggested study partners available</h4>
+            <% else %>
+              <% @suggested_study_partners.each do |user| %>
+
+                <div class="study-partner">
+                  <div class="study-partner-avatar"><%= render "avatar" %></div>
+
+                  <div class="study-partner-info">                
+                    <%= link_to user.first_name, user %>
+
+                    <br>
+                    Studying: <%= @random_topic_name %>
+                    <br>
+
+                    Experience: <%= @random_experience %>
+                  </div>
+                </div>
+
+              <% end %> 
+            <% end %>
+
+        </div>
+    </div>
         
         <div class="user-preferences text-center">See <%= @user.first_name %>'s preferences</div>
           
