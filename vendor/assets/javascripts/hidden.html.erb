@@ -115,9 +115,24 @@
                   <div class="study-partner-info">                
                     <%= link_to user.first_name, user %>
 
-                    Studying: <%= @random_topic_name %>
+                    <table class="squish-em">
+                      <thead>
+                          <tr>
+                              <th>Studying</th>
+                              <th>Experience</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <% user.topics.map do |u| %>
 
-                    Experience: <%= @random_experience %>
+                          <tr>
+                            <td><%= u.name %></td>
+                            <td class="value"><%= u.experience %></td>
+                          </tr>
+
+                        <% end %>
+                      </tbody>
+                    </table>
 
                   </div>
                 </div>
