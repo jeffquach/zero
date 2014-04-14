@@ -104,8 +104,8 @@ Rails.application.config.sorcery.configure do |config|
   # Twitter wil not accept any requests nor redirect uri containing localhost,
   # make sure you use 0.0.0.0:3000 to access your app in development
   #
-  config.twitter.key = "9eqGwO2CzxfVfgL3XjwgHw"
-  config.twitter.secret = "545XtT28hcPZMo0xpHBd2o2lrGKzwCw0tJSNoxUE"
+  config.twitter.key = "OOc2fk1CyH8JWVJin45oxw"
+  config.twitter.secret = "ZvITyzXLZJLcgQ8wY4y3SuncghqzrS7Wqey5t97k2o"
   config.twitter.callback_url = "http://mindmeetup.herokuapp.com/oauth/callback?provider=twitter"
   config.twitter.user_info_mapping = {:email => "email"}
   #
