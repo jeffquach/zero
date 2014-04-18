@@ -15,6 +15,9 @@ gem 'mini_magick'
 gem 'figaro'
 gem 'state_machine'
 gem 'rails_12factor'
+gem 'mysql2',          '0.3.13', :platform => :ruby
+gem 'jdbc-mysql',      '5.1.28', :platform => :jruby
+gem 'thinking-sphinx', '3.1.0'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

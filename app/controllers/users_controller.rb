@@ -22,11 +22,23 @@ class UsersController < ApplicationController
     if params[:city_search].blank?
       flash[:danger] = "The search field cannot be blank!"
       redirect_to root_url and return
-    elsif params[:city_search] && params[:subject_search] && params[:topic_search]
-      @users = User.near(params[:city_search],100)
-      @users = @users.includes(:subjects).where("subjects.id = ?", params[:subject_search]).references(:subjects) if params[:subject_search].present?
-      @users = @users.joins(:topics).where('topics.name = ?', params[:topic_search]) if params[:topic_search].present?
-      @users = @users.where('topics.experience = ?', params[:experience]) if params[:experience].present?
+    elsif params[:city_search] 
+      @users = User.search(
+
+          params[:city_search],
+
+          :conditions => {:topic_name => params[:topic_search]},
+
+          :with => {:subject_name => params[:subject_search]},
+
+          :page => params[:page], :per_page => 88
+
+      )
+      # && params[:subject_search] && params[:topic_search]
+      # @users = User.near(params[:city_search],100)
+      # @users = @users.includes(:subjects).where("subjects.id = ?", params[:subject_search]).references(:subjects) if params[:subject_search].present?
+      # @users = @users.joins(:topics).where('topics.name = ?', params[:topic_search]) if params[:topic_search].present?
+      # @users = @users.where('topics.experience = ?', params[:experience]) if params[:experience].present?
       if @users.empty?
         flash[:danger] = "No users found"
         redirect_to root_url and return
