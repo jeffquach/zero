@@ -23,6 +23,11 @@ class UsersController < ApplicationController
       flash[:danger] = "The search field cannot be blank!"
       redirect_to root_url and return
     elsif params[:city_search] 
+
+      # topic = {:topic_name => params[:topic_search]} if params[:topic_search].present?
+
+      # subject = {:subject_name => params[:subject_search]} if params[:subject_search].present?
+
       @users = User.search(
 
           params[:city_search],
