@@ -24,21 +24,22 @@ class UsersController < ApplicationController
       redirect_to root_url and return
     elsif params[:city_search] 
 
-      # topic = {:topic_name => params[:topic_search]} if params[:topic_search].present?
+      if params[:subject_search].present?
+        subject = {:subject_name => params[:subject_search]}
+      else
+        subject = {}
+      end
 
-      # subject = {:subject_name => params[:subject_search]} if params[:subject_search].present?
+        @users = User.search(
 
-      @users = User.search(
+        params[:city_search],
 
-          params[:city_search],
+        :with => subject,
 
-          :conditions => {:topic_name => params[:topic_search]},
+        :conditions => {:topic_name => params[:topic_search],:experience => params[:experience]},
 
-          :with => {:subject_name => params[:subject_search]},
-
-          :page => params[:page], :per_page => 88
-
-      )
+        :page => params[:page], :per_page => 33
+        )
       # && params[:subject_search] && params[:topic_search]
       # @users = User.near(params[:city_search],100)
       # @users = @users.includes(:subjects).where("subjects.id = ?", params[:subject_search]).references(:subjects) if params[:subject_search].present?

@@ -4,7 +4,8 @@
   <ul class="users-map">
 
 
-  <% if params[:city_search] && params[:subject_search] || params[:city_search] && params[:subject_search] && params[:topic_search] %>
+  <% if params[:city_search] %>
+
    <div class="user-title"><span class="user-found"><h2>Found users</h2></span><span id="search-button">Advanced search</span></div>
 
    <div id="search-form" style="display:none;">
@@ -25,7 +26,7 @@
         <div><%= submit_tag "Search users", class: "btn btn-lg btn-primary btn-block", id: "home-search" %></div>
       </p>
 
-     <% end %>
+    <% end %>
    </div>
 
     <div class="user-index">
