@@ -25,7 +25,12 @@ class UsersController < ApplicationController
     elsif params[:city_search] 
 
       if params[:subject_search].present?
-        subject = {:subject_name => params[:subject_search]}
+        if params[:min_rating].present? && params[:max_rating].present?
+          subject = {:subject_name => params[:subject_search],:review => params[:min_rating]..params[:max_rating]}
+        else
+          subject = {:subject_name => params[:subject_search]}
+        end
+        
       else
         subject = {}
       end
