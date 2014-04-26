@@ -37,4 +37,27 @@ namespace :brap do
 	end
 end
 
+namespace :review do
+	desc "Make fake reviews son!"
+	task make_reviews: :environment do
+		make_reviews
+	end
+
+	def make_reviews
+		users = User.all
+		8.times do |n|
+			users.each do |u| 
+
+				rating = rand(5) + 1
+
+				content = Faker::Company.catch_phrase
+				user_id = rand(78) + 146
+				review_writer_id = rand(78) + 146
+
+				u.reviews.create!(content:content,user_id:user_id,review_writer_id: review_writer_id, rating:rating)
+
+			end
+		end
+	end
+end
 

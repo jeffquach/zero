@@ -23,6 +23,23 @@
 
         <%= select_tag :experience, options_for_select(["Beginner","Novice","Intermediate","Advanced","Expert"]), prompt: "Select level of expertise", class: "form-control" %> <br>
 
+        <%= label_tag "Average rating" %>
+
+        <div class="average-rating">
+          <div class="rating-block">
+            <%= select_tag :min_rating, options_for_select([0,1,2,3,4,5]), class: "form-control" %>
+          </div>
+          <div class="small-rating-block">
+            between
+          </div>
+          <div class="rating-block">
+            <%= select_tag :max_rating, options_for_select([0,1,2,3,4,5]), class: "form-control" %>
+          </div>
+          <br>
+        </div>
+
+        <br>
+
         <div><%= submit_tag "Search users", class: "btn btn-lg btn-primary btn-block", id: "home-search" %></div>
       </p>
 
