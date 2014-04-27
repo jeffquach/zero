@@ -243,7 +243,7 @@
 
                 <% end %>
               
-              <% elsif !@user.already_reviewed.empty? %>
+              <% elsif @user.already_reviewed.include? current_user.id %>
                 <%= render "review_complete_message" %>
               <% else %>
                 <h4>A review can only be written after finishing a meetup</h4>

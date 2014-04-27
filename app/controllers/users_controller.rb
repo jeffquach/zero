@@ -24,13 +24,10 @@ class UsersController < ApplicationController
       redirect_to root_url and return
     elsif params[:city_search] 
 
-      if params[:subject_search].present?
-        if params[:min_rating].present? && params[:max_rating].present?
-          subject = {:subject_name => params[:subject_search],:review => params[:min_rating]..params[:max_rating]}
-        else
-          subject = {:subject_name => params[:subject_search]}
-        end
-        
+      if params[:subject_search].present? && params[:min_rating].present? && params[:max_rating].present?
+        subject = {:subject_name => params[:subject_search],:review => params[:min_rating]..params[:max_rating]}
+      elsif params[:subject_search].present?
+        subject = {:subject_name => params[:subject_search]}
       else
         subject = {}
       end

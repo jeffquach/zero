@@ -7,7 +7,7 @@
 		<div class="star-review" data-score="<%= review.rating %>"></div>
 		
 
-		<p>Review: <%= review.content %> Written by: <%= current_user.first_name %> |
+		<p>Review: <%= review.content %> Written by: <%= review.review_writer.first_name %> |
 		    <% if review.review_writer_id == current_user.id %>
 
 		      <%= link_to "Edit", edit_user_review_path(@user,review) %> | 
