@@ -35,7 +35,7 @@
 
 				    <br>
 
-				    <%= select_tag :topic_search, options_for_select(Topic.order('lower(name) ASC').pluck(:name).uniq), class: "form-control", prompt: "Select topic" %>
+				    <%= select_tag :topic_search, options_for_select(["Select topic"]), class: "form-control" %>
 
 				    <br>
 

@@ -41,6 +41,8 @@ Mindmeetup::Application.routes.draw do
 
   resources :password_resets
 
+  match "searches/update_topics", to: "searches#update_topics", via: "get"
+
   match "logout", to: "sessions#destroy", via: "get"
   match "signup", to: "users#new", via: "get"
   match "login", to: "sessions#new", via: "get"
