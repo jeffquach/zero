@@ -1,13 +1,13 @@
-set :application, 'app_name'
+set :application, 'mindmeetup'
 set :deploy_user, 'deploy'
 
 # setup repo details
 set :scm, :git
-set :repo_url, 'git@github.com:username/repo.git'
+set :repo_url, 'git@github.com:jeffquach/zero.git'
 
 # setup rvm.
-set :rbenv_type, :system
-set :rbenv_ruby, '2.1.1'
+set :rbenv_type, :user
+set :rbenv_ruby, '2.1.0p0'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 
@@ -22,7 +22,7 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 
 # what specs should be run before deployment is allowed to
 # continue, see lib/capistrano/tasks/run_tests.cap
-set :tests, []
+# set :tests, []
 
 # which config files should be copied by deploy:setup_config
 # see documentation in lib/capistrano/tasks/setup_config.cap
@@ -31,16 +31,13 @@ set(:config_files, %w(
   nginx.conf
   database.example.yml
   log_rotation
-  monit
-  unicorn.rb
-  unicorn_init.sh
 ))
 
 # which config files should be made executable after copying
 # by deploy:setup_config
-set(:executable_config_files, %w(
-  unicorn_init.sh
-))
+# set(:executable_config_files, %w(
+#   unicorn_init.sh
+# ))
 
 
 # files which need to be symlinked to other parts of the
@@ -54,16 +51,8 @@ set(:symlinks, [
     link: "/etc/nginx/sites-enabled/{{full_app_name}}"
   },
   {
-    source: "unicorn_init.sh",
-    link: "/etc/init.d/unicorn_{{full_app_name}}"
-  },
-  {
     source: "log_rotation",
    link: "/etc/logrotate.d/{{full_app_name}}"
-  },
-  {
-    source: "monit",
-    link: "/etc/monit/conf.d/{{full_app_name}}.conf"
   }
 ])
 
