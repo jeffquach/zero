@@ -9,7 +9,7 @@ require 'capistrano/rails'
 
 require 'capistrano/rbenv'
 set :rbenv_type, :user
-set :rbenv_ruby, '2.1.0p0'
+set :rbenv_ruby, '2.1.0'
 
 # Includes tasks from other gems included in your Gemfile
 #
@@ -27,6 +27,8 @@ set :rbenv_ruby, '2.1.0p0'
 # require 'capistrano/bundler'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
+
+require 'thinking_sphinx/capistrano'
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
 Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
