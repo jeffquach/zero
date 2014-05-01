@@ -77,7 +77,9 @@
           <%= form_tag users_path, class: "form-signin", role: "form", method: :get do %>
             <p>
 
-              <%= text_field_tag :city_search, nil, class: "form-control", placeholder:"Type in a location" %>
+              <div class="prefetch">
+                <%= text_field_tag :city_search, nil, class: "typeahead form-control", placeholder:"Type in a location" %>
+              </div>
 
               <br>
 

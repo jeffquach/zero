@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
         @users = User.search(
 
-        params[:city_search],
+        params[:city_search], star: true, ranker: :sph04,
 
         :with => subject,
 

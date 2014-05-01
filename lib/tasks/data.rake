@@ -5,13 +5,13 @@ namespace :tingz do
 	end
 
 	def make_users
-		39.times do |n|
+		100.times do |n|
 	      first_name = Faker::Name.name
 	      last_name = Faker::Name.name
-	      email = "dipper-#{n+3}@chingchong.org"
+	      email = "dipper-#{n+3}@king.org"
 	      password = "password"
-	      address = "#{n+823} Yonge St."
-	      city = "Toronto"
+	      address = "#{n+13} Pine St."
+	      city = "Timmins"
 	      state_province = "Ontario"
 	      country = "Canada"
 	      bio = "I'm da bomb son!!!" + Faker::Company.catch_phrase

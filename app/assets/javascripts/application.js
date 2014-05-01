@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-datetimepicker.min
 //= require bootstrap
+//= require twitter/typeahead.min
 //= require raty
 //= require_tree .
 
@@ -60,6 +61,8 @@ $(document).ready(function(){
     		return $(this).attr('data-score');
     	}
     });
+
+    
 
 
 })
